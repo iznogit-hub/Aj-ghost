@@ -1,81 +1,66 @@
-"use client";
-
 import Tag from "@/components/Tag";
-import { Zap, ShieldCheck, Smartphone, Gift, Download, Globe } from "lucide-react";
+// Note: You should update these icon imports to point to Amazon, Kindle, etc.
+import figmaIcon from "@/assets/images/figma-logo.svg"; 
+import notionIcon from "@/assets/images/notion-logo.svg";
+import slackIcon from "@/assets/images/slack-logo.svg";
+import relumeIcon from "@/assets/images/relume-logo.svg";
+import framerIcon from "@/assets/images/framer-logo.svg";
+import githubIcon from "@/assets/images/github-logo.svg";
 
-const benefits = [
+const platforms = [
     {
-        title: "Instant Delivery",
-        description: "Start reading seconds after checkout. No waiting for shipping.",
-        icon: Zap,
+        name: "Kindle",
+        icon: figmaIcon, // Replace with Kindle icon
+        description: "Read the ebook instantly.",
     },
     {
-        title: "Device Compatible",
-        description: "Read on Kindle, iPad, Android, or your web browser seamlessly.",
-        icon: Smartphone,
+        name: "Audible",
+        icon: notionIcon, // Replace with Audible icon
+        description: "Listen to the immersive narration.",
     },
     {
-        title: "Secure Checkout",
-        description: "Your data is protected by industry-standard 256-bit encryption.",
-        icon: ShieldCheck,
+        name: "Paperback",
+        icon: slackIcon, // Replace with Amazon icon
+        description: "Get the physical copy.",
     },
     {
-        title: "DRM-Free Option",
-        description: "Own your files truly. Transfer them between your devices without limits.",
-        icon: Download,
+        name: "Goodreads",
+        icon: relumeIcon, // Replace with Goodreads icon
+        description: "Join the discussion.",
     },
     {
-        title: "Global Availability",
-        description: "Purchase from anywhere in the world in your local currency.",
-        icon: Globe,
+        name: "Apple Books",
+        icon: framerIcon, 
+        description: "Available on iPhone & iPad.",
     },
     {
-        title: "Easy Gifting",
-        description: "Send a copy to a friend instantly with a personalized note.",
-        icon: Gift,
+        name: "Hardcover",
+        icon: githubIcon,
+        description: "Collector's edition available.",
     },
 ];
 
+export type IntegrationsType = typeof platforms;
+
 export default function Integrations() {
     return (
-        <section className="py-24 overflow-hidden bg-white border-t border-neutral-100" id="marketing">
+        <section className="py-24 overflow-hidden " id="integrations">
             <div className="container">
-                <div className="grid lg:grid-cols-2 gap-16 items-start">
-                    
-                    {/* Left Column: Headline */}
+                <div className="grid lg:grid-cols-2 items-center lg:gap-16">
                     <div>
-                        <Tag>Why Buy Direct?</Tag>
+                        <Tag>Availability</Tag>
                         <h2 className="text-6xl font-medium mt-6 tracking-tighter">
-                            Pure story. <br />
-                            <span className="text-neutral-400">Zero friction.</span>
+                            Read it <span className="text-red-600">Anywhere</span>
                         </h2>
-                        <p className="text-neutral-500 mt-6 text-xl leading-relaxed">
-                            We believe in getting the story into your hands as fast as possible. 
-                            Skip the middleman and support independent publishing directly.
+
+                        <p className="text-neutral-500 mt-4 text-lg leading-relaxed">
+                            HUNTED is available across all major formats. Whether you prefer digital, audio, or the weight of a book in your hands, the nightmare is ready for you.
                         </p>
                     </div>
-
-                    {/* Right Column: Icon Grid */}
-                    <div className="grid sm:grid-cols-2 gap-8">
-                        {benefits.map((benefit, index) => (
-                            <div 
-                                key={index} 
-                                className="group p-4 rounded-2xl hover:bg-neutral-50 transition duration-300 border border-transparent hover:border-neutral-100"
-                            >
-                                <div className="bg-neutral-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4 group-hover:bg-neutral-950 group-hover:text-white transition duration-300">
-                                    <benefit.icon size={24} strokeWidth={1.5} />
-                                </div>
-                                <h3 className="text-xl font-medium text-neutral-950 mb-2">
-                                    {benefit.title}
-                                </h3>
-                                <p className="text-neutral-500 leading-normal text-sm">
-                                    {benefit.description}
-                                </p>
-                            </div>
-                        ))}
+                    
                     </div>
                 </div>
-            </div>
+            
         </section>
     );
 }

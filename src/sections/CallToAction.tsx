@@ -7,6 +7,7 @@ import { twMerge } from "tailwind-merge";
 export default function CallToAction() {
     const animation = useRef<AnimationPlaybackControls>();
     const [scope, animate] = useAnimate();
+
     const [slowDownAnimation, setSlowDownAnimation] = useState(false);
 
     useEffect(() => {
@@ -24,7 +25,7 @@ export default function CallToAction() {
     }, [slowDownAnimation]);
 
     return (
-        <section className="py-24 border-t border-neutral-100 bg-neutral-50 overflow-hidden">
+        <section className="py-24 overflow-hidden border-t border-neutral-100 bg-neutral-50">
             <div className="overflow-x-clip p-4 flex">
                 <motion.div
                     ref={scope}
@@ -37,7 +38,7 @@ export default function CallToAction() {
                             <span className="text-red-600 text-7xl">
                                 &#10038;
                             </span>
-                            <span className={twMerge("text-neutral-950 group-hover:text-red-600 transition", slowDownAnimation && "text-red-600")}>
+                            <span className={twMerge("text-neutral-900 transition", slowDownAnimation && "text-red-600")}>
                                 Read HUNTED Now
                             </span>
                         </div>

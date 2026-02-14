@@ -2,90 +2,136 @@
 
 import FeatureCard from "@/components/FeatureCard";
 import Tag from "@/components/Tag";
+import avatar1 from "@/assets/images/avatar-ashwin-santiago.jpg";
+import avatar2 from "@/assets/images/avatar-florence-shaw.jpg";
+import avatar3 from "@/assets/images/avatar-lula-meyers.jpg";
+import Image from "next/image";
+import Avatar from "@/components/Avatar";
+import { Eye, Clock, Skull } from "lucide-react"; // Changed icons
+import Key from "@/components/Key";
 import { motion } from "framer-motion";
-import { Star, User, MessageSquareQuote } from "lucide-react"; // Make sure to install lucide-react if not present
 
-const testimonials = [
-    {
-        name: "Verified Reader",
-        quote: "I literally couldn't put it down. I missed work because I had to finish it.",
-        rating: 5,
-    },
-    {
-        name: "Thriller Addict",
-        quote: "The plot twists just kept coming. Just when you think you know the truth, everything flips.",
-        rating: 5,
-    },
-    {
-        name: "Book Club Host",
-        quote: "Dark, gritty, and incredibly smart. The unreliable narrator aspect was handled perfectly.",
-        rating: 5,
-    },
+const features = [
+    "Psychological Thriller",
+    "Unreliable Narrator",
+    "Military Noir",
+    "Gaslighting",
+    "Survival",
+    "Paranoia",
+    "Plot Twists",
 ];
 
 const parentVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.2,
+            staggerChildren: 0.7,
         },
     },
 };
 
 const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 50 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5 },
+        transition: { duration: 0.6, ease: "easeOut" },
     },
 };
 
 export default function Features() {
     return (
-        <section className="py-24 bg-neutral-50" id="testimonials">
+        <section className="py-24 bg-neutral-50" id="features">
             <div className="container">
                 <div className="flex justify-center">
-                    <Tag>Reviews</Tag>
+                    <Tag>Inside the Book</Tag>
                 </div>
-                <h2 className="text-6xl font-medium text-center mt-6 max-w-2xl mx-auto tracking-tighter">
-                    Don't just take our <span className="text-neutral-400">word</span> for it.
+                <h2 className="text-6xl font-medium text-center mt-6 max-w-2xl m-auto tracking-tighter">
+                    The trap closes <span className="text-red-600">slowly</span>
                 </h2>
-                
                 <motion.div
                     variants={parentVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8"
                 >
-                    {testimonials.map((t, i) => (
-                        <motion.div key={i} variants={cardVariants}>
-                            <div className="bg-white border border-neutral-200 p-8 rounded-3xl h-full flex flex-col justify-between shadow-sm hover:shadow-md transition duration-300">
-                                <div>
-                                    <div className="flex gap-1 mb-6">
-                                        {[...Array(t.rating)].map((_, i) => (
-                                            <Star key={i} size={20} className="fill-neutral-950 text-neutral-950" />
-                                        ))}
+                    <div className="mt-12 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-8">
+                        <motion.div
+                            variants={cardVariants}
+                            className="md:col-span-2 lg:col-span-1"
+                        >
+                            <FeatureCard
+                                title="The Unreliable Narrator"
+                                description="Ryan's TBI makes him doubt his own mind. He loses hours, forgets conversations, and questions reality."
+                            >
+                                <div className="aspect-video flex items-center justify-center gap-2">
+                                    <Avatar className="z-40 border-red-600">
+                                        <Image
+                                            src={avatar1}
+                                            alt="Ryan Kane"
+                                            className="rounded-full grayscale"
+                                        />
+                                    </Avatar>
+                                    {/* Visual representation of confusion/surveillance */}
+                                    <div className="bg-neutral-100 p-2 rounded-full border border-neutral-200">
+                                        <Eye size={30} className="text-neutral-500" />
                                     </div>
-                                    <MessageSquareQuote size={40} className="text-neutral-200 mb-4" />
-                                    <p className="text-xl font-medium leading-relaxed text-neutral-800">
-                                        &ldquo;{t.quote}&rdquo;
+                                </div>
+                            </FeatureCard>
+                        </motion.div>
+
+                        <motion.div
+                            variants={cardVariants}
+                            className="md:col-span-2 lg:col-span-1 group transition duration-500"
+                        >
+                            <FeatureCard
+                                title="The Predator"
+                                description="Skull doesn't target politicians. He hunts the invisible ones. The veterans society stopped seeing."
+                                className="group"
+                            >
+                                <div className="aspect-video flex items-center justify-center">
+                                    <p className="group-hover:text-red-900 transition duration-500 text-3xl font-extrabold text-neutral-300 text-center uppercase leading-tight">
+                                        I see <br/>
+                                        <span className="text-red-600">Everything</span>
                                     </p>
                                 </div>
-                                <div className="mt-8 flex items-center gap-3 pt-8 border-t border-neutral-100">
-                                    <div className="bg-neutral-100 p-2 rounded-full">
-                                        <User size={20} className="text-neutral-500" />
-                                    </div>
-                                    <span className="font-mono text-sm font-semibold uppercase tracking-wider text-neutral-500">
-                                        {t.name}
-                                    </span>
-                                </div>
-                            </div>
+                            </FeatureCard>
                         </motion.div>
-                    ))}
+
+                        <motion.div
+                            variants={cardVariants}
+                            className="md:col-span-2 md:col-start-2 lg:col-span-1 lg:col-start-auto"
+                        >
+                            <FeatureCard
+                                title="72 Hours"
+                                description="The yellow notice on his windshield gave him three days. Skull has been counting for weeks."
+                            >
+                                <div className="aspect-video flex justify-center items-center gap-4">
+                                    <div className="text-5xl font-mono text-red-600 font-bold tracking-widest">
+                                        72:00
+                                    </div>
+                                </div>
+                            </FeatureCard>
+                        </motion.div>
+                    </div>
                 </motion.div>
+
+                <div className="my-8 flex items-center justify-center flex-wrap gap-2 max-w-3xl m-auto">
+                    {features.map((feature) => (
+                        <div
+                            className="bg-white border border-neutral-200 inline-flex px-3 md:px-5 md:py-2 py-1.5 rounded-2xl gap-3 items-center hover:scale-105 hover:border-red-600 transition duration-500 group"
+                            key={feature}
+                        >
+                            <span className="bg-red-600 text-white size-5 rounded-full inline-flex items-center justify-center text-xl group-hover:rotate-45 transition duration-500">
+                                &#10038;
+                            </span>
+                            <span className="font-medium md:text-lg text-neutral-800">
+                                {feature}
+                            </span>
+                        </div>
+                    ))}
+                </div>
             </div>
         </section>
     );
