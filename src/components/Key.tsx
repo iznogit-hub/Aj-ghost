@@ -7,7 +7,7 @@ const Key = (props: HTMLAttributes<HTMLDivElement>) => {
     return (
         <div
             className={twMerge(
-                "size-14 bg-neutral-300 inline-flex border-white/10 px-3 py-1.5 rounded-2xl text-black/80 justify-center items-center",
+                "size-14 bg-neutral-800 border border-neutral-700 shadow-sm inline-flex justify-center items-center rounded-2xl text-white font-medium text-xl",
                 className
             )}
             {...rest}
