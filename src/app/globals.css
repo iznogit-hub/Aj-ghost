@@ -8,19 +8,19 @@
   }
 
   body {
-    @apply bg-white text-neutral-950 antialiased selection:bg-red-500 selection:text-white;
+    @apply bg-neutral-950 text-white antialiased selection:bg-lime-400 selection:text-neutral-950;
   }
 
-  /* Custom Scrollbar */
+  /* Professional Custom Scrollbar */
   ::-webkit-scrollbar {
     width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-neutral-100;
+    @apply bg-neutral-950;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-400 rounded-full hover:bg-red-600 transition-colors;
+    @apply bg-neutral-800 rounded-full hover:bg-neutral-700 transition-colors;
   }
 }
