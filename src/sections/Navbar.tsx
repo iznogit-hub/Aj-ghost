@@ -10,7 +10,8 @@ import {
     FileText, 
     MessageCircle, 
     ShoppingCart,
-    Mail
+    Mail,
+    Users
 } from "lucide-react";
 
 import Button from "@/components/Button";
@@ -18,7 +19,7 @@ import Button from "@/components/Button";
 const navLinks = [
     { label: "Books", href: "#books", icon: BookOpen },
     { label: "The Story", href: "#introduction", icon: FileText },
-    { label: "About", href: "#about", icon: MessageCircle },
+    { label: "For Authors", href: "#author-collab", icon: Users },
     { label: "Newsletter", href: "#newsletter", icon: Mail },
 ];
 
@@ -85,12 +86,20 @@ export default function Navbar() {
                         {/* --- ACTION BUTTONS & MOBILE TOGGLE --- */}
                         <div className="flex items-center gap-4">
                             <div className="hidden lg:flex gap-3">
-                                <button className="px-5 py-2.5 text-sm font-medium text-gold-300 border border-gold-400/30 rounded-full hover:bg-gold-400/10 hover:border-gold-400/50 transition duration-300">
-                                    Free Chapter
-                                </button>
-                                <button className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20">
-                                    Get the Book
-                                </button>
+                                <a 
+                                    href="#author-collab" 
+                                    className="px-5 py-2.5 text-sm font-medium text-gold-300 border border-gold-400/30 rounded-full hover:bg-gold-400/10 hover:border-gold-400/50 transition duration-300"
+                                >
+                                    Author Free Copy
+                                </a>
+                                <a 
+                                    href="https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15" 
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20"
+                                >
+                                    Get Books
+                                </a>
                             </div>
 
                             <button

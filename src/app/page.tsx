@@ -4,6 +4,7 @@ import Features from "@/sections/Features";
 import Footer from "@/sections/Footer";
 import Hero from "@/sections/Hero";
 import Integrations from "@/sections/Integrations";
+import AuthorCollab from "@/sections/AuthorCollab";
 import Introduction from "@/sections/Introduction";
 import LogoTicker from "@/sections/LogoTicker";
 import Navbar from "@/sections/Navbar";
@@ -23,6 +24,8 @@ export default function Home() {
             <SectionDivider subtle />
             <Integrations />
             <SectionDivider />
+            <AuthorCollab />
+            <SectionDivider subtle />
             <Newsletter />
             <SectionDivider subtle />
             <Faqs />

@@ -3,6 +3,7 @@
 import { Skull } from "lucide-react";
 
 const footerLinks = [
+    { href: "#author-collab", label: "Author Swaps & Free Copy" },
     { href: "#", label: "Contact AJ Ghost" },
     { href: "#", label: "Media Kit" },
     { href: "#newsletter", label: "Newsletter" },

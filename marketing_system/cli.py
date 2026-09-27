@@ -11,10 +11,16 @@ from pathlib import Path
 # Add parent directory to sys.path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+
 from marketing_system.ai_client import GenSparkAIClient
 from marketing_system.mailerlite_service import MailerLiteService
 from marketing_system.email_responder import ReaderEmailResponder
 from marketing_system.book_clicker_tracker import BookClickerTracker
+from marketing_system.author_collab import AuthorCollabManager
 from marketing_system.config import (
     AUTHOR_NAME,
     BOOKFUNNEL_PROMO_URL,
@@ -140,11 +146,50 @@ def menu_view_tracker(tracker: BookClickerTracker):
         print(f"  • {src}: {count} clicks")
 
 
+def menu_author_collab(collab_mgr: AuthorCollabManager):
+    print("\n--- [5] FELLOW AUTHOR LOUNGE & NEWSLETTER SWAP MANAGER ---")
+    print("1. View Pending Author Proposals & Comp Copy Claims")
+    print("2. Generate 100-Word Recommendation Blurb Pack for Partner Author")
+    print("3. Draft Reciprocal Feature Blurb for AJ Ghost's Newsletter")
+    print("4. Generate Author Welcome & Comp Delivery Email")
+    
+    sub_choice = input("\nSelect author action (1-4): ").strip()
+    
+    if sub_choice == "1":
+        proposals = collab_mgr.get_pending_collaborations()
+        print(f"\nFound {len(proposals)} Author Inquiries / Swap Requests:")
+        for idx, p in enumerate(proposals, 1):
+            print(f"\n  [{idx}] Type: {p.get('type')} | Author: {p.get('authorName')} ({p.get('email')})")
+            print(f"      Details: {p.get('details')}")
+            print(f"      Status: {p.get('status')} | Time: {p.get('timestamp')}")
+    elif sub_choice == "2":
+        pack = collab_mgr.generate_swap_pack_for_partner()
+        print("\n--- READY-TO-SEND SWAP PACK FOR PARTNER NEWSLETTER ---")
+        print("Headline:", pack["headline"])
+        print("\nBlurb to send partner author:")
+        print(pack["blurb_100_words"])
+        print("\nTracking URL:", pack["tracking_url"])
+    elif sub_choice == "3":
+        partner = input("Enter partner author's name: ").strip() or "Elena Vance"
+        book = input("Enter partner book title: ").strip() or "Silent Echoes"
+        link = input("Enter partner BookFunnel/Amazon link: ").strip() or "https://books.bookfunnel.com/demo"
+        blurb = collab_mgr.generate_reciprocal_feature_blurb(partner, book, link)
+        print("\n--- AJ GHOST NEWSLETTER SHOUTOUT BLURB ---")
+        print(blurb)
+    elif sub_choice == "4":
+        author_name = input("Enter author pen name: ").strip() or "Fellow Author"
+        book_title = input("Enter requested book: ").strip() or "Fractured Ground (ARC)"
+        email_body = collab_mgr.generate_author_welcome_comp_email(author_name, book_title)
+        print("\n--- AUTHOR WELCOME & COMP COPY EMAIL ---")
+        print(email_body)
+
+
 def main():
     ai = GenSparkAIClient()
     mailer = MailerLiteService()
     responder = ReaderEmailResponder(ai_client=ai)
     tracker = BookClickerTracker()
+    collab_mgr = AuthorCollabManager(ai_client=ai)
 
     while True:
         print_banner()
@@ -153,10 +198,11 @@ def main():
         print("  2. Create & Send Book Promotion via MailerLite")
         print("  3. Check Reader Inquiries & Generate AI Auto-Replies")
         print("  4. View Book Clicker & ARC Campaign Analytics")
-        print("  5. Run Full Diagnostic / Self-Test")
-        print("  6. Exit")
+        print("  5. Fellow Author Lounge & Newsletter Swaps Manager")
+        print("  6. Run Full Diagnostic / Self-Test")
+        print("  7. Exit")
 
-        choice = input("\nEnter option (1-6): ").strip()
+        choice = input("\nEnter option (1-7): ").strip()
 
         if choice == "1":
             menu_generate_newsletter(ai, mailer)
@@ -167,6 +213,8 @@ def main():
         elif choice == "4":
             menu_view_tracker(tracker)
         elif choice == "5":
+            menu_author_collab(collab_mgr)
+        elif choice == "6":
             print("\nRunning system diagnostics...")
             subs = mailer.get_subscribers()
             print(f"Subscribers reachable: {len(subs)}")
@@ -176,12 +224,14 @@ def main():
             print(f"Inbox scanner: OK ({len(inbox)} messages handled)")
             stats = tracker.get_campaign_summary()
             print(f"Tracker: OK ({stats['total_clicks']} clicks tracked)")
+            collabs = collab_mgr.get_pending_collaborations()
+            print(f"Author Collab Engine: OK ({len(collabs)} author records)")
             print("\nAll systems operational!")
-        elif choice == "6":
+        elif choice == "7":
             print("\nExiting AJ Ghost Marketing Engine. Stay in the shadows.\n")
             break
         else:
-            print("Invalid selection. Please choose between 1 and 6.")
+            print("Invalid selection. Please choose between 1 and 7.")
 
         input("\nPress Enter to return to menu...")
 

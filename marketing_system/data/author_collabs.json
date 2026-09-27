@@ -1,0 +1,14 @@
+[
+  {
+    "id": "collab_1790551083548",
+    "timestamp": "2026-09-27T23:18:03.548Z",
+    "type": "comp_copy",
+    "authorName": "Jessica Dark",
+    "email": "jessica@thrillerauthors.com",
+    "details": {
+      "requestedBook": "Fractured Ground (ARC)",
+      "format": "epub"
+    },
+    "status": "pending_review"
+  }
+]
