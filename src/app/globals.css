@@ -8,19 +8,130 @@
   }
 
   body {
-    @apply bg-neutral-950 text-white antialiased selection:bg-lime-400 selection:text-neutral-950;
+    @apply bg-navy-950 text-white antialiased;
+    selection {
+      @apply bg-gold-400 text-navy-950;
+    }
   }
 
-  /* Professional Custom Scrollbar */
+  ::selection {
+    background-color: #d4a827;
+    color: #030a1a;
+  }
+
+  /* Premium Custom Scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-neutral-950;
+    @apply bg-navy-950;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-neutral-800 rounded-full hover:bg-neutral-700 transition-colors;
+    background: linear-gradient(180deg, #d4a827, #8a6310);
+    border-radius: 9999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #e6c04e, #a67c12);
+  }
+}
+
+@layer components {
+  /* Golden crack line divider */
+  .crack-divider {
+    position: relative;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #d4a827 20%,
+      #e6c04e 50%,
+      #d4a827 80%,
+      transparent 100%
+    );
+    opacity: 0.6;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+
+  .crack-divider::before {
+    content: "";
+    position: absolute;
+    inset: -4px 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(212, 168, 39, 0.2) 20%,
+      rgba(230, 192, 78, 0.3) 50%,
+      rgba(212, 168, 39, 0.2) 80%,
+      transparent 100%
+    );
+    filter: blur(8px);
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    background: rgba(7, 20, 40, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 168, 39, 0.15);
+  }
+
+  .glass-card:hover {
+    border-color: rgba(212, 168, 39, 0.4);
+    box-shadow: 0 0 30px rgba(212, 168, 39, 0.08);
+  }
+
+  /* Gold text gradient */
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #e6c04e, #d4a827, #f0d889);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Shimmer effect for gold text */
+  .text-shimmer {
+    background: linear-gradient(
+      110deg,
+      #d4a827 0%,
+      #f0d889 25%,
+      #d4a827 50%,
+      #f0d889 75%,
+      #d4a827 100%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s linear infinite;
+  }
+
+  /* Navy gradient background variations */
+  .bg-navy-gradient {
+    background: linear-gradient(180deg, #030a1a 0%, #0c1f3d 50%, #030a1a 100%);
+  }
+
+  .bg-navy-gradient-up {
+    background: linear-gradient(180deg, #0c1f3d 0%, #030a1a 100%);
+  }
+
+  .bg-navy-gradient-down {
+    background: linear-gradient(180deg, #030a1a 0%, #0c1f3d 100%);
+  }
+}
+
+@layer utilities {
+  /* Gold glow effect */
+  .glow-gold {
+    box-shadow: 0 0 20px rgba(212, 168, 39, 0.15),
+                0 0 40px rgba(212, 168, 39, 0.08);
+  }
+
+  .glow-gold-strong {
+    box-shadow: 0 0 20px rgba(212, 168, 39, 0.3),
+                0 0 60px rgba(212, 168, 39, 0.15),
+                0 0 100px rgba(212, 168, 39, 0.05);
   }
 }

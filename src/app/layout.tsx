@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google"; // Added Mono font for thriller vibe
+import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -9,7 +9,12 @@ const inter = Inter({
     axes: ["opsz"],
 });
 
-// Optional: You can use this for the "Mono" feel in headers
+const playfair = Playfair_Display({
+    variable: "--font-playfair",
+    subsets: ["latin"],
+    display: "swap",
+});
+
 const mono = JetBrains_Mono({
     variable: "--font-mono",
     subsets: ["latin"],
@@ -17,8 +22,15 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "HUNTED | A Dark Psychological Thriller",
-    description: "He's invisible. Homeless. Hunted. Ryan Kane lost more than his memory in Kandahar.",
+    title: "AJ Ghost | Psychological Thriller Author — Dark Fiction That Haunts You",
+    description:
+        "AJ Ghost writes dark psychological thrillers that explore fractured minds, buried secrets, and the thin line between predator and prey. Discover HUNTED, Fractured Ground, and The Watcher Series.",
+    keywords: "AJ Ghost, psychological thriller, dark fiction, HUNTED, Fractured Ground, The Watcher Series, thriller author, suspense novels",
+    openGraph: {
+        title: "AJ Ghost | Psychological Thriller Author",
+        description: "Dark fiction that haunts you long after the last page.",
+        type: "website",
+    },
 };
 
 export default function RootLayout({
@@ -29,7 +41,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.variable} ${mono.variable} font-sans antialiased bg-white text-neutral-950`}
+                className={`${inter.variable} ${playfair.variable} ${mono.variable} font-sans antialiased bg-navy-950 text-white`}
             >
                 {children}
             </body>

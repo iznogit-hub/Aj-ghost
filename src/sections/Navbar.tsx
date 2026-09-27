@@ -5,26 +5,27 @@ import { AnimatePresence, motion } from "framer-motion";
 import { 
     Menu, 
     X, 
+    Skull, 
     BookOpen, 
-    User, 
     FileText, 
     MessageCircle, 
-    ShoppingCart 
+    ShoppingCart,
+    Mail
 } from "lucide-react";
 
 import Button from "@/components/Button";
 
 const navLinks = [
+    { label: "Books", href: "#books", icon: BookOpen },
     { label: "The Story", href: "#introduction", icon: FileText },
-    { label: "Reviews", href: "#testimonials", icon: MessageCircle },
-    { label: "Buy Now", href: "#marketing", icon: ShoppingCart },
+    { label: "About", href: "#about", icon: MessageCircle },
+    { label: "Newsletter", href: "#newsletter", icon: Mail },
 ];
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
-    // Optional: Detect scroll to add background only when moving down
     useEffect(() => {
         const handleScroll = () => {
             setScrolled(window.scrollY > 50);
@@ -36,23 +37,33 @@ export default function Navbar() {
     return (
         <>
             <section 
-                className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-                    scrolled ? "py-4 bg-white/10 backdrop-blur-md border-b border-white/10" : "py-6 bg-transparent border-transparent"
+                className={`fixed w-full top-0 z-50 transition-all duration-500 ${
+                    scrolled 
+                        ? "py-3 bg-navy-950/80 backdrop-blur-xl border-b border-gold-400/10" 
+                        : "py-5 bg-transparent border-transparent"
                 }`}
             >
                 <div className="container max-w-6xl mx-auto px-4">
-                    {/* Replaced the inner container styles with simple flex layout */}
                     <div className="flex justify-between items-center">
                         
                         {/* --- LOGO AREA --- */}
-                        <div className="flex items-center gap-2 cursor-pointer group">
-                            <div className="bg-white/10 p-2 rounded-full backdrop-blur-sm border border-white/20 group-hover:bg-red-600 group-hover:border-red-600 transition duration-300">
-                                <BookOpen size={20} className="text-white" />
+                        <a href="#" className="flex items-center gap-3 cursor-pointer group">
+                            <div className="relative">
+                                <div className="bg-gold-400/10 p-2.5 rounded-full border border-gold-400/20 group-hover:bg-gold-400/20 group-hover:border-gold-400/40 transition duration-500">
+                                    <Skull size={20} className="text-gold-400" />
+                                </div>
+                                {/* Subtle glow on hover */}
+                                <div className="absolute inset-0 bg-gold-400/0 group-hover:bg-gold-400/10 rounded-full blur-xl transition duration-500"></div>
                             </div>
-                            <span className="font-bold text-xl tracking-tighter text-white font-mono hidden sm:block shadow-sm">
-                                HUNTED.
-                            </span>
-                        </div>
+                            <div className="hidden sm:block">
+                                <span className="font-serif text-xl tracking-wider text-white font-bold">
+                                    AJ <span className="text-gold-400">GHOST</span>
+                                </span>
+                                <div className="text-[10px] tracking-[0.3em] text-gold-400/50 uppercase font-mono">
+                                    Dark Fiction
+                                </div>
+                            </div>
+                        </a>
 
                         {/* --- DESKTOP NAVIGATION --- */}
                         <div className="hidden lg:flex justify-center items-center">
@@ -61,7 +72,7 @@ export default function Navbar() {
                                     <a 
                                         href={link.href} 
                                         key={link.label}
-                                        className="flex items-center gap-2 text-white/70 hover:text-white transition duration-200 group"
+                                        className="flex items-center gap-2 text-white/50 hover:text-gold-400 transition duration-300 group"
                                     >
                                         <span className="font-medium tracking-wide group-hover:-translate-y-0.5 transition-transform duration-200">
                                             {link.label}
@@ -74,19 +85,18 @@ export default function Navbar() {
                         {/* --- ACTION BUTTONS & MOBILE TOGGLE --- */}
                         <div className="flex items-center gap-4">
                             <div className="hidden lg:flex gap-3">
-                                {/* Customized Buttons for Transparent Header */}
-                                <button className="px-4 py-2 text-sm font-medium text-white border border-white/30 rounded-full hover:bg-white hover:text-neutral-950 transition">
-                                    Read Sample
+                                <button className="px-5 py-2.5 text-sm font-medium text-gold-300 border border-gold-400/30 rounded-full hover:bg-gold-400/10 hover:border-gold-400/50 transition duration-300">
+                                    Free Chapter
                                 </button>
-                                <button className="px-4 py-2 text-sm font-medium bg-red-600 text-white rounded-full hover:bg-red-700 transition shadow-lg shadow-red-900/20">
-                                    Buy on Amazon
+                                <button className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20">
+                                    Get the Book
                                 </button>
                             </div>
 
                             <button
                                 type="button"
                                 onClick={() => setIsOpen(!isOpen)}
-                                className="lg:hidden p-2 text-white bg-white/10 backdrop-blur-md rounded-full border border-white/20"
+                                className="lg:hidden p-2.5 text-gold-400 bg-gold-400/10 backdrop-blur-md rounded-full border border-gold-400/20"
                             >
                                 <AnimatePresence mode="wait">
                                     {isOpen ? (
@@ -120,17 +130,17 @@ export default function Navbar() {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                className="overflow-hidden lg:hidden mt-4 bg-neutral-950/90 backdrop-blur-xl rounded-2xl border border-white/10"
+                                className="overflow-hidden lg:hidden mt-4 glass-card rounded-2xl"
                             >
                                 <div className="flex flex-col gap-4 p-6">
                                     {navLinks.map((link) => (
                                         <a 
                                             key={link.label} 
                                             href={link.href} 
-                                            className="flex items-center gap-4 text-lg font-medium text-white/80 p-2 rounded-lg hover:bg-white/10 transition"
+                                            className="flex items-center gap-4 text-lg font-medium text-white/70 p-2 rounded-lg hover:bg-gold-400/10 hover:text-gold-400 transition"
                                             onClick={() => setIsOpen(false)}
                                         >
-                                            <link.icon size={20} className="text-red-500" />
+                                            <link.icon size={20} className="text-gold-400" />
                                             {link.label}
                                         </a>
                                     ))}

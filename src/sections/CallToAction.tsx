@@ -25,26 +25,35 @@ export default function CallToAction() {
     }, [slowDownAnimation]);
 
     return (
-        <section className="py-24 overflow-hidden border-t border-neutral-100 bg-neutral-50">
+        <section className="py-20 overflow-hidden bg-navy-900 relative">
+            {/* Top crack */}
+            <div className="crack-divider mb-10"></div>
+
             <div className="overflow-x-clip p-4 flex">
                 <motion.div
                     ref={scope}
-                    className="flex flex-none gap-16 pr-16 text-7xl md:text-8xl font-medium tracking-tighter"
+                    className="flex flex-none gap-16 pr-16 text-6xl md:text-8xl font-serif font-bold tracking-tight"
                     onMouseEnter={() => setSlowDownAnimation(true)}
                     onMouseLeave={() => setSlowDownAnimation(false)}
                 >
                     {Array.from({ length: 10 }).map((_, index) => (
                         <div key={index} className="flex items-center gap-16">
-                            <span className="text-red-600 text-7xl">
-                                &#10038;
+                            <span className="text-gold-400 text-5xl">
+                                ✦
                             </span>
-                            <span className={twMerge("text-neutral-900 transition", slowDownAnimation && "text-red-600")}>
-                                Read HUNTED Now
+                            <span className={twMerge(
+                                "text-white/20 transition duration-500 cursor-default",
+                                slowDownAnimation && "text-gold-gradient"
+                            )}>
+                                Enter the Darkness
                             </span>
                         </div>
                     ))}
                 </motion.div>
             </div>
+
+            {/* Bottom crack */}
+            <div className="crack-divider mt-10"></div>
         </section>
     );
 }

@@ -2,11 +2,11 @@ import React, { ButtonHTMLAttributes } from "react";
 import { cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
-const classes = cva("border h-12 rounded-full px-6 font-medium transition duration-300 ease-in-out active:scale-95", {
+const classes = cva("border h-12 rounded-full px-6 font-medium transition duration-300 ease-in-out active:scale-95 cursor-pointer", {
     variants: {
         variant: {
-            primary: "bg-red-600 text-white border-red-600 hover:bg-red-500 hover:border-red-500 shadow-md shadow-red-200",
-            secondary: "border-neutral-200 text-neutral-950 bg-white hover:border-red-600 hover:text-red-600 hover:bg-red-50",
+            primary: "bg-gold-400 text-navy-950 border-gold-400 hover:bg-gold-300 hover:border-gold-300 shadow-md shadow-gold-400/20 font-semibold",
+            secondary: "border-gold-400/30 text-gold-200 bg-transparent hover:border-gold-400 hover:text-gold-400 hover:bg-gold-400/5",
         },
         size: {
             default: "h-12",

@@ -2,15 +2,13 @@
 
 import Tag from "@/components/Tag";
 import {
-    useMotionValue,
-    useMotionValueEvent,
     useScroll,
     useTransform,
 } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const text = `Ryan Kane lost more than his memory in Kandahar—he lost the ability to trust his own mind. Now he's living in his car in Phoenix, dismissed by society, forgotten by family. He's exactly the kind of prey the man in the gray suit hunts.`;
+const text = `They told Ryan Kane to "get help." But no one tells you what happens when the man offering help is the most dangerous predator you've ever met. HUNTED is a white-knuckle descent into the mind of a broken veteran being stalked by a monster wearing a therapist's smile.`;
 const words = text.split(" ");
 
 export default function Introduction() {
@@ -32,26 +30,34 @@ export default function Introduction() {
     }, [wordIndex]);
 
     return (
-        <section className="py-28 lg:py-40 bg-white">
-            <div className="container">
+        <section className="py-28 lg:py-40 bg-navy-950 relative" id="introduction">
+            {/* Subtle background texture */}
+            <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{
+                    backgroundImage: `radial-gradient(circle at 25% 25%, rgba(212, 168, 39, 0.1) 0%, transparent 50%),
+                                      radial-gradient(circle at 75% 75%, rgba(212, 168, 39, 0.05) 0%, transparent 50%)`,
+                }}></div>
+            </div>
+
+            <div className="container relative">
                 <div className="sticky top-28 md:top-32">
                     <div className="flex justify-center">
                         <Tag>The Premise</Tag>
                     </div>
-                    <div className="text-4xl md:text-6xl lg:text-7xl text-center font-medium mt-10 tracking-tighter">
-                        <span>When they vanish,&nbsp;</span>
-                        <span className="text-neutral-200">
-                            {words.map((word, wordIndex) => (
+                    <div className="text-4xl md:text-6xl lg:text-7xl text-center font-serif font-medium mt-10 tracking-tight leading-tight">
+                        <span className="text-gold-gradient">When they vanish,&nbsp;</span>
+                        <span className="text-navy-700">
+                            {words.map((word, wordIdx) => (
                                 <span
-                                    key={wordIndex}
+                                    key={wordIdx}
                                     className={twMerge(
-                                        "transition duration-500 text-neutral-200",
-                                        wordIndex < currentWord && "text-neutral-950"
+                                        "transition duration-500 text-navy-700",
+                                        wordIdx < currentWord && "text-white/90"
                                     )}
                                 >{`${word} `}</span>
                             ))}
                         </span>
-                        <span className="text-red-600 block mt-4 font-bold">
+                        <span className="text-gold-400 block mt-6 font-bold">
                             No one looks.
                         </span>
                     </div>

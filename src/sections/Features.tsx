@@ -3,15 +3,12 @@
 import FeatureCard from "@/components/FeatureCard";
 import Tag from "@/components/Tag";
 import avatar1 from "@/assets/images/avatar-ashwin-santiago.jpg";
-import avatar2 from "@/assets/images/avatar-florence-shaw.jpg";
-import avatar3 from "@/assets/images/avatar-lula-meyers.jpg";
 import Image from "next/image";
 import Avatar from "@/components/Avatar";
-import { Eye, Clock, Skull } from "lucide-react"; // Changed icons
-import Key from "@/components/Key";
+import { Eye, Clock, Skull } from "lucide-react";
 import { motion } from "framer-motion";
 
-const features = [
+const tropes = [
     "Psychological Thriller",
     "Unreliable Narrator",
     "Military Noir",
@@ -19,6 +16,7 @@ const features = [
     "Survival",
     "Paranoia",
     "Plot Twists",
+    "Dark Suspense",
 ];
 
 const parentVariants = {
@@ -26,7 +24,7 @@ const parentVariants = {
     visible: {
         opacity: 1,
         transition: {
-            staggerChildren: 0.7,
+            staggerChildren: 0.3,
         },
     },
 };
@@ -36,46 +34,54 @@ const cardVariants = {
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: "easeOut" },
+        transition: { duration: 0.7, ease: "easeOut" },
     },
 };
 
 export default function Features() {
     return (
-        <section className="py-24 bg-neutral-50" id="features">
+        <section className="py-24 bg-navy-gradient relative" id="books">
+            {/* Decorative crack image */}
+            <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold-400/20 to-transparent"></div>
+
             <div className="container">
                 <div className="flex justify-center">
-                    <Tag>Inside the Book</Tag>
+                    <Tag>Inside the Books</Tag>
                 </div>
-                <h2 className="text-6xl font-medium text-center mt-6 max-w-2xl m-auto tracking-tighter">
-                    The trap closes <span className="text-red-600">slowly</span>
+                <h2 className="text-5xl md:text-6xl font-serif font-bold text-center mt-6 max-w-2xl m-auto tracking-tight">
+                    The trap closes{" "}
+                    <span className="text-gold-gradient">slowly</span>
                 </h2>
+                <p className="text-center text-white/40 mt-4 max-w-xl mx-auto text-lg">
+                    Each book in The Watcher Series peels back another layer of darkness. 
+                    Nothing is what it seems. No one is safe.
+                </p>
+
                 <motion.div
                     variants={parentVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
                 >
-                    <div className="mt-12 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-8">
+                    <div className="mt-14 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-3 gap-8">
                         <motion.div
                             variants={cardVariants}
                             className="md:col-span-2 lg:col-span-1"
                         >
                             <FeatureCard
                                 title="The Unreliable Narrator"
-                                description="Ryan's TBI makes him doubt his own mind. He loses hours, forgets conversations, and questions reality."
+                                description="Ryan's traumatic brain injury makes him doubt everything — lost hours, fabricated conversations, shifting realities. You won't know what's real either."
                             >
-                                <div className="aspect-video flex items-center justify-center gap-2">
-                                    <Avatar className="z-40 border-red-600">
+                                <div className="aspect-video flex items-center justify-center gap-4">
+                                    <Avatar className="z-40 border-gold-400/40">
                                         <Image
                                             src={avatar1}
                                             alt="Ryan Kane"
                                             className="rounded-full grayscale"
                                         />
                                     </Avatar>
-                                    {/* Visual representation of confusion/surveillance */}
-                                    <div className="bg-neutral-100 p-2 rounded-full border border-neutral-200">
-                                        <Eye size={30} className="text-neutral-500" />
+                                    <div className="bg-navy-800/50 p-3 rounded-full border border-gold-400/20">
+                                        <Eye size={28} className="text-gold-400/60" />
                                     </div>
                                 </div>
                             </FeatureCard>
@@ -87,13 +93,13 @@ export default function Features() {
                         >
                             <FeatureCard
                                 title="The Predator"
-                                description="Skull doesn't target politicians. He hunts the invisible ones. The veterans society stopped seeing."
+                                description="He doesn't target politicians or celebrities. He hunts the invisible ones — the veterans society stopped seeing. The ones no one will miss."
                                 className="group"
                             >
                                 <div className="aspect-video flex items-center justify-center">
-                                    <p className="group-hover:text-red-900 transition duration-500 text-3xl font-extrabold text-neutral-300 text-center uppercase leading-tight">
+                                    <p className="group-hover:text-gold-300 transition duration-500 text-3xl font-serif font-extrabold text-navy-700 text-center uppercase leading-tight">
                                         I see <br/>
-                                        <span className="text-red-600">Everything</span>
+                                        <span className="text-gold-400">Everything</span>
                                     </p>
                                 </div>
                             </FeatureCard>
@@ -105,10 +111,10 @@ export default function Features() {
                         >
                             <FeatureCard
                                 title="72 Hours"
-                                description="The yellow notice on his windshield gave him three days. Skull has been counting for weeks."
+                                description="The yellow notice on his windshield gave him three days. The predator in the gray suit has been counting for weeks. Time is running out."
                             >
                                 <div className="aspect-video flex justify-center items-center gap-4">
-                                    <div className="text-5xl font-mono text-red-600 font-bold tracking-widest">
+                                    <div className="text-5xl font-mono text-gold-400 font-bold tracking-widest animate-pulse-gold">
                                         72:00
                                     </div>
                                 </div>
@@ -117,17 +123,17 @@ export default function Features() {
                     </div>
                 </motion.div>
 
-                <div className="my-8 flex items-center justify-center flex-wrap gap-2 max-w-3xl m-auto">
-                    {features.map((feature) => (
+                <div className="my-12 flex items-center justify-center flex-wrap gap-3 max-w-3xl m-auto">
+                    {tropes.map((trope) => (
                         <div
-                            className="bg-white border border-neutral-200 inline-flex px-3 md:px-5 md:py-2 py-1.5 rounded-2xl gap-3 items-center hover:scale-105 hover:border-red-600 transition duration-500 group"
-                            key={feature}
+                            className="glass-card inline-flex px-4 md:px-5 md:py-2.5 py-2 rounded-full gap-3 items-center hover:scale-105 hover:border-gold-400/40 transition duration-500 group cursor-default"
+                            key={trope}
                         >
-                            <span className="bg-red-600 text-white size-5 rounded-full inline-flex items-center justify-center text-xl group-hover:rotate-45 transition duration-500">
-                                &#10038;
+                            <span className="bg-gold-400 text-navy-950 size-5 rounded-full inline-flex items-center justify-center text-xs font-bold group-hover:rotate-45 transition duration-500">
+                                ✦
                             </span>
-                            <span className="font-medium md:text-lg text-neutral-800">
-                                {feature}
+                            <span className="font-medium md:text-sm text-xs text-white/70 group-hover:text-gold-300 transition">
+                                {trope}
                             </span>
                         </div>
                     ))}

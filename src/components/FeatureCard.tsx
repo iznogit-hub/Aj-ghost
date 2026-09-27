@@ -12,14 +12,14 @@ const FeatureCard = (props: {
     return (
         <div
             className={twMerge(
-                "bg-white border border-neutral-200 p-6 rounded-3xl group hover:border-neutral-400 hover:shadow-lg transition duration-300",
+                "glass-card p-6 rounded-3xl group hover:border-gold-400/40 transition duration-500",
                 className
             )}
         >
-            <div className="aspect-video overflow-hidden rounded-xl bg-neutral-50">{children}</div>
+            <div className="aspect-video overflow-hidden rounded-xl bg-navy-900/50">{children}</div>
             <div>
-                <h3 className="text-3xl font-medium mt-6 group-hover:text-neutral-600 transition duration-300">{title}</h3>
-                <p className="text-neutral-500 mt-2">{description}</p>
+                <h3 className="text-3xl font-serif font-medium mt-6 text-white group-hover:text-gold-300 transition duration-300">{title}</h3>
+                <p className="text-white/50 mt-2 leading-relaxed">{description}</p>
             </div>
         </div>
     );
