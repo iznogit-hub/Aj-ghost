@@ -2,8 +2,40 @@
 
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import { useState } from "react";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 export default function Hero() {
+    const [email, setEmail] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [message, setMessage] = useState("");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setStatus("loading");
+        try {
+            const res = await fetch("/api/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, source: "hero" }),
+            });
+            const data = await res.json();
+            if (data.success) {
+                setStatus("success");
+                setMessage("You're in. Check your inbox for Chapter 1.");
+                setEmail("");
+            } else {
+                setStatus("error");
+                setMessage(data.error || "Subscription failed. Please try again.");
+            }
+        } catch {
+            setStatus("error");
+            setMessage("Network error. Please try again.");
+        }
+    };
+
     return (
         <section
             className="relative min-h-screen flex items-center justify-center overflow-hidden"
@@ -17,16 +49,16 @@ export default function Hero() {
                     className="h-full w-full object-cover"
                 />
                 {/* Dark overlay for depth */}
-                <div className="absolute inset-0 bg-navy-950/60"></div>
+                <div className="absolute inset-0 bg-navy-950/70"></div>
                 
                 {/* Bottom fade gradient */}
                 <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-navy-950 to-transparent"></div>
                 
                 {/* Top vignette */}
-                <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-navy-950/40 to-transparent"></div>
+                <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-navy-950/50 to-transparent"></div>
             </div>
 
-            {/* --- FLOATING GOLD PARTICLES (CSS-driven) --- */}
+            {/* --- FLOATING GOLD PARTICLES --- */}
             <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none">
                 {[...Array(6)].map((_, i) => (
                     <motion.div
@@ -84,26 +116,53 @@ export default function Hero() {
                     fracture your trust, and leave you questioning everything you thought you knew.
                 </motion.p>
                 
-                <motion.form
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="mx-auto flex border border-gold-400/20 rounded-full p-2 mt-10 max-w-lg bg-navy-900/50 backdrop-blur-xl shadow-2xl shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50 focus-within:shadow-gold-400/10"
-                >
-                    <input
-                        type="email"
-                        placeholder="Enter your email for a free chapter"
-                        className="bg-transparent px-4 flex-1 w-full text-white placeholder:text-white/30 outline-none font-medium"
-                    />
-                    <Button
-                        size="sm"
-                        type="submit"
-                        variant="primary"
-                        className="whitespace-nowrap"
+                {status === "success" ? (
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="mx-auto mt-10 max-w-lg p-4 bg-gold-400/10 border border-gold-400/30 rounded-2xl flex items-center justify-center gap-3 text-gold-300 font-medium"
                     >
-                        Read Free
-                    </Button>
-                </motion.form>
+                        <CheckCircle2 className="text-gold-400" size={20} />
+                        <span>{message}</span>
+                    </motion.div>
+                ) : (
+                    <motion.form
+                        onSubmit={handleSubmit}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.8 }}
+                        className="mx-auto flex border border-gold-400/20 rounded-full p-2 mt-10 max-w-lg bg-navy-900/50 backdrop-blur-xl shadow-2xl shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50 focus-within:shadow-gold-400/10"
+                    >
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                            placeholder="Enter your email for a free chapter"
+                            className="bg-transparent px-4 flex-1 w-full text-white placeholder:text-white/30 outline-none font-medium text-sm md:text-base"
+                        />
+                        <Button
+                            size="sm"
+                            type="submit"
+                            variant="primary"
+                            disabled={status === "loading"}
+                            className="whitespace-nowrap flex items-center gap-2"
+                        >
+                            {status === "loading" ? (
+                                <>
+                                    <Loader2 size={16} className="animate-spin" />
+                                    <span>Sending...</span>
+                                </>
+                            ) : (
+                                "Read Free"
+                            )}
+                        </Button>
+                    </motion.form>
+                )}
+
+                {status === "error" && (
+                    <p className="text-center text-red-400 text-xs mt-2">{message}</p>
+                )}
 
                 {/* Scroll indicator */}
                 <motion.div

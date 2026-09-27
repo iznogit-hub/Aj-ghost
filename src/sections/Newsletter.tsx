@@ -2,9 +2,40 @@
 
 import Tag from "@/components/Tag";
 import { motion } from "framer-motion";
-import { Mail, BookOpen, Heart, Clock, ExternalLink, Gift } from "lucide-react";
+import { Mail, BookOpen, Heart, Clock, ExternalLink, Gift, CheckCircle2, Loader2 } from "lucide-react";
+import { useState } from "react";
 
 export default function Newsletter() {
+    const [email, setEmail] = useState("");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [message, setMessage] = useState("");
+
+    const handleSubscribe = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!email) return;
+
+        setStatus("loading");
+        try {
+            const res = await fetch("/api/subscribe", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, source: "newsletter" }),
+            });
+            const data = await res.json();
+            if (data.success) {
+                setStatus("success");
+                setMessage("You're inside the Inner Circle. Watch your inbox for Chapter 1.");
+                setEmail("");
+            } else {
+                setStatus("error");
+                setMessage(data.error || "Subscription failed.");
+            }
+        } catch {
+            setStatus("error");
+            setMessage("Network error. Please try again.");
+        }
+    };
+
     return (
         <section className="py-24 bg-navy-950 relative overflow-hidden" id="newsletter">
             {/* Background decoration */}
@@ -39,7 +70,7 @@ export default function Newsletter() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="max-w-3xl mx-auto mt-14"
                 >
-                    <div className="glass-card rounded-3xl overflow-hidden">
+                    <div className="glass-card rounded-3xl overflow-hidden border border-gold-400/20">
                         {/* Email header */}
                         <div className="bg-navy-800/50 px-6 py-4 border-b border-gold-400/10 flex items-center gap-3">
                             <div className="flex gap-1.5">
@@ -48,8 +79,8 @@ export default function Newsletter() {
                                 <div className="w-3 h-3 rounded-full bg-gold-400/10"></div>
                             </div>
                             <div className="flex-1 text-center">
-                                <span className="text-xs font-mono text-white/30 tracking-wider">
-                                    LATEST FROM AJ GHOST
+                                <span className="text-xs font-mono text-white/40 tracking-wider">
+                                    LATEST DISPATCH FROM AJ GHOST
                                 </span>
                             </div>
                             <Mail size={16} className="text-gold-400/40" />
@@ -66,7 +97,7 @@ export default function Newsletter() {
                             </div>
 
                             {/* Email content - conversational from AJ Ghost */}
-                            <div className="space-y-5 text-white/70 leading-relaxed">
+                            <div className="space-y-5 text-white/70 leading-relaxed text-sm md:text-base">
                                 <p>
                                     Hey there,
                                 </p>
@@ -78,7 +109,7 @@ export default function Newsletter() {
                                 </p>
 
                                 {/* ARC Update Block */}
-                                <div className="glass-card rounded-2xl p-5 border-l-4 border-gold-400/50">
+                                <div className="glass-card rounded-2xl p-5 border-l-4 border-gold-400/50 bg-navy-900/40">
                                     <div className="flex items-start gap-3">
                                         <Heart size={20} className="text-gold-400 mt-1 flex-shrink-0" />
                                         <div>
@@ -109,7 +140,7 @@ export default function Newsletter() {
                                 </p>
 
                                 {/* BookFunnel Promo Block */}
-                                <div className="glass-card rounded-2xl p-5 border-l-4 border-gold-400/50">
+                                <div className="glass-card rounded-2xl p-5 border-l-4 border-gold-400/50 bg-navy-900/40">
                                     <div className="flex items-start gap-3">
                                         <Gift size={20} className="text-gold-400 mt-1 flex-shrink-0" />
                                         <div>
@@ -148,8 +179,7 @@ export default function Newsletter() {
                                     Here&apos;s the thing — these books are only available for a limited 
                                     time. The promotion runs for just a few more weeks, and once 
                                     it&apos;s over, these freebies disappear. So if you&apos;re looking to 
-                                    stack your TBR pile with some quality thrillers (and honestly, 
-                                    who isn&apos;t?), now&apos;s the time.
+                                    stack your TBR pile with some quality thrillers, now&apos;s the time.
                                 </p>
 
                                 <p>
@@ -187,8 +217,8 @@ export default function Newsletter() {
                                         — AJ Ghost
                                     </p>
                                     <div className="flex items-center gap-2 mt-3">
-                                        <Clock size={14} className="text-white/20" />
-                                        <span className="text-xs text-white/20 font-mono">
+                                        <Clock size={14} className="text-white/30" />
+                                        <span className="text-xs text-white/30 font-mono">
                                             22 days remaining in the Fractured Ground ARC campaign
                                         </span>
                                     </div>
@@ -207,21 +237,47 @@ export default function Newsletter() {
                     className="max-w-lg mx-auto mt-12 text-center"
                 >
                     <p className="text-white/40 text-sm mb-4">
-                        Want emails like this? Join the Inner Circle.
+                        Want updates and free reads like this? Join the Inner Circle.
                     </p>
-                    <form className="flex border border-gold-400/20 rounded-full p-1.5 bg-navy-900/50 backdrop-blur-xl shadow-lg shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50">
-                        <input
-                            type="email"
-                            placeholder="your@email.com"
-                            className="bg-transparent px-4 flex-1 w-full text-white placeholder:text-white/25 outline-none text-sm font-medium"
-                        />
-                        <button
-                            type="submit"
-                            className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-md shadow-gold-400/20 whitespace-nowrap"
+
+                    {status === "success" ? (
+                        <div className="p-4 bg-gold-400/10 border border-gold-400/30 rounded-2xl flex items-center justify-center gap-3 text-gold-300 font-medium text-sm">
+                            <CheckCircle2 className="text-gold-400" size={18} />
+                            <span>{message}</span>
+                        </div>
+                    ) : (
+                        <form
+                            onSubmit={handleSubscribe}
+                            className="flex border border-gold-400/20 rounded-full p-1.5 bg-navy-900/50 backdrop-blur-xl shadow-lg shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50"
                         >
-                            Join Free
-                        </button>
-                    </form>
+                            <input
+                                type="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                required
+                                placeholder="your@email.com"
+                                className="bg-transparent px-4 flex-1 w-full text-white placeholder:text-white/25 outline-none text-sm font-medium"
+                            />
+                            <button
+                                type="submit"
+                                disabled={status === "loading"}
+                                className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-md shadow-gold-400/20 whitespace-nowrap flex items-center gap-2"
+                            >
+                                {status === "loading" ? (
+                                    <>
+                                        <Loader2 size={15} className="animate-spin" />
+                                        <span>Joining...</span>
+                                    </>
+                                ) : (
+                                    "Join Free"
+                                )}
+                            </button>
+                        </form>
+                    )}
+
+                    {status === "error" && (
+                        <p className="text-red-400 text-xs mt-2">{message}</p>
+                    )}
                 </motion.div>
             </div>
         </section>
