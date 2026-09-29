@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import fs from "fs";
 import path from "path";
 
+const TARGET_EMAIL = "n.franco2222@gmail.com";
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -30,6 +32,7 @@ export async function POST(req: Request) {
         const messageRecord = {
             id: `msg_${Date.now()}`,
             timestamp: new Date().toISOString(),
+            recipient: TARGET_EMAIL,
             name,
             email,
             subject: subject || "General Inquiry",
@@ -49,10 +52,11 @@ export async function POST(req: Request) {
         existing.push(messageRecord);
         fs.writeFileSync(logFile, JSON.stringify(existing, null, 2));
 
-        console.log(`[CONTACT RECEIVED] From: ${name} <${email}> | Subject: ${subject}`);
+        console.log(`[CONTACT QUERY ROUTED] Recipient: ${TARGET_EMAIL} | From: ${name} <${email}> | Subject: ${subject}`);
 
         return NextResponse.json({
             success: true,
+            recipient: TARGET_EMAIL,
             message: "Your message has been sent directly to AJ Ghost.",
         });
     } catch (err: any) {

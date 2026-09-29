@@ -74,7 +74,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                     Contact AJ Ghost
                                 </h3>
                                 <p className="text-xs text-white/50">
-                                    Send a message directly to AJ Ghost and the editorial team.
+                                    Send a message directly to AJ Ghost (<span className="text-gold-300 font-mono">n.franco2222@gmail.com</span>).
                                 </p>
                             </div>
                         </div>
@@ -166,33 +166,42 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                     <p className="text-xs text-red-400 font-medium">{errorMsg}</p>
                                 )}
 
-                                <div className="pt-2 flex justify-end gap-3">
-                                    <button
-                                        type="button"
+                                <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
+                                    <a
+                                        href="/contact"
                                         onClick={onClose}
-                                        className="px-4 py-2 text-sm text-white/50 hover:text-white transition"
+                                        className="text-xs text-gold-300/70 hover:text-gold-300 underline underline-offset-2 transition"
                                     >
-                                        Cancel
-                                    </button>
-                                    <Button
-                                        variant="primary"
-                                        size="sm"
-                                        type="submit"
-                                        disabled={status === "loading"}
-                                        className="flex items-center gap-2"
-                                    >
-                                        {status === "loading" ? (
-                                            <>
-                                                <Loader2 size={16} className="animate-spin" />
-                                                <span>Sending...</span>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <Send size={15} />
-                                                <span>Send Message</span>
-                                            </>
-                                        )}
-                                    </Button>
+                                        Or visit full Contact page & Houston map →
+                                    </a>
+                                    <div className="flex items-center gap-3">
+                                        <button
+                                            type="button"
+                                            onClick={onClose}
+                                            className="px-4 py-2 text-sm text-white/50 hover:text-white transition"
+                                        >
+                                            Cancel
+                                        </button>
+                                        <Button
+                                            variant="primary"
+                                            size="sm"
+                                            type="submit"
+                                            disabled={status === "loading"}
+                                            className="flex items-center gap-2"
+                                        >
+                                            {status === "loading" ? (
+                                                <>
+                                                    <Loader2 size={16} className="animate-spin" />
+                                                    <span>Sending...</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Send size={15} />
+                                                    <span>Send Message</span>
+                                                </>
+                                            )}
+                                        </Button>
+                                    </div>
                                 </div>
                             </form>
                         )}

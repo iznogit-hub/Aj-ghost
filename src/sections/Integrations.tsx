@@ -2,7 +2,6 @@
 
 import Tag from "@/components/Tag";
 import Image from "next/image";
-import designExample1 from "@/assets/images/design-example-1.png";
 import { motion } from "framer-motion";
 import { BookOpen, BookMarked, Star, Smartphone, Clock, Gift, ExternalLink, ShoppingCart } from "lucide-react";
 
@@ -50,7 +49,7 @@ export default function Integrations() {
                         <div>
                             <div className="relative w-full aspect-[2/3] max-w-[260px] mx-auto mb-6 shadow-2xl rounded-xl overflow-hidden group-hover:scale-105 transition duration-500">
                                 <Image
-                                    src={designExample1}
+                                    src="/haunted-cover.jpg"
                                     alt="HUNTED Book Cover by AJ Ghost"
                                     fill
                                     className="object-cover"

@@ -2,14 +2,21 @@
 
 import Tag from "@/components/Tag";
 import { AnimatePresence, motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Plus, ExternalLink } from "lucide-react";
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const faqs = [
+interface FAQ {
+    question: string;
+    answer: string;
+    linkUrl?: string;
+    linkLabel?: string;
+}
+
+const faqs: FAQ[] = [
     {
         question: "Who is AJ Ghost?",
-        answer: "AJ Ghost is a psychological thriller author who refuses to sanitize darkness- writing the stories that demand to be told without flinching from post-military trauma, moral complexity, and the raw cost of survival. His Ryan Kane series (a five book series, currently set to release book three, Digital Ascent in late Fall) anchors psychological unraveling in authentic experience and real trauma, offering readers clarity instead of comfort and questions instead of convenient redemption. In an industry saturated with sanitizer thrillers, AJ Ghost stands apart because he doesn't write what sells, he writes what's true.",
+        answer: "AJ Ghost is a psychological thriller author who refuses to sanitize darkness- writing the stories that demand to be told without flinching from post-military trauma, moral complexity, and the raw cost of survival. His Ryan Kane series (a five book series, currently set to release book three, Digital Ascent in late Fall) anchors psychological unraveling in authentic experience and real trauma, offering readers clarity instead of comfort and questions instead of convenient redemption.  In an industry saturated with sanitizer thrillers, AJ Ghost stands apart because he doesn't write what sells, he writes what's true.",
     },
     {
         question: "Is HUNTED a standalone novel?",
@@ -21,10 +28,15 @@ const faqs = [
     },
     {
         question: "What is the exclusive Ryan Kane Series ARC team?",
-        answer: `The Exclusive Ryan Kane Series ARC Campaign is a reader engagement and book promotion initiative designed to build momentum for AJ Ghost's psychological thriller trilogy while creating a community of early readers who actively shape the series' success.
+        answer: "The Exclusive Ryan Kane Series ARC Campaign is a reader engagement and book promotion initiative designed to build momentum for AJ Ghost's psychological thriller trilogy while creating a community of early readers who actively shape the series' success.",
+    },
+    {
+        question: "How does the Ryan Kane Series ARC team work?",
+        answer: `Readers join the ARC (Advanced Reader Copy) team by committing to leave honest Amazon reviews for each book in the Ryan Kane Series as they read. In exchange, they receive free access to the entire series—unlocking the next book only after they've posted their review for the current one. This creates a direct incentive structure: one review per book = one free book unlock. The campaign operates on urgent, rolling deadlines (typically 14-30 days per book) to maintain momentum and ensure timely review generation before official launch dates.
 
-How It Works:
-Readers join the ARC (Advanced Reader Copy) team by committing to leave honest Amazon reviews for each book in the Ryan Kane Series as they read. In exchange, they receive free access to the entire series—unlocking the next book only after they've posted their review for the current one. This creates a direct incentive structure: one review per book = one free book unlock. The campaign operates on urgent, rolling deadlines (typically 14 days to post your honest review).`,
+JOIN HERE: https://booksprout.co/reviewer/review-copy/view/313716/fractured-ground-book-two-in-the-ryan-kane-series`,
+        linkUrl: "https://booksprout.co/reviewer/review-copy/view/313716/fractured-ground-book-two-in-the-ryan-kane-series",
+        linkLabel: "Join the ARC Team on BookSprout",
     },
 ];
 
@@ -82,6 +94,20 @@ export default function Faqs() {
                                         <p className="text-white/60 leading-relaxed text-sm whitespace-pre-line">
                                             {faq.answer}
                                         </p>
+                                        {faq.linkUrl && (
+                                            <div className="mt-4 pt-3 border-t border-gold-400/10">
+                                                <a
+                                                    href={faq.linkUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-gold-400 text-navy-950 font-bold rounded-full text-xs hover:bg-gold-300 transition duration-300 shadow-md shadow-gold-400/20"
+                                                >
+                                                    <span>{faq.linkLabel || "Join the ARC Team"}</span>
+                                                    <ExternalLink size={13} />
+                                                </a>
+                                            </div>
+                                        )}
                                     </motion.div>
                                 )}
                             </AnimatePresence>

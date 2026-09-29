@@ -20,11 +20,12 @@ import Button from "@/components/Button";
 const AMAZON_AUTHOR_STORE = "https://www.amazon.com/stores/AJ-Ghost/author/B0HD9D7DRD?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=5eb73e49-2101-4a5f-b36a-2acfe6ae4c07";
 
 const navLinks = [
-    { label: "Books", href: "#books", icon: BookOpen },
-    { label: "Reviews", href: "#reviews", icon: MessageCircle },
-    { label: "The Story", href: "#introduction", icon: FileText },
-    { label: "For Authors", href: "#author-collab", icon: Users },
-    { label: "Newsletter", href: "#newsletter", icon: Mail },
+    { label: "Books", href: "/#books", icon: BookOpen },
+    { label: "Reviews", href: "/#reviews", icon: MessageCircle },
+    { label: "The Story", href: "/#introduction", icon: FileText },
+    { label: "For Authors", href: "/#author-collab", icon: Users },
+    { label: "Newsletter", href: "/#newsletter", icon: Mail },
+    { label: "Contact", href: "/contact", icon: Mail },
 ];
 
 export default function Navbar() {
@@ -52,7 +53,7 @@ export default function Navbar() {
                     <div className="flex justify-between items-center">
                         
                         {/* --- LOGO AREA --- */}
-                        <a href="#" className="flex items-center gap-3 cursor-pointer group">
+                        <a href="/" className="flex items-center gap-3 cursor-pointer group">
                             <div className="relative">
                                 <div className="p-0.5 rounded-full border border-gold-400/40 group-hover:border-gold-400/80 transition duration-500 shadow-md shadow-gold-400/10">
                                     <BrandLogo size={40} showBorder={false} />
@@ -72,12 +73,12 @@ export default function Navbar() {
 
                         {/* --- DESKTOP NAVIGATION --- */}
                         <div className="hidden lg:flex justify-center items-center">
-                            <nav className="flex gap-8 font-medium text-sm">
+                            <nav className="flex gap-7 font-medium text-sm">
                                 {navLinks.map((link) => (
                                     <a 
                                         href={link.href} 
                                         key={link.label}
-                                        className="flex items-center gap-2 text-white/50 hover:text-gold-400 transition duration-300 group"
+                                        className="flex items-center gap-2 text-white/60 hover:text-gold-400 transition duration-300 group"
                                     >
                                         <span className="font-medium tracking-wide group-hover:-translate-y-0.5 transition-transform duration-200">
                                             {link.label}
@@ -91,10 +92,10 @@ export default function Navbar() {
                         <div className="flex items-center gap-4">
                             <div className="hidden lg:flex gap-3">
                                 <a 
-                                    href="#author-collab" 
-                                    className="px-5 py-2.5 text-sm font-medium text-gold-300 border border-gold-400/30 rounded-full hover:bg-gold-400/10 hover:border-gold-400/50 transition duration-300"
+                                    href="/#author-collab" 
+                                    className="px-4 py-2.5 text-xs font-medium text-gold-300 border border-gold-400/30 rounded-full hover:bg-gold-400/10 hover:border-gold-400/50 transition duration-300"
                                 >
-                                    Author Free Copy
+                                    Free Copy
                                 </a>
                                 <a 
                                     href={AMAZON_AUTHOR_STORE} 
@@ -103,7 +104,7 @@ export default function Navbar() {
                                     className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20 flex items-center gap-1.5"
                                 >
                                     <ShoppingCart size={15} />
-                                    Buy on Amazon
+                                    Get Books
                                 </a>
                             </div>
 
@@ -151,16 +152,16 @@ export default function Navbar() {
                                         <a 
                                             key={link.label} 
                                             href={link.href} 
-                                            className="flex items-center gap-4 text-lg font-medium text-white/70 p-2 rounded-lg hover:bg-gold-400/10 hover:text-gold-400 transition"
+                                            className="flex items-center gap-4 text-base font-medium text-white/70 p-2 rounded-lg hover:bg-gold-400/10 hover:text-gold-400 transition"
                                             onClick={() => setIsOpen(false)}
                                         >
-                                            <link.icon size={20} className="text-gold-400" />
+                                            <link.icon size={18} className="text-gold-400" />
                                             {link.label}
                                         </a>
                                     ))}
                                     <div className="grid grid-cols-2 gap-4 mt-2">
-                                        <a href="#books" onClick={() => setIsOpen(false)}>
-                                            <Button variant="secondary" className="w-full justify-center text-sm">
+                                        <a href="/#books" onClick={() => setIsOpen(false)}>
+                                            <Button variant="secondary" className="w-full justify-center text-xs">
                                                 Explore Books
                                             </Button>
                                         </a>
@@ -170,8 +171,8 @@ export default function Navbar() {
                                             rel="noopener noreferrer"
                                             onClick={() => setIsOpen(false)}
                                         >
-                                            <Button variant="primary" className="w-full justify-center flex items-center gap-2 text-sm">
-                                                <ShoppingCart size={16} /> Buy on Amazon
+                                            <Button variant="primary" className="w-full justify-center flex items-center gap-2 text-xs">
+                                                <ShoppingCart size={15} /> Get Books
                                             </Button>
                                         </a>
                                     </div>

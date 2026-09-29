@@ -49,26 +49,25 @@ export default function Footer() {
                         {/* Navigation Links */}
                         <nav className="flex gap-6 flex-wrap justify-center items-center">
                             <a
-                                href="#author-collab"
+                                href="/#author-collab"
                                 className="text-white/30 text-sm hover:text-gold-400 transition duration-300 font-medium"
                             >
                                 Author Swaps & Free Copy
                             </a>
-                            <button
-                                type="button"
-                                onClick={() => setIsContactOpen(true)}
+                            <a
+                                href="/contact"
                                 className="text-gold-300 text-sm hover:text-gold-200 transition duration-300 font-semibold underline underline-offset-4 decoration-gold-400/40 cursor-pointer"
                             >
                                 Contact AJ Ghost
-                            </button>
+                            </a>
                             <a
-                                href="#reviews"
+                                href="/#reviews"
                                 className="text-white/30 text-sm hover:text-gold-400 transition duration-300 font-medium"
                             >
                                 Reader Reviews
                             </a>
                             <a
-                                href="#newsletter"
+                                href="/#newsletter"
                                 className="text-white/30 text-sm hover:text-gold-400 transition duration-300 font-medium"
                             >
                                 Newsletter
