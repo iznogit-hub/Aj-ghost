@@ -14,10 +14,14 @@ import {
     Users
 } from "lucide-react";
 
+import BrandLogo from "@/components/BrandLogo";
 import Button from "@/components/Button";
+
+const AMAZON_AUTHOR_STORE = "https://www.amazon.com/stores/AJ-Ghost/author/B0HD9D7DRD?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=5eb73e49-2101-4a5f-b36a-2acfe6ae4c07";
 
 const navLinks = [
     { label: "Books", href: "#books", icon: BookOpen },
+    { label: "Reviews", href: "#reviews", icon: MessageCircle },
     { label: "The Story", href: "#introduction", icon: FileText },
     { label: "For Authors", href: "#author-collab", icon: Users },
     { label: "Newsletter", href: "#newsletter", icon: Mail },
@@ -50,8 +54,8 @@ export default function Navbar() {
                         {/* --- LOGO AREA --- */}
                         <a href="#" className="flex items-center gap-3 cursor-pointer group">
                             <div className="relative">
-                                <div className="bg-gold-400/10 p-2.5 rounded-full border border-gold-400/20 group-hover:bg-gold-400/20 group-hover:border-gold-400/40 transition duration-500">
-                                    <Skull size={20} className="text-gold-400" />
+                                <div className="bg-gold-400/10 p-2 rounded-full border border-gold-400/20 group-hover:bg-gold-400/20 group-hover:border-gold-400/40 transition duration-500">
+                                    <BrandLogo size={24} />
                                 </div>
                                 {/* Subtle glow on hover */}
                                 <div className="absolute inset-0 bg-gold-400/0 group-hover:bg-gold-400/10 rounded-full blur-xl transition duration-500"></div>
@@ -93,12 +97,13 @@ export default function Navbar() {
                                     Author Free Copy
                                 </a>
                                 <a 
-                                    href="https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15" 
+                                    href={AMAZON_AUTHOR_STORE} 
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20"
+                                    className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20 flex items-center gap-1.5"
                                 >
-                                    Get Books
+                                    <ShoppingCart size={15} />
+                                    Buy on Amazon
                                 </a>
                             </div>
 
@@ -154,12 +159,21 @@ export default function Navbar() {
                                         </a>
                                     ))}
                                     <div className="grid grid-cols-2 gap-4 mt-2">
-                                        <Button variant="secondary" className="w-full justify-center text-sm">
-                                            Sample
-                                        </Button>
-                                        <Button variant="primary" className="w-full justify-center flex items-center gap-2 text-sm">
-                                            <ShoppingCart size={16} /> Buy
-                                        </Button>
+                                        <a href="#books" onClick={() => setIsOpen(false)}>
+                                            <Button variant="secondary" className="w-full justify-center text-sm">
+                                                Explore Books
+                                            </Button>
+                                        </a>
+                                        <a 
+                                            href={AMAZON_AUTHOR_STORE}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            <Button variant="primary" className="w-full justify-center flex items-center gap-2 text-sm">
+                                                <ShoppingCart size={16} /> Buy on Amazon
+                                            </Button>
+                                        </a>
                                     </div>
                                 </div>
                             </motion.div>

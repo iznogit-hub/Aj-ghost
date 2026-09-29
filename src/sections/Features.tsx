@@ -53,7 +53,7 @@ export default function Features() {
                     <span className="text-gold-gradient">slowly</span>
                 </h2>
                 <p className="text-center text-white/40 mt-4 max-w-xl mx-auto text-lg">
-                    Each book in The Watcher Series peels back another layer of darkness. 
+                    Each book in The Ryan Kane Series peels back another layer of darkness. 
                     Nothing is what it seems. No one is safe.
                 </p>
 

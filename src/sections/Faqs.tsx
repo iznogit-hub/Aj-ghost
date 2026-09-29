@@ -9,23 +9,22 @@ import { twMerge } from "tailwind-merge";
 const faqs = [
     {
         question: "Who is AJ Ghost?",
-        answer: "AJ Ghost is the dark mind behind The Watcher Series — a collection of psychological thrillers that dig into the fractured psyches of broken heroes, invisible predators, and the terrifying spaces between memory and reality. When AJ isn't writing, he's probably staring at a wall, working out how to make you cry in Chapter 17.",
+        answer: "AJ Ghost is a psychological thriller author who refuses to sanitize darkness- writing the stories that demand to be told without flinching from post-military trauma, moral complexity, and the raw cost of survival. His Ryan Kane series (a five book series, currently set to release book three, Digital Ascent in late Fall) anchors psychological unraveling in authentic experience and real trauma, offering readers clarity instead of comfort and questions instead of convenient redemption. In an industry saturated with sanitizer thrillers, AJ Ghost stands apart because he doesn't write what sells, he writes what's true.",
     },
     {
         question: "Is HUNTED a standalone novel?",
-        answer: "HUNTED is Book 1 of The Watcher Series. While it delivers a complete, devastating arc — Ryan's entrapment, his unraveling, and the gut-punch revelation — it leads directly into the events of Book 2, Fractured Ground. The series is designed so each book deepens the nightmare.",
+        answer: "HUNTED is Book 1 of The Ryan Kane Series. While it delivers a complete, devastating arc — Ryan's entrapment, his unraveling, and the gut-punch revelation — it leads directly into the events of Book 2, Fractured Ground. The series is designed so each book deepens the darkness.",
     },
     {
         question: "What themes does the series explore?",
-        answer: "The Watcher Series deals unflinchingly with Traumatic Brain Injury (TBI), PTSD, veteran homelessness, and the psychology of manipulation. These aren't 'issue books' — they're white-knuckle thrillers that use real human trauma as the foundation for a predator-prey story that will leave you breathless.",
+        answer: "The Ryan Kane Series deals unflinchingly with Traumatic Brain Injury (TBI), PTSD, veteran homelessness, and the psychology of manipulation. These aren't 'issue books'—they're white-knuckle thrillers that use real human trauma as the foundation for a predator-prey story that will leave you breathless. The series doesn't offer redemption or easy answers; it exposes the architecture of how broken men are systematically exploited and the unbearable cost of staying alive.",
     },
     {
-        question: "What is the Fractured Ground ARC campaign?",
-        answer: "Advanced Reader Copies (ARCs) let our most dedicated readers experience Fractured Ground before release day in exchange for honest reviews. The current campaign has 22 days remaining, and the response has been extraordinary — readers are telling us this one hits even harder than HUNTED.",
-    },
-    {
-        question: "Is the audiobook available?",
-        answer: "Yes. The audiobook version captures every whispered threat, every fractured memory, every moment of creeping dread. The narration is designed to make you feel like the predator is standing right behind you. Headphones recommended. Dark room preferred.",
+        question: "What is the exclusive Ryan Kane Series ARC team?",
+        answer: `The Exclusive Ryan Kane Series ARC Campaign is a reader engagement and book promotion initiative designed to build momentum for AJ Ghost's psychological thriller trilogy while creating a community of early readers who actively shape the series' success.
+
+How It Works:
+Readers join the ARC (Advanced Reader Copy) team by committing to leave honest Amazon reviews for each book in the Ryan Kane Series as they read. In exchange, they receive free access to the entire series—unlocking the next book only after they've posted their review for the current one. This creates a direct incentive structure: one review per book = one free book unlock. The campaign operates on urgent, rolling deadlines (typically 14 days to post your honest review).`,
     },
 ];
 
@@ -80,7 +79,7 @@ export default function Faqs() {
                                         exit={{ height: 0, marginTop: 0 }}
                                         className="overflow-hidden"
                                     >
-                                        <p className="text-white/45 leading-relaxed text-sm">
+                                        <p className="text-white/60 leading-relaxed text-sm whitespace-pre-line">
                                             {faq.answer}
                                         </p>
                                     </motion.div>

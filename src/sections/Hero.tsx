@@ -6,6 +6,7 @@ import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
 export default function Hero() {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [message, setMessage] = useState("");
@@ -19,12 +20,13 @@ export default function Hero() {
             const res = await fetch("/api/subscribe", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, source: "hero" }),
+                body: JSON.stringify({ name, email, source: "hero" }),
             });
             const data = await res.json();
             if (data.success) {
                 setStatus("success");
-                setMessage("You're in. Check your inbox for Chapter 1.");
+                setMessage(`You're in${name ? `, ${name}` : ""}. Check your inbox for Chapter 1.`);
+                setName("");
                 setEmail("");
             } else {
                 setStatus("error");
@@ -131,22 +133,30 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.8 }}
-                        className="mx-auto flex border border-gold-400/20 rounded-full p-2 mt-10 max-w-lg bg-navy-900/50 backdrop-blur-xl shadow-2xl shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50 focus-within:shadow-gold-400/10"
+                        className="mx-auto flex flex-col sm:flex-row items-center border border-gold-400/20 rounded-2xl sm:rounded-full p-2 mt-10 max-w-xl bg-navy-900/60 backdrop-blur-xl shadow-2xl shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50 gap-2 sm:gap-0"
                     >
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                            placeholder="First Name"
+                            className="bg-transparent px-4 py-2 sm:py-0 w-full sm:w-2/5 text-white placeholder:text-white/30 outline-none font-medium text-sm md:text-base border-b sm:border-b-0 sm:border-r border-gold-400/20"
+                        />
                         <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             required
-                            placeholder="Enter your email for a free chapter"
-                            className="bg-transparent px-4 flex-1 w-full text-white placeholder:text-white/30 outline-none font-medium text-sm md:text-base"
+                            placeholder="Enter your email"
+                            className="bg-transparent px-4 py-2 sm:py-0 flex-1 w-full text-white placeholder:text-white/30 outline-none font-medium text-sm md:text-base"
                         />
                         <Button
                             size="sm"
                             type="submit"
                             variant="primary"
                             disabled={status === "loading"}
-                            className="whitespace-nowrap flex items-center gap-2"
+                            className="w-full sm:w-auto whitespace-nowrap flex items-center justify-center gap-2"
                         >
                             {status === "loading" ? (
                                 <>

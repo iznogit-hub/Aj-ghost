@@ -4,15 +4,17 @@ import Tag from "@/components/Tag";
 import Image from "next/image";
 import designExample1 from "@/assets/images/design-example-1.png";
 import { motion } from "framer-motion";
-import { BookOpen, Headphones, BookMarked, Star, Smartphone, BookCopy, Clock, Gift, ExternalLink } from "lucide-react";
+import { BookOpen, BookMarked, Star, Smartphone, Clock, Gift, ExternalLink, ShoppingCart } from "lucide-react";
+
+const AMAZON_AUTHOR_STORE = "https://www.amazon.com/stores/AJ-Ghost/author/B0HD9D7DRD?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=5eb73e49-2101-4a5f-b36a-2acfe6ae4c07";
+const BOOKFUNNEL_FREE_LINK = "https://dl.bookfunnel.com/j4e3jsxfr6";
 
 const platforms = [
-    { name: "Kindle", icon: BookOpen, description: "eBook" },
-    { name: "Audible", icon: Headphones, description: "Audiobook" },
-    { name: "Paperback", icon: BookMarked, description: "Print" },
-    { name: "Goodreads", icon: Star, description: "Reviews" },
-    { name: "Apple Books", icon: Smartphone, description: "iOS" },
-    { name: "Hardcover", icon: BookCopy, description: "Collector" },
+    { name: "Amazon Store", icon: ShoppingCart, description: "Official Store", url: AMAZON_AUTHOR_STORE },
+    { name: "Kindle", icon: BookOpen, description: "eBook", url: AMAZON_AUTHOR_STORE },
+    { name: "Paperback", icon: BookMarked, description: "Print Edition", url: AMAZON_AUTHOR_STORE },
+    { name: "Goodreads", icon: Star, description: "Reviews", url: "https://www.goodreads.com" },
+    { name: "Apple Books", icon: Smartphone, description: "iOS", url: AMAZON_AUTHOR_STORE },
 ];
 
 export default function Integrations() {
@@ -24,10 +26,10 @@ export default function Integrations() {
             <div className="container relative z-10">
                 <div className="text-center max-w-2xl mx-auto mb-16">
                     <div className="flex justify-center">
-                        <Tag>The Watcher Series</Tag>
+                        <Tag>The Ryan Kane Series</Tag>
                     </div>
                     <h2 className="text-4xl md:text-6xl font-serif font-bold mt-6 tracking-tight text-white">
-                        Enter the <span className="text-gold-gradient">Nightmare</span>
+                        Enter the <span className="text-gold-gradient">Darkness</span>
                     </h2>
                     <p className="text-white/40 mt-4 text-base md:text-lg">
                         Two psychological thrillers that will test the limits of your trust and sanity.
@@ -63,19 +65,27 @@ export default function Integrations() {
 
                             <h3 className="text-2xl font-serif font-bold text-white group-hover:text-gold-300 transition">HUNTED</h3>
                             <p className="text-sm text-white/50 mt-2 leading-relaxed">
-                                He knows where you are. He always has. Broken veteran Ryan Kane sought help, only to find the therapist is the deadliest predator on the eastern seaboard.
+                                He knows where you are. He always has. Broken veteran Ryan Kane sought help, only to find the mysterious man in a gray suit is the deadliest predator on the eastern seaboard.
                             </p>
                         </div>
 
-                        <div className="mt-6 pt-6 border-t border-gold-400/10 flex items-center justify-between">
-                            <span className="text-xs font-mono text-white/40">4.8 ★ on Goodreads</span>
+                        <div className="mt-6 pt-6 border-t border-gold-400/10 flex flex-wrap items-center justify-between gap-3">
                             <a
-                                href="https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15"
+                                href={AMAZON_AUTHOR_STORE}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-4 py-2 bg-gold-400 text-navy-950 rounded-full font-bold text-xs hover:bg-gold-300 transition shadow-lg shadow-gold-400/20"
+                            >
+                                <ShoppingCart size={13} />
+                                Buy on Amazon
+                            </a>
+                            <a
+                                href={BOOKFUNNEL_FREE_LINK}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-300 hover:text-gold-200 transition"
                             >
-                                Free in Promo <ExternalLink size={13} />
+                                Free on BookFunnel <ExternalLink size={13} />
                             </a>
                         </div>
                     </motion.div>
@@ -116,8 +126,16 @@ export default function Integrations() {
                             </p>
                         </div>
 
-                        <div className="mt-6 pt-6 border-t border-gold-400/10 flex items-center justify-between">
-                            <span className="text-xs font-mono text-gold-400/70">Early Reader ARC Copies</span>
+                        <div className="mt-6 pt-6 border-t border-gold-400/10 flex flex-wrap items-center justify-between gap-3">
+                            <a
+                                href={AMAZON_AUTHOR_STORE}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 px-4 py-2 border border-gold-400/40 text-gold-300 rounded-full font-bold text-xs hover:bg-gold-400/10 transition"
+                            >
+                                <ShoppingCart size={13} />
+                                View on Amazon
+                            </a>
                             <a
                                 href="#newsletter"
                                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-gold-400 text-navy-950 rounded-full font-bold text-xs hover:bg-gold-300 transition shadow-lg shadow-gold-400/20"
@@ -133,25 +151,29 @@ export default function Integrations() {
                 {/* --- PLATFORMS STRIP --- */}
                 <div className="mt-16 text-center">
                     <h3 className="text-xs font-mono uppercase tracking-widest text-white/40 mb-6">
-                        Available Across All Major Formats
+                        Available Across Major Formats & Stores
                     </h3>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
                         {platforms.map((platform) => (
-                            <div 
+                            <a 
                                 key={platform.name}
-                                className="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:border-gold-400/40 transition duration-300 group cursor-default"
+                                href={platform.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="glass-card p-4 rounded-xl flex flex-col items-center justify-center gap-2 hover:border-gold-400/50 hover:scale-105 transition duration-300 group cursor-pointer"
                             >
                                 <platform.icon 
                                     size={22} 
-                                    className="text-gold-400/60 group-hover:text-gold-400 transition duration-300" 
+                                    className="text-gold-400/70 group-hover:text-gold-400 transition duration-300" 
                                 />
-                                <span className="text-xs font-semibold text-white/80 group-hover:text-white transition">
+                                <span className="text-xs font-semibold text-white/80 group-hover:text-gold-300 transition flex items-center gap-1">
                                     {platform.name}
+                                    <ExternalLink size={10} className="opacity-0 group-hover:opacity-100 transition" />
                                 </span>
                                 <span className="text-[10px] text-white/30 font-mono uppercase tracking-wider">
                                     {platform.description}
                                 </span>
-                            </div>
+                            </a>
                         ))}
                     </div>
                 </div>

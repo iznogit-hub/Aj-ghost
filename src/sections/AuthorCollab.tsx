@@ -61,7 +61,7 @@ export default function AuthorCollab() {
             if (data.success) {
                 setCompStatus("success");
                 setCompMsg(data.message);
-                setDownloadUrl(data.downloadUrl || "https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15");
+                setDownloadUrl(data.downloadUrl || "https://dl.bookfunnel.com/j4e3jsxfr6");
             } else {
                 setCompStatus("error");
                 setCompMsg(data.error || "Unable to claim comp copy.");
@@ -125,7 +125,7 @@ export default function AuthorCollab() {
                         <span className="text-gold-gradient">Let&apos;s Partner Up.</span>
                     </h2>
                     <p className="text-white/50 mt-4 text-base md:text-lg leading-relaxed">
-                        Are you a thriller, suspense, or crime author? We rise together. 
+                        Are you a thriller, mystery,  suspense or crime author? We rise together. 
                         Grab a complimentary author review copy of AJ Ghost&apos;s books, propose a newsletter swap, 
                         or cross-promote to a hungry psychological thriller readership.
                     </p>
@@ -261,7 +261,7 @@ export default function AuthorCollab() {
                                                     className="w-full px-4 py-3 rounded-xl bg-navy-950/70 border border-gold-400/20 text-white text-sm focus:border-gold-400/50 outline-none cursor-pointer"
                                                 >
                                                     <option value="Fractured Ground (ARC)">Fractured Ground (Upcoming ARC - 22 Days Left)</option>
-                                                    <option value="HUNTED (Book 1)">HUNTED (The Watcher Series Book 1)</option>
+                                                    <option value="HUNTED (Book 1)">HUNTED (The Ryan Kane Series Book 1)</option>
                                                     <option value="Both Books Pack">Both Books (Full Author Bundle)</option>
                                                 </select>
                                             </div>
@@ -503,7 +503,7 @@ export default function AuthorCollab() {
                                         </span>
                                     </div>
                                     <p className="text-xs md:text-sm text-white/80 font-mono leading-relaxed bg-navy-900/60 p-3 rounded-xl border border-gold-400/10">
-                                        &quot;If you love psychological thrillers that crawl under your skin, my friend AJ Ghost just released a special giveaway for HUNTED. It follows Ryan Kane, a broken veteran with lost hours, being hunted by a therapist who is actually the deadliest predator alive. Download your free copy here: https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15&quot;
+                                        &quot;If you love psychological thrillers that crawl under your skin, my friend AJ Ghost just released a special giveaway for HUNTED. It follows Ryan Kane, a broken veteran with lost hours, being hunted by a mysterious man in a gray suit who is actually the deadliest predator alive. Download your free copy here: https://dl.bookfunnel.com/j4e3jsxfr6&quot;
                                     </p>
                                 </div>
 

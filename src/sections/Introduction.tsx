@@ -8,7 +8,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 
-const text = `They told Ryan Kane to "get help." But no one tells you what happens when the man offering help is the most dangerous predator you've ever met. HUNTED is a white-knuckle descent into the mind of a broken veteran being stalked by a monster wearing a therapist's smile.`;
+const text = `They told Ryan to "get help". They didn't warn him that the man offering salvation is a predator. And they didn't tell him that survival comes at a cost no veteran should ever have to pay.`;
 const words = text.split(" ");
 
 export default function Introduction() {

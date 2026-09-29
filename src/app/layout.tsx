@@ -24,8 +24,8 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
     title: "AJ Ghost | Psychological Thriller Author — Dark Fiction That Haunts You",
     description:
-        "AJ Ghost writes dark psychological thrillers that explore fractured minds, buried secrets, and the thin line between predator and prey. Discover HUNTED, Fractured Ground, and The Watcher Series.",
-    keywords: "AJ Ghost, psychological thriller, dark fiction, HUNTED, Fractured Ground, The Watcher Series, thriller author, suspense novels",
+        "AJ Ghost writes dark psychological thrillers that explore fractured minds, buried secrets, and the thin line between predator and prey. Discover HUNTED, Fractured Ground, and The Ryan Kane Series.",
+    keywords: "AJ Ghost, psychological thriller, dark fiction, HUNTED, Fractured Ground, The Ryan Kane Series, thriller author, suspense novels",
     openGraph: {
         title: "AJ Ghost | Psychological Thriller Author",
         description: "Dark fiction that haunts you long after the last page.",

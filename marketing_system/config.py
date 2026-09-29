@@ -30,9 +30,13 @@ AUTHOR_NAME = os.getenv("AUTHOR_NAME", "AJ Ghost")
 AUTHOR_EMAIL = os.getenv("AUTHOR_EMAIL", "author@ajghostthrillers.com")
 BOOKFUNNEL_PROMO_URL = os.getenv(
     "BOOKFUNNEL_PROMO_URL",
-    "https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15"
+    "https://dl.bookfunnel.com/j4e3jsxfr6"
 )
-BOOK_PRIMARY_TITLE = os.getenv("BOOK_PRIMARY_TITLE", "HUNTED (The Watcher Series Book 1)")
+AMAZON_AUTHOR_STORE_URL = os.getenv(
+    "AMAZON_AUTHOR_STORE_URL",
+    "https://www.amazon.com/stores/AJ-Ghost/author/B0HD9D7DRD?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=5eb73e49-2101-4a5f-b36a-2acfe6ae4c07"
+)
+BOOK_PRIMARY_TITLE = os.getenv("BOOK_PRIMARY_TITLE", "HUNTED (The Ryan Kane Series Book 1)")
 BOOK_FEATURED_TITLE = os.getenv("BOOK_FEATURED_TITLE", "Fractured Ground")
 BOOK_ARC_DAYS_LEFT = int(os.getenv("BOOK_ARC_DAYS_LEFT", "22"))
 

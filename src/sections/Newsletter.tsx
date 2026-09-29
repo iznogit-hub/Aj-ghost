@@ -6,6 +6,7 @@ import { Mail, BookOpen, Heart, Clock, ExternalLink, Gift, CheckCircle2, Loader2
 import { useState } from "react";
 
 export default function Newsletter() {
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [message, setMessage] = useState("");
@@ -19,12 +20,13 @@ export default function Newsletter() {
             const res = await fetch("/api/subscribe", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, source: "newsletter" }),
+                body: JSON.stringify({ name, email, source: "newsletter" }),
             });
             const data = await res.json();
             if (data.success) {
                 setStatus("success");
-                setMessage("You're inside the Inner Circle. Watch your inbox for Chapter 1.");
+                setMessage(`You're inside the Inner Circle${name ? `, ${name}` : ""}. Watch your inbox for Chapter 1.`);
+                setName("");
                 setEmail("");
             } else {
                 setStatus("error");
@@ -162,7 +164,7 @@ export default function Newsletter() {
 
                                             {/* First CTA Link */}
                                             <a 
-                                                href="https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15"
+                                                href="https://dl.bookfunnel.com/j4e3jsxfr6"
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-gold-400 text-navy-950 rounded-full font-semibold text-sm hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20"
@@ -192,13 +194,13 @@ export default function Newsletter() {
                                 {/* Second CTA Link */}
                                 <div className="flex justify-center py-4">
                                     <a 
-                                        href="https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15"
+                                        href="https://www.amazon.com/stores/AJ-Ghost/author/B0HD9D7DRD?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=5eb73e49-2101-4a5f-b36a-2acfe6ae4c07"
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="inline-flex items-center gap-2 px-6 py-3 border-2 border-gold-400/40 text-gold-300 rounded-full font-semibold text-sm hover:bg-gold-400/10 hover:border-gold-400/60 transition duration-300 group"
                                     >
                                         <Gift size={16} className="group-hover:rotate-12 transition duration-300" />
-                                        Grab Your Free Thrillers Here →
+                                        Buy The Ryan Kane Series on Amazon →
                                     </a>
                                 </div>
 
@@ -248,20 +250,28 @@ export default function Newsletter() {
                     ) : (
                         <form
                             onSubmit={handleSubscribe}
-                            className="flex border border-gold-400/20 rounded-full p-1.5 bg-navy-900/50 backdrop-blur-xl shadow-lg shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50"
+                            className="flex flex-col sm:flex-row items-center border border-gold-400/20 rounded-2xl sm:rounded-full p-1.5 bg-navy-900/50 backdrop-blur-xl shadow-lg shadow-gold-400/5 transition duration-300 hover:border-gold-400/40 focus-within:border-gold-400/50 gap-2 sm:gap-0"
                         >
+                            <input
+                                type="text"
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
+                                required
+                                placeholder="First Name"
+                                className="bg-transparent px-4 py-2 sm:py-0 w-full sm:w-2/5 text-white placeholder:text-white/25 outline-none text-sm font-medium border-b sm:border-b-0 sm:border-r border-gold-400/20"
+                            />
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 required
                                 placeholder="your@email.com"
-                                className="bg-transparent px-4 flex-1 w-full text-white placeholder:text-white/25 outline-none text-sm font-medium"
+                                className="bg-transparent px-4 py-2 sm:py-0 flex-1 w-full text-white placeholder:text-white/25 outline-none text-sm font-medium"
                             />
                             <button
                                 type="submit"
                                 disabled={status === "loading"}
-                                className="px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-md shadow-gold-400/20 whitespace-nowrap flex items-center gap-2"
+                                className="w-full sm:w-auto px-5 py-2.5 text-sm font-semibold bg-gold-400 text-navy-950 rounded-full hover:bg-gold-300 transition duration-300 shadow-md shadow-gold-400/20 whitespace-nowrap flex items-center justify-center gap-2"
                             >
                                 {status === "loading" ? (
                                     <>
