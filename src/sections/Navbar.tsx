@@ -54,11 +54,11 @@ export default function Navbar() {
                         {/* --- LOGO AREA --- */}
                         <a href="#" className="flex items-center gap-3 cursor-pointer group">
                             <div className="relative">
-                                <div className="bg-gold-400/10 p-2 rounded-full border border-gold-400/20 group-hover:bg-gold-400/20 group-hover:border-gold-400/40 transition duration-500">
-                                    <BrandLogo size={24} />
+                                <div className="p-0.5 rounded-full border border-gold-400/40 group-hover:border-gold-400/80 transition duration-500 shadow-md shadow-gold-400/10">
+                                    <BrandLogo size={40} showBorder={false} />
                                 </div>
                                 {/* Subtle glow on hover */}
-                                <div className="absolute inset-0 bg-gold-400/0 group-hover:bg-gold-400/10 rounded-full blur-xl transition duration-500"></div>
+                                <div className="absolute inset-0 bg-gold-400/0 group-hover:bg-gold-400/20 rounded-full blur-md transition duration-500"></div>
                             </div>
                             <div className="hidden sm:block">
                                 <span className="font-serif text-xl tracking-wider text-white font-bold">

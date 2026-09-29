@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Button from "@/components/Button";
+import BrandLogo from "@/components/BrandLogo";
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
 
@@ -92,8 +93,9 @@ export default function Hero() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="flex justify-center"
                 >
-                    <div className="inline-flex py-1.5 px-4 bg-gold-400/10 backdrop-blur-md border border-gold-400/20 rounded-full text-gold-300 font-semibold text-sm shadow-lg shadow-gold-400/5">
-                        ✦ Bestselling Author of Psychological Thrillers
+                    <div className="inline-flex items-center gap-2.5 py-1.5 pl-2 pr-4 bg-gold-400/10 backdrop-blur-md border border-gold-400/20 rounded-full text-gold-300 font-semibold text-sm shadow-lg shadow-gold-400/5">
+                        <BrandLogo size={22} showBorder={false} />
+                        <span>Bestselling Author of Psychological Thrillers</span>
                     </div>
                 </motion.div>
                 

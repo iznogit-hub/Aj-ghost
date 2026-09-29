@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Loader2, CheckCircle2, MessageSquare } from "lucide-react";
 import Button from "./Button";
 
+import BrandLogo from "./BrandLogo";
+
 interface ContactModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -66,9 +68,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                         </button>
 
                         <div className="flex items-center gap-3 mb-6">
-                            <div className="p-2.5 bg-gold-400/10 rounded-2xl border border-gold-400/20 text-gold-400">
-                                <MessageSquare size={22} />
-                            </div>
+                            <BrandLogo size={44} showBorder={false} />
                             <div>
                                 <h3 className="text-2xl font-serif font-bold text-white">
                                     Contact AJ Ghost

@@ -27,8 +27,8 @@ export default function Footer() {
                     <div className="flex flex-col items-center gap-8">
                         {/* Logo */}
                         <div className="flex items-center gap-3">
-                            <div className="bg-gold-400/10 p-2 rounded-full border border-gold-400/20">
-                                <BrandLogo size={28} />
+                            <div className="p-1 rounded-full border border-gold-400/40 shadow-lg shadow-gold-400/10">
+                                <BrandLogo size={52} showBorder={false} />
                             </div>
                             <div>
                                 <span className="font-serif text-xl tracking-wider text-white font-bold">
