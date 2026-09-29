@@ -6,7 +6,7 @@ import Footer from "@/sections/Footer";
 import Tag from "@/components/Tag";
 import BrandLogo from "@/components/BrandLogo";
 import Button from "@/components/Button";
-import { Mail, MapPin, Send, Loader2, CheckCircle2, MessageSquare, Clock, ArrowLeft } from "lucide-react";
+import { Users, MapPin, Send, Loader2, CheckCircle2, MessageSquare, Clock, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 
@@ -90,18 +90,19 @@ export default function ContactPage() {
 
                     {/* Info Cards Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-14 max-w-4xl mx-auto">
-                        <div className="glass-card p-6 rounded-2xl border border-gold-400/20 text-center hover:border-gold-400/40 transition duration-300">
-                            <div className="size-12 rounded-full bg-gold-400/10 border border-gold-400/30 flex items-center justify-center mx-auto mb-4 text-gold-400">
-                                <Mail size={22} />
+                        <div className="glass-card p-6 rounded-2xl border border-gold-400/20 text-center hover:border-gold-400/40 transition duration-300 group">
+                            <div className="size-12 rounded-full bg-gold-400/10 border border-gold-400/30 flex items-center justify-center mx-auto mb-4 text-gold-400 group-hover:scale-110 transition duration-300">
+                                <Users size={22} />
                             </div>
-                            <h3 className="text-base font-serif font-bold text-white mb-1">Direct Inquiries</h3>
-                            <p className="text-xs text-white/40 mb-3">All queries route directly to</p>
-                            <a 
-                                href={`mailto:${TARGET_EMAIL}`}
-                                className="text-sm font-mono text-gold-300 hover:text-gold-200 transition font-semibold break-all"
+                            <h3 className="text-base font-serif font-bold text-white mb-1">Author Collaborations</h3>
+                            <p className="text-xs text-white/40 mb-3">Newsletter Swaps & ARC Shares</p>
+                            <Link 
+                                href="/#author-collab"
+                                className="inline-flex items-center gap-1.5 text-xs font-mono uppercase tracking-wider text-gold-300 hover:text-gold-200 transition font-semibold"
                             >
-                                {TARGET_EMAIL}
-                            </a>
+                                <span>Author Swaps & Free Copy</span>
+                                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                            </Link>
                         </div>
 
                         <div className="glass-card p-6 rounded-2xl border border-gold-400/20 text-center hover:border-gold-400/40 transition duration-300">
@@ -141,7 +142,7 @@ export default function ContactPage() {
                                         Send a Query
                                     </h2>
                                     <p className="text-xs text-white/40">
-                                        Direct transmission to {TARGET_EMAIL}
+                                        Direct transmission to AJ Ghost&apos;s desk
                                     </p>
                                 </div>
                             </div>
@@ -157,7 +158,7 @@ export default function ContactPage() {
                                         Query Sent Successfully!
                                     </h3>
                                     <p className="text-sm text-white/70 max-w-sm mx-auto leading-relaxed">
-                                        Thank you for reaching out. Your message has been routed directly to AJ Ghost&apos;s desk at <span className="text-gold-300 font-mono font-semibold">{TARGET_EMAIL}</span>. We will review your note shortly.
+                                        Thank you for reaching out. Your message has been routed directly to AJ Ghost&apos;s editorial desk. We will review your note shortly.
                                     </p>
                                     <Button
                                         variant="primary"
@@ -238,7 +239,7 @@ export default function ContactPage() {
 
                                     <div className="pt-2 flex items-center justify-between">
                                         <span className="text-xs text-white/30 font-mono">
-                                            Routes to: {TARGET_EMAIL}
+                                            Direct transmission to author desk
                                         </span>
                                         <Button
                                             variant="primary"

@@ -74,7 +74,7 @@ export default function ContactModal({ isOpen, onClose }: ContactModalProps) {
                                     Contact AJ Ghost
                                 </h3>
                                 <p className="text-xs text-white/50">
-                                    Send a message directly to AJ Ghost (<span className="text-gold-300 font-mono">n.franco2222@gmail.com</span>).
+                                    Send a message directly to AJ Ghost and the editorial desk.
                                 </p>
                             </div>
                         </div>
