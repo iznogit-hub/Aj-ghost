@@ -1,0 +1,450 @@
+[
+ {
+  "id": "S1P1",
+  "scene": 1,
+  "title": "The Knock",
+  "caption": "Three sharp raps. Knuckles on glass. The kind of sound that meant trouble whether you were ready for it or not.",
+  "media": "/hunted/gif/gif-01.mp4",
+  "still": false
+ },
+ {
+  "id": "S1P2",
+  "scene": 1,
+  "title": "The Knock",
+  "caption": "His hand rested on his belt near the radio. / Not the gun. / Not yet.",
+  "media": "/hunted/gif/gif-01.mp4",
+  "still": true
+ },
+ {
+  "id": "S1P3",
+  "scene": 1,
+  "title": "The Knock",
+  "caption": "\"You've got seventy-two hours to move the vehicle,\" he said. \"After that, it gets towed. Impound fees start at three hundred.\"",
+  "media": "/hunted/gif/gif-01.mp4",
+  "still": true
+ },
+ {
+  "id": "S1P4",
+  "scene": 1,
+  "title": "The Knock",
+  "caption": "\"You a vet?\" / \"Yeah,\" I said.",
+  "media": "/hunted/gif/gif-01.mp4",
+  "still": true
+ },
+ {
+  "id": "S1P5",
+  "scene": 1,
+  "title": "The Knock",
+  "caption": "Seventy-two hours. / Three days to figure out where to go.",
+  "media": "/hunted/gif/gif-02.mp4",
+  "still": false
+ },
+ {
+  "id": "S2P1",
+  "scene": 2,
+  "title": "The Man in the Gray Suit",
+  "caption": "I reached for the keys. / They slipped through my fingers.",
+  "media": "/hunted/gif/gif-03.mp4",
+  "still": false
+ },
+ {
+  "id": "S2P2",
+  "scene": 2,
+  "title": "The Man in the Gray Suit",
+  "caption": "The man staring back wasn't me.",
+  "media": "/hunted/gif/gif-03.mp4",
+  "still": true
+ },
+ {
+  "id": "S2P3",
+  "scene": 2,
+  "title": "The Man in the Gray Suit",
+  "caption": "A black sedan pulled out of a space three rows over. Dark windows. I couldn't see the driver.",
+  "media": "/hunted/gif/gif-04.mp4",
+  "still": false
+ },
+ {
+  "id": "S2P4",
+  "scene": 2,
+  "title": "The Man in the Gray Suit",
+  "caption": "The world went white. / Then black.",
+  "media": "/hunted/gif/gif-05.mp4",
+  "still": false
+ },
+ {
+  "id": "S2P5",
+  "scene": 2,
+  "title": "The Man in the Gray Suit",
+  "caption": "\"It's me,\" he said quietly. \"He's ready.\"",
+  "media": "/hunted/gif/gif-05.mp4",
+  "still": true
+ },
+ {
+  "id": "S3P1",
+  "scene": 3,
+  "title": "Disgusting",
+  "caption": "\"You gonna be all day?\" a voice shouted.",
+  "media": "/hunted/gif/gif-06.mp4",
+  "still": false
+ },
+ {
+  "id": "S3P2",
+  "scene": 3,
+  "title": "Disgusting",
+  "caption": "\"Disgusting,\" he muttered.",
+  "media": "/hunted/gif/gif-06.mp4",
+  "still": true
+ },
+ {
+  "id": "S3P3",
+  "scene": 3,
+  "title": "Disgusting",
+  "caption": "The heat hit me like a fist.",
+  "media": "/hunted/gif/gif-07.mp4",
+  "still": false
+ },
+ {
+  "id": "S3P4",
+  "scene": 3,
+  "title": "Disgusting",
+  "caption": "I pressed my forehead against the window. The glass was already hot. It burned. I didn't move.",
+  "media": "/hunted/gif/gif-08.mp4",
+  "still": false
+ },
+ {
+  "id": "S4P1",
+  "scene": 4,
+  "title": "Forty-Eight Tiles",
+  "caption": "White ceiling tiles. / That's what I saw first.",
+  "media": "/hunted/gif/gif-08.mp4",
+  "still": true
+ },
+ {
+  "id": "S4P2",
+  "scene": 4,
+  "title": "Forty-Eight Tiles",
+  "caption": "\"This isn't optional. You're a danger to yourself.\" / \"I'm leaving.\"",
+  "media": "/hunted/gif/gif-08.mp4",
+  "still": true
+ },
+ {
+  "id": "S4P3",
+  "scene": 4,
+  "title": "Forty-Eight Tiles",
+  "caption": "For three seconds, our eyes met.",
+  "media": "/hunted/gif/gif-09.mp4",
+  "still": false
+ },
+ {
+  "id": "S4P4",
+  "scene": 4,
+  "title": "Forty-Eight Tiles",
+  "caption": "The phone died before it could go to voicemail.",
+  "media": "/hunted/gif/gif-10.mp4",
+  "still": false
+ },
+ {
+  "id": "S5P1",
+  "scene": 5,
+  "title": "From a Fellow Vet",
+  "caption": "An envelope. / White. Unmarked. Sitting on the passenger seat.",
+  "media": "/hunted/gif/gif-10.mp4",
+  "still": true
+ },
+ {
+  "id": "S5P2",
+  "scene": 5,
+  "title": "From a Fellow Vet",
+  "caption": "\"From a fellow vet. Pay it forward.\"",
+  "media": "/hunted/gif/gif-10.mp4",
+  "still": true
+ },
+ {
+  "id": "S5P3",
+  "scene": 5,
+  "title": "From a Fellow Vet",
+  "caption": "Someone had been inside my car.",
+  "media": "/hunted/gif/gif-11.mp4",
+  "still": false
+ },
+ {
+  "id": "S5P4",
+  "scene": 5,
+  "title": "From a Fellow Vet",
+  "caption": "I should've been grateful. / I wasn't. / I was scared.",
+  "media": "/hunted/gif/gif-11.mp4",
+  "still": true
+ },
+ {
+  "id": "S5P5",
+  "scene": 5,
+  "title": "From a Fellow Vet",
+  "caption": "\"It's done,\" he said. \"First deposit made.\"",
+  "media": "/hunted/gif/gif-12.mp4",
+  "still": false
+ },
+ {
+  "id": "S6P1",
+  "scene": 6,
+  "title": "Emma",
+  "caption": "I scrolled to her name. My thumb hovered over the call button.",
+  "media": "/hunted/gif/gif-13.mp4",
+  "still": false
+ },
+ {
+  "id": "S6P2",
+  "scene": 6,
+  "title": "Emma",
+  "caption": "I didn't press it.",
+  "media": "/hunted/gif/gif-13.mp4",
+  "still": true
+ },
+ {
+  "id": "S6P3",
+  "scene": 6,
+  "title": "Emma",
+  "caption": "And for the first time in eight months, I thought about calling Emma.",
+  "media": "/hunted/gif/gif-14.mp4",
+  "still": false
+ },
+ {
+  "id": "S6P4",
+  "scene": 6,
+  "title": "Emma",
+  "caption": "That night, I slept in the McDonald's parking lot.",
+  "media": "/hunted/gif/gif-15.mp4",
+  "still": false
+ },
+ {
+  "id": "S7P1",
+  "scene": 7,
+  "title": "Bring It Back",
+  "caption": "\"Bring it back,\" he said.",
+  "media": "/hunted/gif/gif-16.mp4",
+  "still": false
+ },
+ {
+  "id": "S7P2",
+  "scene": 7,
+  "title": "Bring It Back",
+  "caption": "CASH FOR GOLD. GUNS. JEWELRY. NO QUESTIONS.",
+  "media": "/hunted/gif/gif-17.mp4",
+  "still": false
+ },
+ {
+  "id": "S7P3",
+  "scene": 7,
+  "title": "Bring It Back",
+  "caption": "\"Guy came in last week. Asked if anyone had pawned a watch like this. Stainless steel. 1941. Scratched crystal.\"",
+  "media": "/hunted/gif/gif-17.mp4",
+  "still": true
+ },
+ {
+  "id": "S7P4",
+  "scene": 7,
+  "title": "Bring It Back",
+  "caption": "480-555-0147. / The same number.",
+  "media": "/hunted/gif/gif-17.mp4",
+  "still": true
+ },
+ {
+  "id": "S7P5",
+  "scene": 7,
+  "title": "Bring It Back",
+  "caption": "Seventy-five dollars. / For seventy-three years of history.",
+  "media": "/hunted/gif/gif-18.mp4",
+  "still": false
+ },
+ {
+  "id": "S8P1",
+  "scene": 8,
+  "title": "Seven Hours",
+  "caption": "I woke up outside the car.",
+  "media": "/hunted/gif/gif-19.mp4",
+  "still": false
+ },
+ {
+  "id": "S8P2",
+  "scene": 8,
+  "title": "Seven Hours",
+  "caption": "\"I met him. I think. Or maybe I dreamed it. I can't—I can't tell anymore. If you're listening to this... if I'm listening to this... don't trust—\"",
+  "media": "/hunted/gif/gif-19.mp4",
+  "still": true
+ },
+ {
+  "id": "S8P3",
+  "scene": 8,
+  "title": "Seven Hours",
+  "caption": "It was still warm. / Like someone had just put it there.",
+  "media": "/hunted/gif/gif-20.mp4",
+  "still": false
+ },
+ {
+  "id": "S8P4",
+  "scene": 8,
+  "title": "Seven Hours",
+  "caption": "Threw the card as hard as I could.",
+  "media": "/hunted/gif/gif-21.mp4",
+  "still": false
+ },
+ {
+  "id": "S8P5",
+  "scene": 8,
+  "title": "Seven Hours",
+  "caption": "Fear was good. / Fear meant the hook was setting.",
+  "media": "/hunted/gif/gif-21.mp4",
+  "still": true
+ },
+ {
+  "id": "S9P1",
+  "scene": 9,
+  "title": "VFW Post 720",
+  "caption": "VETERAN NETWORKING EVENT / Saturday, February 15th — 6:00 PM / VFW Post 720",
+  "media": "/hunted/gif/gif-21.mp4",
+  "still": true
+ },
+ {
+  "id": "S9P2",
+  "scene": 9,
+  "title": "VFW Post 720",
+  "caption": "That afternoon, my phone rang.",
+  "media": "/hunted/gif/gif-22.mp4",
+  "still": false
+ },
+ {
+  "id": "S9P3",
+  "scene": 9,
+  "title": "VFW Post 720",
+  "caption": "The hall was loud.",
+  "media": "/hunted/gif/gif-23.mp4",
+  "still": false
+ },
+ {
+  "id": "S9P4",
+  "scene": 9,
+  "title": "VFW Post 720",
+  "caption": "BOOM.",
+  "media": "/hunted/gif/gif-24.mp4",
+  "still": false
+ },
+ {
+  "id": "S9P5",
+  "scene": 9,
+  "title": "VFW Post 720",
+  "caption": "The road. The Humvee. The flash of light.",
+  "media": "/hunted/gif/gif-25.mp4",
+  "still": false
+ },
+ {
+  "id": "S9P6",
+  "scene": 9,
+  "title": "VFW Post 720",
+  "caption": "\"Hey brother,\" a voice said. \"You okay?\"",
+  "media": "/hunted/gif/gif-25.mp4",
+  "still": true
+ },
+ {
+  "id": "S10P1",
+  "scene": 10,
+  "title": "Just Breathe",
+  "caption": "\"Take your time,\" he said. \"You're safe. Just breathe.\"",
+  "media": "/hunted/gif/gif-26.mp4",
+  "still": false
+ },
+ {
+  "id": "S10P2",
+  "scene": 10,
+  "title": "Just Breathe",
+  "caption": "He pulled me to my feet. Steady. Strong.",
+  "media": "/hunted/gif/gif-27.mp4",
+  "still": false
+ },
+ {
+  "id": "S10P3",
+  "scene": 10,
+  "title": "Just Breathe",
+  "caption": "\"You want to get out of here?\" he asked. \"There's a coffee shop down the street. Quieter. Easier to breathe.\"",
+  "media": "/hunted/gif/gif-27.mp4",
+  "still": true
+ },
+ {
+  "id": "S10P4",
+  "scene": 10,
+  "title": "Just Breathe",
+  "caption": "He started walking toward the parking lot. / I followed.",
+  "media": "/hunted/gif/gif-28.mp4",
+  "still": false
+ },
+ {
+  "id": "S11P1",
+  "scene": 11,
+  "title": "Skull",
+  "caption": "\"Skull,\" he said.",
+  "media": "/hunted/gif/gif-29.mp4",
+  "still": false
+ },
+ {
+  "id": "S11P2",
+  "scene": 11,
+  "title": "Skull",
+  "caption": "\"One deployment, I had twelve sets,\" he said. \"Guys started calling me Skull. Death's assistant. The tag collector. It stuck.\"",
+  "media": "/hunted/gif/gif-29.mp4",
+  "still": true
+ },
+ {
+  "id": "S11P3",
+  "scene": 11,
+  "title": "Skull",
+  "caption": "480-555-0147. / The same number.",
+  "media": "/hunted/gif/gif-29.mp4",
+  "still": true
+ },
+ {
+  "id": "S11P4",
+  "scene": 11,
+  "title": "Skull",
+  "caption": "\"If we're going to be friends, you should know—I remember the ones no one else does.\"",
+  "media": "/hunted/gif/gif-30.mp4",
+  "still": false
+ },
+ {
+  "id": "S12P1",
+  "scene": 12,
+  "title": "Coffee and Lies",
+  "caption": "Postino. 3939 E Camelback Rd. 12:30. See you there.",
+  "media": "/hunted/gif/gif-31.mp4",
+  "still": false
+ },
+ {
+  "id": "S12P2",
+  "scene": 12,
+  "title": "Coffee and Lies",
+  "caption": "What if he'd been watching me the whole time?",
+  "media": "/hunted/gif/gif-32.mp4",
+  "still": false
+ },
+ {
+  "id": "S12P3",
+  "scene": 12,
+  "title": "Coffee and Lies",
+  "caption": "\"Liar,\" he said. Gently.",
+  "media": "/hunted/gif/gif-32.mp4",
+  "still": true
+ },
+ {
+  "id": "S12P4",
+  "scene": 12,
+  "title": "Coffee and Lies",
+  "caption": "\"You're better off without them,\" he said. Simply.",
+  "media": "/hunted/gif/gif-32.mp4",
+  "still": true
+ },
+ {
+  "id": "S12P5",
+  "scene": 12,
+  "title": "Coffee and Lies",
+  "caption": "I took the bills. / Hated myself for it.",
+  "media": "/hunted/gif/gif-32.mp4",
+  "still": true
+ }
+]
