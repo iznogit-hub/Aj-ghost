@@ -15,7 +15,8 @@ import {
     Maximize2,
     Film,
     Volume2,
-    VolumeX
+    VolumeX,
+    ChevronDown
 } from "lucide-react";
 import { CINEMA_ACTS, ALL_FEATURED_SCENES, CinemaScene } from "@/data/cinemaScenes";
 
@@ -505,6 +506,23 @@ export default function Hero() {
                         >
                             Or claim HUNTED instantly on BookFunnel &rarr;
                         </a>
+                    </div>
+
+                    {/* Animated Scroll Down Arrow */}
+                    <div className="mt-2 flex justify-center">
+                        <motion.a
+                            href="#reviews"
+                            className="inline-flex flex-col items-center text-gold-400/60 hover:text-gold-300 transition-colors group cursor-pointer"
+                            aria-label="Scroll down to explore"
+                        >
+                            <motion.div
+                                animate={{ y: [0, 5, 0] }}
+                                transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+                                className="flex flex-col items-center"
+                            >
+                                <ChevronDown size={18} className="group-hover:scale-110 transition-transform" />
+                            </motion.div>
+                        </motion.a>
                     </div>
                 </div>
             </div>
