@@ -149,4 +149,38 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
   }
+
+  /* --- CINEMA POST-PROCESSING STACK --- */
+  /* 1. Analog 35mm Celluloid Grain (cancels out digital macroblocks and banding) */
+  .cinema-grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.75'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  /* 2. Comic / CRT Micro-Scanlines (smoothes vertical pixel stepping) */
+  .cinema-scanlines {
+    background: repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 2px,
+      rgba(3, 10, 26, 0.35) 2px,
+      rgba(3, 10, 26, 0.35) 4px
+    );
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+
+  /* 3. Graphic Novel Halftone Matrix (turns low resolution into deliberate comic print texture) */
+  .cinema-halftone {
+    background-image: radial-gradient(rgba(212, 168, 39, 0.15) 1px, transparent 1px);
+    background-size: 3px 3px;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  /* 4. Film Noir Media Grade (crushes muddy gray noise into deep inky black) */
+  .cinema-media-grade {
+    filter: contrast(122%) brightness(88%) saturate(82%);
+  }
 }

@@ -15,7 +15,8 @@ import {
     Maximize2,
     Film,
     Volume2,
-    VolumeX
+    VolumeX,
+    Sparkles
 } from "lucide-react";
 import { CINEMA_ACTS, ALL_FEATURED_SCENES, CinemaScene } from "@/data/cinemaScenes";
 
@@ -33,6 +34,7 @@ export default function Hero() {
     const [isPlaying, setIsPlaying] = useState(true);
     const [isAudioPlaying, setIsAudioPlaying] = useState(false);
     const [viewMode, setViewMode] = useState<"comic" | "cinema">("comic");
+    const [postProcessEnabled, setPostProcessEnabled] = useState(true);
     const [timecodeSeconds, setTimecodeSeconds] = useState(134); // starts around 00:02:14
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -148,39 +150,51 @@ export default function Hero() {
                         className="absolute inset-0 w-full h-full"
                     >
                         {/* Mobile: 9:16 Full Screen Direct Cover */}
-                        <div className="md:hidden absolute inset-0 w-full h-full">
+                        <div className="md:hidden absolute inset-0 w-full h-full overflow-hidden">
                             <img
                                 src={activeScene.gifSrc}
                                 alt={activeScene.title}
-                                className="w-full h-full object-cover object-center scale-[1.03]"
+                                className={`w-full h-full object-cover object-center scale-[1.03] transition-all duration-700 ${
+                                    postProcessEnabled ? "cinema-media-grade" : ""
+                                }`}
                                 loading="eager"
                             />
+
+                            {/* Mobile Post-Processing Layers (Smooths low-res pixels & banding) */}
+                            {postProcessEnabled && (
+                                <>
+                                    {/* 35mm Analog Film Grain */}
+                                    <div className="absolute inset-0 cinema-grain opacity-40" />
+                                    {/* Comic / CRT Micro-Scanlines */}
+                                    <div className="absolute inset-0 cinema-scanlines opacity-35" />
+                                    {/* Graphic Novel Halftone Matrix */}
+                                    <div className="absolute inset-0 cinema-halftone opacity-30" />
+                                </>
+                            )}
+
                             {/* Mobile Comic Texture & Darkness Vignette */}
                             <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-navy-950/80" />
-                            <div className="absolute inset-0 bg-radial-vignette opacity-75" />
+                            <div className="absolute inset-0 bg-radial-vignette opacity-80" />
                         </div>
 
                         {/* Desktop: Ambient Blurred Backdrop */}
-                        <div className="hidden md:block absolute inset-0 w-full h-full">
+                        <div className="hidden md:block absolute inset-0 w-full h-full overflow-hidden">
                             <img
                                 src={activeScene.gifSrc}
                                 alt={activeScene.title}
-                                className="w-full h-full object-cover object-center filter blur-xl scale-110 opacity-30 brightness-50"
+                                className={`w-full h-full object-cover object-center filter blur-2xl scale-125 opacity-35 brightness-60 transition-all duration-700 ${
+                                    postProcessEnabled ? "cinema-media-grade" : ""
+                                }`}
                             />
-                            <div className="absolute inset-0 bg-navy-950/80" />
+                            {/* Desktop Ambient Grain */}
+                            {postProcessEnabled && (
+                                <div className="absolute inset-0 cinema-grain opacity-25" />
+                            )}
+                            <div className="absolute inset-0 bg-navy-950/85" />
                             <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950" />
                         </div>
                     </motion.div>
                 </AnimatePresence>
-
-                {/* Subtle Film Grain Mesh Overlay */}
-                <div 
-                    className="absolute inset-0 opacity-[0.035] pointer-events-none"
-                    style={{
-                        backgroundImage: `radial-gradient(#ffffff 1px, transparent 1px)`,
-                        backgroundSize: "3px 3px",
-                    }}
-                />
 
                 {/* Golden Anamorphic Atmospheric Glow */}
                 <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl pointer-events-none" />
@@ -208,8 +222,24 @@ export default function Hero() {
                     </div>
                 </div>
 
-                {/* Center / Right: Act Selector, Narration Audio & Controls */}
+                {/* Center / Right: Act Selector, Post-Processing FX, Narration Audio & Controls */}
                 <div className="flex items-center gap-2">
+                    {/* Post-Processing Shaders Toggle (35mm Grain & Scanlines) */}
+                    <button
+                        onClick={() => setPostProcessEnabled(!postProcessEnabled)}
+                        className={`flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-mono border backdrop-blur-md transition-all duration-300 ${
+                            postProcessEnabled
+                                ? "bg-navy-900/90 border-gold-400/60 text-gold-300 shadow-sm shadow-gold-400/20"
+                                : "bg-navy-950/70 border-white/20 text-white/40 hover:text-white/70"
+                        }`}
+                        title={postProcessEnabled ? "Cinema Post-Processing: Active" : "Cinema Post-Processing: Raw"}
+                    >
+                        <Sparkles size={13} className={postProcessEnabled ? "text-gold-400 animate-pulse" : "text-white/40"} />
+                        <span className="hidden sm:inline">
+                            {postProcessEnabled ? "FX: 35mm Noir" : "FX: Raw"}
+                        </span>
+                    </button>
+
                     {/* Narration Audio Button */}
                     <button
                         onClick={toggleAudio}
@@ -301,21 +331,41 @@ export default function Hero() {
                                         <img
                                             src={activeScene.subGifs?.[0] || activeScene.gifSrc}
                                             alt=""
-                                            className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
+                                            className={`w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500 ${
+                                                postProcessEnabled ? "cinema-media-grade" : ""
+                                            }`}
                                         />
-                                        <div className="absolute inset-0 bg-navy-950/40 group-hover:bg-transparent transition duration-500" />
+                                        {postProcessEnabled && (
+                                            <>
+                                                <div className="absolute inset-0 cinema-grain opacity-25 pointer-events-none" />
+                                                <div className="absolute inset-0 cinema-scanlines opacity-20 pointer-events-none" />
+                                            </>
+                                        )}
+                                        <div className="absolute inset-0 bg-navy-950/40 group-hover:bg-transparent transition duration-500 pointer-events-none" />
                                         <div className="absolute top-2 left-2 px-2 py-0.5 bg-navy-950/90 border border-gold-400/30 rounded text-[9px] font-mono text-gold-400 uppercase tracking-widest">
                                             PANEL 01
                                         </div>
                                     </div>
 
                                     {/* Center Dominant Hero Panel */}
-                                    <div className="col-span-6 aspect-video relative rounded-2xl overflow-hidden border-2 border-gold-400/40 bg-navy-900 shadow-[0_0_50px_rgba(212,168,39,0.15)] ring-1 ring-gold-400/20 group">
+                                    <div className="col-span-6 aspect-video relative rounded-2xl overflow-hidden border-2 border-gold-400/40 bg-navy-900 shadow-[0_0_50px_rgba(212,168,39,0.18)] ring-1 ring-gold-400/20 group">
                                         <img
                                             src={activeScene.gifSrc}
                                             alt={activeScene.title}
-                                            className="w-full h-full object-cover object-center"
+                                            className={`w-full h-full object-cover object-center transition-all duration-700 ${
+                                                postProcessEnabled ? "cinema-media-grade" : ""
+                                            }`}
                                         />
+
+                                        {/* Center Panel Post-Processing Shaders */}
+                                        {postProcessEnabled && (
+                                            <>
+                                                <div className="absolute inset-0 cinema-grain opacity-35 pointer-events-none" />
+                                                <div className="absolute inset-0 cinema-scanlines opacity-25 pointer-events-none" />
+                                                <div className="absolute inset-0 cinema-halftone opacity-20 pointer-events-none" />
+                                            </>
+                                        )}
+
                                         {/* Cinema Letterbox Overlay Inside Panel */}
                                         <div className="absolute inset-0 pointer-events-none border-t-8 border-b-8 border-navy-950/70" />
                                         
@@ -338,9 +388,17 @@ export default function Hero() {
                                         <img
                                             src={activeScene.subGifs?.[1] || activeScene.gifSrc}
                                             alt=""
-                                            className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
+                                            className={`w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500 ${
+                                                postProcessEnabled ? "cinema-media-grade" : ""
+                                            }`}
                                         />
-                                        <div className="absolute inset-0 bg-navy-950/40 group-hover:bg-transparent transition duration-500" />
+                                        {postProcessEnabled && (
+                                            <>
+                                                <div className="absolute inset-0 cinema-grain opacity-25 pointer-events-none" />
+                                                <div className="absolute inset-0 cinema-scanlines opacity-20 pointer-events-none" />
+                                            </>
+                                        )}
+                                        <div className="absolute inset-0 bg-navy-950/40 group-hover:bg-transparent transition duration-500 pointer-events-none" />
                                         <div className="absolute top-2 right-2 px-2 py-0.5 bg-navy-950/90 border border-gold-400/30 rounded text-[9px] font-mono text-gold-400 uppercase tracking-widest">
                                             PANEL 03
                                         </div>
@@ -352,8 +410,18 @@ export default function Hero() {
                                     <img
                                         src={activeScene.gifSrc}
                                         alt={activeScene.title}
-                                        className="w-full h-full object-cover object-center"
+                                        className={`w-full h-full object-cover object-center transition-all duration-700 ${
+                                            postProcessEnabled ? "cinema-media-grade" : ""
+                                        }`}
                                     />
+                                    {/* Post-Processing Overlays */}
+                                    {postProcessEnabled && (
+                                        <>
+                                            <div className="absolute inset-0 cinema-grain opacity-35 pointer-events-none" />
+                                            <div className="absolute inset-0 cinema-scanlines opacity-30 pointer-events-none" />
+                                            <div className="absolute inset-0 cinema-halftone opacity-25 pointer-events-none" />
+                                        </>
+                                    )}
                                     <div className="absolute top-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-gold-400/70 border-b border-gold-400/20">
                                         <span>PROD: AJ GHOST</span>
                                         <span>ANAMORPHIC 2.35:1</span>
@@ -508,7 +576,9 @@ export default function Hero() {
                                     <img
                                         src={scene.gifSrc}
                                         alt={scene.title}
-                                        className="w-full h-full object-cover object-center"
+                                        className={`w-full h-full object-cover object-center ${
+                                            postProcessEnabled ? "cinema-media-grade" : ""
+                                        }`}
                                     />
                                     <span className="absolute bottom-0 inset-x-0 bg-navy-950/90 text-[8px] font-mono text-center text-white/80 py-0.2">
                                         {idx + 1}
