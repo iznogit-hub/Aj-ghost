@@ -21,6 +21,49 @@ import {
 import { CINEMA_ACTS, ALL_FEATURED_SCENES, CinemaScene } from "@/data/cinemaScenes";
 
 const BOOKFUNNEL_CTA = "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost&utm_medium=hero&utm_campaign=hunted_cinema&utm_content=cta";
+const END_CARD_HREF = "https://dl.bookfunnel.com/j4e3jsxfr6";
+const STEP_COUNT = ALL_FEATURED_SCENES.length + 1;
+
+function ComicClip({
+    src,
+    poster,
+    className,
+    eager,
+}: {
+    src: string;
+    poster?: string;
+    className?: string;
+    eager?: boolean;
+}) {
+    return (
+        <video
+            src={src}
+            poster={poster}
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload={eager ? "auto" : "metadata"}
+            className={className}
+        />
+    );
+}
+
+function EndCard() {
+    return (
+        <div className="w-full max-w-3xl mx-auto rounded-2xl border-2 border-gold-400/60 bg-navy-950/90 px-6 py-10 md:py-14 text-center shadow-2xl">
+            <p className="font-serif text-2xl md:text-4xl text-white">He knows where you are. He always has.</p>
+            <a
+                href={END_CARD_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center justify-center h-12 rounded-full border border-gold-400 bg-gold-400 px-6 font-semibold text-navy-950 shadow-md shadow-gold-400/20 transition hover:border-gold-300 hover:bg-gold-300"
+            >
+                GET HUNTED FREE
+            </a>
+        </div>
+    );
+}
 
 export default function Hero() {
     // Form State
@@ -38,7 +81,9 @@ export default function Hero() {
 
     const audioRef = useRef<HTMLAudioElement | null>(null);
     const autoAdvanceTimer = useRef<NodeJS.Timeout | null>(null);
-    const activeScene: CinemaScene = ALL_FEATURED_SCENES[activeSceneIndex] || ALL_FEATURED_SCENES[0];
+    const onEndCard = activeSceneIndex >= ALL_FEATURED_SCENES.length;
+    const activeScene: CinemaScene = ALL_FEATURED_SCENES[onEndCard ? ALL_FEATURED_SCENES.length - 1 : activeSceneIndex] || ALL_FEATURED_SCENES[0];
+    const eagerMedia = !onEndCard && activeScene.act === 1;
 
     // Auto-advance scenes every 6.5 seconds when playing
     useEffect(() => {
@@ -48,7 +93,7 @@ export default function Hero() {
         }
 
         autoAdvanceTimer.current = setInterval(() => {
-            setActiveSceneIndex((prev) => (prev + 1) % ALL_FEATURED_SCENES.length);
+            setActiveSceneIndex((prev) => (prev + 1) % STEP_COUNT);
         }, 6500);
 
         return () => {
@@ -109,11 +154,11 @@ export default function Hero() {
     };
 
     const handlePrev = () => {
-        setActiveSceneIndex((prev) => (prev === 0 ? ALL_FEATURED_SCENES.length - 1 : prev - 1));
+        setActiveSceneIndex((prev) => (prev - 1 + STEP_COUNT) % STEP_COUNT);
     };
 
     const handleNext = () => {
-        setActiveSceneIndex((prev) => (prev + 1) % ALL_FEATURED_SCENES.length);
+        setActiveSceneIndex((prev) => (prev + 1) % STEP_COUNT);
     };
 
     const selectAct = (actNumber: number) => {
@@ -229,11 +274,11 @@ export default function Hero() {
                             transition={{ duration: 0.8 }}
                             className="absolute inset-0 w-full h-full overflow-hidden"
                         >
-                            <img
+                            <ComicClip
                                 src={activeScene.gifSrc}
-                                alt={activeScene.title}
+                                poster={activeScene.poster}
+                                eager={eagerMedia}
                                 className={`w-full h-full object-cover object-center scale-[1.03] transition-all duration-700 cinema-media-grade${activeScene.still ? " brightness-75 saturate-50" : ""}`}
-                                loading="eager"
                             />
 
                             {/* Mobile Post-Processing Overlays (Smoothes low-res pixels & banding directly on top of mobile view) */}
@@ -268,9 +313,9 @@ export default function Hero() {
 
                     <div className="hidden sm:inline-flex items-center gap-2 py-1 px-3 bg-navy-900/70 border border-gold-400/20 rounded-full backdrop-blur-md text-xs font-mono text-white/70">
                         <Film size={12} className="text-gold-400" />
-                        <span>SCENE {activeSceneIndex + 1}/{ALL_FEATURED_SCENES.length}</span>
+                        <span>{onEndCard ? "END" : `SCENE ${activeSceneIndex + 1}/${ALL_FEATURED_SCENES.length}`}</span>
                         <span className="text-gold-400/50">//</span>
-                        <span className="text-gold-300 font-semibold">{activeScene.tag}</span>
+                        <span className="text-gold-300 font-semibold">{onEndCard ? "END" : activeScene.tag}</span>
                     </div>
                 </div>
 
@@ -367,17 +412,19 @@ export default function Hero() {
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 my-auto flex flex-col items-center justify-center">
 
                 {/* --- DESKTOP VIEW: AUTHENTIC COMIC BOOK PANELS SPREAD --- */}
-                <div className="hidden md:block w-full max-w-6xl xl:max-w-7xl">
+                <div className="hidden md:block w-full max-w-6xl xl:max-w-7xl [@media(max-height:860px)]:max-w-5xl">
                     <AnimatePresence mode="wait">
                         <motion.div
-                            key={`${activeScene.id}-${viewMode}`}
+                            key={`${onEndCard ? "end" : activeScene.id}-${viewMode}`}
                             initial={{ opacity: 0, y: 15 }}
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -15 }}
                             transition={{ duration: 0.5, ease: "easeOut" }}
                             className="w-full flex flex-col items-center"
                         >
-                            {viewMode === "comic" ? (
+                            {onEndCard ? (
+                                <EndCard />
+                            ) : viewMode === "comic" ? (
                                 /* --- 3-PANEL GRAPHIC NOVEL COMIC BOOK SPREAD --- */
                                 <div className="w-full flex flex-col">
                                     {/* Graphic Novel Top Ribbon */}
@@ -386,7 +433,7 @@ export default function Hero() {
                                             <span className="px-2 py-0.5 bg-gold-400 text-navy-950 font-mono text-[10px] font-black uppercase tracking-widest rounded-sm shadow-md">
                                                 ISSUE #01 // ACT {activeScene.act}
                                             </span>
-                                            <span className="font-mono text-xs text-white/70 font-semibold tracking-wider">
+                                            <span className="whitespace-nowrap font-mono text-xs text-white/70 font-semibold tracking-wider">
                                                 {activeScene.actName.toUpperCase()}
                                             </span>
                                         </div>
@@ -402,9 +449,10 @@ export default function Hero() {
                                         {/* PANEL 1: LEFT FLANKING (Vertical Graphic Novel Panel) */}
                                         <div className="col-span-3 relative rounded-xl p-1 bg-navy-950 border-2 border-gold-400/30 ring-1 ring-black/80 shadow-[0_12px_35px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-gold-400/70 hover:scale-[1.02] overflow-hidden flex flex-col">
                                             <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg bg-navy-900">
-                                                <img
+                                                <ComicClip
                                                     src={activeScene.subGifs?.[0] || activeScene.gifSrc}
-                                                    alt=""
+                                                    poster={activeScene.subPosters?.[0] || activeScene.poster}
+                                                    eager={eagerMedia}
                                                     className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-80 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
                                                 />
                                                 <div className="absolute inset-0 bg-navy-950/30 group-hover:bg-transparent transition duration-500 pointer-events-none" />
@@ -415,7 +463,7 @@ export default function Hero() {
                                                 </div>
 
                                                 {/* Mini Comic Caption */}
-                                                <div className="absolute bottom-2 inset-x-2 bg-navy-950/90 border border-gold-400/30 p-1.5 rounded text-[10px] font-serif text-white/80 italic leading-tight pointer-events-none">
+                                                <div className="absolute bottom-2 inset-x-2 max-h-[58%] overflow-hidden bg-navy-950/90 border border-gold-400/30 p-2 rounded text-sm font-serif text-white/90 italic leading-snug line-clamp-6 break-words pointer-events-none">
                                                     {activeScene.flankText?.[0]}
                                                 </div>
                                             </div>
@@ -424,9 +472,10 @@ export default function Hero() {
                                         {/* PANEL 2: CENTER HEROIC SPLASH (Dominant Widescreen Action Splash) */}
                                         <div className="col-span-6 relative rounded-2xl p-1.5 bg-navy-950 border-2 border-gold-400/60 ring-2 ring-gold-400/20 shadow-[0_15px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(212,168,39,0.18)] group transition-all duration-300 hover:border-gold-400 hover:scale-[1.01] overflow-hidden flex flex-col">
                                             <div className="relative w-full aspect-[16/10] overflow-hidden rounded-xl bg-navy-900">
-                                                <img
+                                                <ComicClip
                                                     src={activeScene.gifSrc}
-                                                    alt={activeScene.title}
+                                                    poster={activeScene.poster}
+                                                    eager={eagerMedia}
                                                     className={`w-full h-full object-cover object-center transition-all duration-500${activeScene.still ? " brightness-75 saturate-50" : ""}`}
                                                 />
 
@@ -444,19 +493,19 @@ export default function Hero() {
                                                 </div>
 
                                                 {/* Comic Narrative Caption Box */}
-                                                <div className="absolute bottom-3 left-3 right-3 bg-navy-950/95 backdrop-blur-md border border-gold-400/50 p-3 rounded-lg shadow-2xl">
-                                                    <div className="flex items-center justify-between mb-1">
-                                                        <span className="font-mono text-[10px] text-gold-400 font-bold tracking-widest uppercase">
+                                                <div className="absolute bottom-2 left-2 right-2 max-h-[38%] overflow-hidden bg-navy-950/95 backdrop-blur-md border border-gold-400/50 p-2 rounded-lg shadow-2xl">
+                                                    <div className="flex items-center justify-between gap-2 mb-1 min-w-0">
+                                                        <span className="min-w-0 truncate font-mono text-[10px] text-gold-400 font-bold tracking-widest uppercase">
                                                             {activeScene.actName} // {activeScene.tag}
                                                         </span>
-                                                        <span className="font-mono text-[10px] text-white/50">{activeScene.timecode}</span>
+                                                        <span className="shrink-0 font-mono text-[10px] text-white/50">{activeScene.timecode}</span>
                                                     </div>
                                                     {activeScene.bubble ? (
-                                                        <p className="font-serif text-sm md:text-base text-white leading-snug">
+                                                        <p className="font-serif text-sm text-white leading-snug line-clamp-2">
                                                             {activeScene.bubble}
                                                         </p>
                                                     ) : null}
-                                                    <p className="font-serif text-sm md:text-base text-white/95 italic leading-snug">
+                                                    <p className="font-serif text-sm text-white/95 italic leading-snug line-clamp-4 break-words">
                                                         "{activeScene.caption}"
                                                     </p>
                                                 </div>
@@ -466,9 +515,10 @@ export default function Hero() {
                                         {/* PANEL 3: RIGHT FLANKING (Vertical Graphic Novel Panel) */}
                                         <div className="col-span-3 relative rounded-xl p-1 bg-navy-950 border-2 border-gold-400/30 ring-1 ring-black/80 shadow-[0_12px_35px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-gold-400/70 hover:scale-[1.02] overflow-hidden flex flex-col">
                                             <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg bg-navy-900">
-                                                <img
+                                                <ComicClip
                                                     src={activeScene.subGifs?.[1] || activeScene.gifSrc}
-                                                    alt=""
+                                                    poster={activeScene.subPosters?.[1] || activeScene.poster}
+                                                    eager={eagerMedia}
                                                     className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-80 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
                                                 />
                                                 <div className="absolute inset-0 bg-navy-950/30 group-hover:bg-transparent transition duration-500 pointer-events-none" />
@@ -479,7 +529,7 @@ export default function Hero() {
                                                 </div>
 
                                                 {/* Mini Comic Caption */}
-                                                <div className="absolute bottom-2 inset-x-2 bg-navy-950/90 border border-gold-400/30 p-1.5 rounded text-[10px] font-serif text-white/80 italic leading-tight text-right pointer-events-none">
+                                                <div className="absolute bottom-2 inset-x-2 max-h-[58%] overflow-hidden bg-navy-950/90 border border-gold-400/30 p-2 rounded text-sm font-serif text-white/90 italic leading-snug line-clamp-6 break-words text-right pointer-events-none">
                                                     {activeScene.flankText?.[1]}
                                                 </div>
                                             </div>
@@ -490,9 +540,10 @@ export default function Hero() {
                                 /* --- WIDESCREEN CINEMA THEATER VIEW --- */
                                 <div className="w-full max-w-5xl xl:max-w-6xl aspect-[2.35/1] relative rounded-2xl p-1 bg-navy-950 border-2 border-gold-400/50 shadow-2xl overflow-hidden">
                                     <div className="relative w-full h-full overflow-hidden rounded-xl">
-                                        <img
+                                        <ComicClip
                                             src={activeScene.gifSrc}
-                                            alt={activeScene.title}
+                                            poster={activeScene.poster}
+                                            eager={eagerMedia}
                                             className={`w-full h-full object-cover object-center transition-all duration-500${activeScene.still ? " brightness-75 saturate-50" : ""}`}
                                         />
                                         <div className="absolute top-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-gold-400/70 border-b border-gold-400/20">
@@ -513,7 +564,11 @@ export default function Hero() {
 
                 {/* --- MOBILE VIEW: 9:16 SCREEN TAKEOVER CONTENT --- */}
                 <div className="md:hidden w-full flex flex-col items-center justify-center text-center px-2 py-4">
-                    {/* Comic Caption Box Overlay */}
+                    {onEndCard ? (
+                        <div className="mb-4 w-full">
+                            <EndCard />
+                        </div>
+                    ) : (
                     <div className="w-full bg-navy-900/90 backdrop-blur-xl border border-gold-400/40 rounded-xl p-3.5 shadow-2xl mb-4 text-left">
                         <div className="flex items-center justify-between border-b border-gold-400/20 pb-1.5 mb-2">
                             <span className="font-mono text-[10px] text-gold-400 font-bold uppercase tracking-widest">
@@ -526,10 +581,11 @@ export default function Hero() {
                                 {activeScene.bubble}
                             </p>
                         ) : null}
-                        <p className="font-serif text-sm text-white/95 leading-snug italic">
+                        <p className="font-serif text-sm text-white/95 leading-snug italic break-words">
                             "{activeScene.caption}"
                         </p>
                     </div>
+                    )}
 
                     {/* Touch Swipe / Navigation Indicator */}
                     <div className="flex items-center justify-center gap-4 text-xs font-mono text-gold-300">
@@ -540,7 +596,7 @@ export default function Hero() {
                         >
                             <ChevronLeft size={16} />
                         </button>
-                        <span>SCENE {activeSceneIndex + 1} OF {ALL_FEATURED_SCENES.length}</span>
+                        <span>{onEndCard ? "END" : `SCENE ${activeSceneIndex + 1} OF ${ALL_FEATURED_SCENES.length}`}</span>
                         <button 
                             onClick={handleNext}
                             className="p-1.5 rounded-full bg-navy-900/80 border border-gold-400/30 active:scale-95 transition"
@@ -552,7 +608,7 @@ export default function Hero() {
                 </div>
 
                 {/* --- FOREGROUND HERO HEADLINE & EMAIL CAPTURE --- */}
-                <div className="w-full max-w-2xl mt-4 md:mt-6 text-center">
+                <div className="w-full max-w-2xl mt-5 md:mt-8 text-center">
                     <h1 className="text-2xl sm:text-4xl md:text-5xl font-serif font-bold tracking-tight text-white drop-shadow-md">
                         Every mind has a{" "}
                         <span className="text-gold-gradient">fracture point.</span>
@@ -670,8 +726,10 @@ export default function Hero() {
                                     }`}
                                 >
                                     <img
-                                        src={scene.gifSrc}
-                                        alt={scene.title}
+                                        src={scene.poster}
+                                        alt=""
+                                        loading={scene.act === 1 ? "eager" : "lazy"}
+                                        decoding="async"
                                         className="w-full h-full object-cover object-center"
                                     />
                                     <span className="absolute bottom-0 inset-x-0 bg-navy-950/90 text-[8px] font-mono text-center text-white/80 py-0.2">
