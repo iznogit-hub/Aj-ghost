@@ -64,6 +64,44 @@ export default function Hero() {
         return () => clearInterval(timer);
     }, []);
 
+    // Autoplay Trailer Narration (Attempts immediate play; triggers on first user interaction if blocked by browser policy)
+    useEffect(() => {
+        const audio = audioRef.current;
+        if (!audio) return;
+
+        const attemptPlay = () => {
+            audio.play()
+                .then(() => {
+                    setIsAudioPlaying(true);
+                    cleanup();
+                })
+                .catch(() => {
+                    // Modern browser autoplay restrictions: will play on first interaction
+                    setIsAudioPlaying(false);
+                });
+        };
+
+        const cleanup = () => {
+            window.removeEventListener("click", attemptPlay);
+            window.removeEventListener("touchstart", attemptPlay);
+            window.removeEventListener("scroll", attemptPlay);
+            window.removeEventListener("keydown", attemptPlay);
+        };
+
+        // 1. Direct autoplay attempt on mount
+        attemptPlay();
+
+        // 2. Fallback listeners for first touch/click/scroll/keypress
+        window.addEventListener("click", attemptPlay, { once: true });
+        window.addEventListener("touchstart", attemptPlay, { once: true });
+        window.addEventListener("scroll", attemptPlay, { once: true });
+        window.addEventListener("keydown", attemptPlay, { once: true });
+
+        return () => {
+            cleanup();
+        };
+    }, []);
+
     const formatTimecode = (totalSec: number) => {
         const mins = String(Math.floor((totalSec % 3600) / 60)).padStart(2, "0");
         const secs = String(totalSec % 60).padStart(2, "0");
@@ -131,7 +169,9 @@ export default function Hero() {
             <audio 
                 ref={audioRef} 
                 src="/hunted/audio/hunted_hero_narration.mp3" 
-                preload="none" 
+                preload="auto" 
+                autoPlay
+                playsInline
                 onEnded={() => setIsAudioPlaying(false)} 
             />
 
@@ -236,18 +276,36 @@ export default function Hero() {
 
                 {/* Center / Right: Act Selector, Narration Audio & Controls */}
                 <div className="flex items-center gap-2">
-                    {/* Narration Audio Button */}
+                    {/* Prominently Highlighted Narration Audio Button */}
                     <button
                         onClick={toggleAudio}
-                        className={`flex items-center gap-1.5 py-1 px-3 rounded-full text-xs font-mono border backdrop-blur-md transition-all duration-300 ${
+                        className={`group relative flex items-center gap-2 py-1.5 px-3.5 rounded-full text-xs font-mono border backdrop-blur-xl transition-all duration-300 ${
                             isAudioPlaying
-                                ? "bg-gold-400 text-navy-950 border-gold-400 font-bold shadow-md shadow-gold-400/25"
-                                : "bg-navy-900/80 border-gold-400/30 text-white/80 hover:text-gold-300 hover:border-gold-400/50"
+                                ? "bg-gold-400 text-navy-950 border-gold-400 font-black shadow-[0_0_25px_rgba(212,168,39,0.55)] ring-2 ring-gold-400/60 scale-[1.02]"
+                                : "bg-gold-400/20 border-gold-400 text-gold-300 font-extrabold shadow-[0_0_20px_rgba(212,168,39,0.3)] ring-2 ring-gold-400/40 hover:bg-gold-400/30 hover:scale-[1.03]"
                         }`}
-                        title={isAudioPlaying ? "Mute Narration" : "Listen to Trailer Narration"}
+                        title={isAudioPlaying ? "Mute Trailer Narration" : "Play Trailer Narration"}
                     >
-                        {isAudioPlaying ? <Volume2 size={13} className="animate-pulse" /> : <VolumeX size={13} />}
-                        <span className="hidden sm:inline">{isAudioPlaying ? "Narration: Playing" : "Trailer Narration"}</span>
+                        {/* Audio Wave / Pulse Indicator */}
+                        {isAudioPlaying ? (
+                            <div className="flex items-end gap-0.5 h-3">
+                                <span className="w-0.5 bg-navy-950 rounded-full animate-pulse h-full" />
+                                <span className="w-0.5 bg-navy-950 rounded-full animate-pulse delay-75 h-2/3" />
+                                <span className="w-0.5 bg-navy-950 rounded-full animate-pulse delay-150 h-5/6" />
+                            </div>
+                        ) : (
+                            <div className="relative flex items-center justify-center">
+                                <Volume2 size={13} className="text-gold-400" />
+                                <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-gold-400 animate-ping opacity-75" />
+                            </div>
+                        )}
+
+                        <span className="tracking-wide uppercase text-[11px]">
+                            {isAudioPlaying ? "Narration Playing" : "▶ Play Narration"}
+                        </span>
+
+                        {/* Pulsing Aura */}
+                        <div className="absolute inset-0 rounded-full bg-gold-400/10 blur-sm pointer-events-none group-hover:bg-gold-400/25 transition duration-300" />
                     </button>
 
                     {/* Desktop Act Pills */}
@@ -308,8 +366,8 @@ export default function Hero() {
                ========================================================================= */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-4 my-auto flex flex-col items-center justify-center">
 
-                {/* --- DESKTOP VIEW: CINEMA COMIC PANELS / TRIPTYCH (Clean, no overlays on each GIF) --- */}
-                <div className="hidden md:block w-full">
+                {/* --- DESKTOP VIEW: AUTHENTIC COMIC BOOK PANELS SPREAD --- */}
+                <div className="hidden md:block w-full max-w-6xl xl:max-w-7xl">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={`${activeScene.id}-${viewMode}`}
@@ -320,75 +378,127 @@ export default function Hero() {
                             className="w-full flex flex-col items-center"
                         >
                             {viewMode === "comic" ? (
-                                /* --- 3-PANEL GRAPHIC NOVEL SPREAD --- */
-                                <div className="w-full grid grid-cols-12 gap-4 items-center">
-                                    {/* Left Flanking Panel (Preceding Action) */}
-                                    <div className="col-span-3 aspect-[16/10] relative rounded-xl overflow-hidden border border-gold-400/20 bg-navy-900/90 shadow-2xl group transition-all duration-500 hover:border-gold-400/60 hover:scale-[1.02]">
-                                        <img
-                                            src={activeScene.subGifs?.[0] || activeScene.gifSrc}
-                                            alt=""
-                                            className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-navy-950/40 group-hover:bg-transparent transition duration-500 pointer-events-none" />
-                                        <div className="absolute top-2 left-2 px-2 py-0.5 bg-navy-950/90 border border-gold-400/30 rounded text-[9px] font-mono text-gold-400 uppercase tracking-widest">
-                                            PANEL 01
+                                /* --- 3-PANEL GRAPHIC NOVEL COMIC BOOK SPREAD --- */
+                                <div className="w-full flex flex-col">
+                                    {/* Graphic Novel Top Ribbon */}
+                                    <div className="flex items-center justify-between w-full mb-2.5 px-1">
+                                        <div className="flex items-center gap-2">
+                                            <span className="px-2 py-0.5 bg-gold-400 text-navy-950 font-mono text-[10px] font-black uppercase tracking-widest rounded-sm shadow-md">
+                                                ISSUE #01 // ACT {activeScene.act}
+                                            </span>
+                                            <span className="font-mono text-xs text-white/70 font-semibold tracking-wider">
+                                                {activeScene.actName.toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <div className="flex items-center gap-3 font-mono text-[11px] text-gold-400/70">
+                                            <span className="hidden lg:inline text-white/40">THE RYAN KANE THRILLERS</span>
+                                            <span className="hidden lg:inline text-white/20">|</span>
+                                            <span className="text-white/80 font-bold">{activeScene.timecode}</span>
                                         </div>
                                     </div>
 
-                                    {/* Center Dominant Hero Panel */}
-                                    <div className="col-span-6 aspect-video relative rounded-2xl overflow-hidden border-2 border-gold-400/40 bg-navy-900 shadow-[0_0_50px_rgba(212,168,39,0.18)] ring-1 ring-gold-400/20 group">
-                                        <img
-                                            src={activeScene.gifSrc}
-                                            alt={activeScene.title}
-                                            className="w-full h-full object-cover object-center transition-all duration-500"
-                                        />
+                                    {/* The 3 Comic Panels Grid */}
+                                    <div className="w-full grid grid-cols-12 gap-3.5 lg:gap-4 items-stretch">
+                                        {/* PANEL 1: LEFT FLANKING (Vertical Graphic Novel Panel) */}
+                                        <div className="col-span-3 relative rounded-xl p-1 bg-navy-950 border-2 border-gold-400/30 ring-1 ring-black/80 shadow-[0_12px_35px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-gold-400/70 hover:scale-[1.02] overflow-hidden flex flex-col">
+                                            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg bg-navy-900">
+                                                <img
+                                                    src={activeScene.subGifs?.[0] || activeScene.gifSrc}
+                                                    alt=""
+                                                    className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-80 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
+                                                />
+                                                <div className="absolute inset-0 bg-navy-950/30 group-hover:bg-transparent transition duration-500 pointer-events-none" />
+                                                
+                                                {/* Comic Badge */}
+                                                <div className="absolute top-2 left-2 px-2 py-0.5 bg-gold-400/90 text-navy-950 rounded-sm text-[9px] font-mono font-bold uppercase tracking-widest shadow-md">
+                                                    PANEL 01
+                                                </div>
 
-                                        {/* Cinema Letterbox Overlay Inside Panel */}
-                                        <div className="absolute inset-0 pointer-events-none border-t-8 border-b-8 border-navy-950/70" />
-                                        
-                                        {/* Comic Narrative Caption Box */}
-                                        <div className="absolute bottom-4 left-4 right-4 bg-navy-950/90 backdrop-blur-md border border-gold-400/40 p-3 rounded-lg shadow-xl">
-                                            <div className="flex items-center justify-between mb-1">
-                                                <span className="font-mono text-[10px] text-gold-400 font-bold tracking-widest uppercase">
-                                                    {activeScene.actName} // {activeScene.title}
-                                                </span>
-                                                <span className="font-mono text-[10px] text-white/50">{activeScene.timecode}</span>
+                                                {/* Mini Comic Caption */}
+                                                <div className="absolute bottom-2 inset-x-2 bg-navy-950/90 border border-gold-400/30 p-1.5 rounded text-[10px] font-serif text-white/80 italic leading-tight pointer-events-none">
+                                                    "Lost time in the corridor..."
+                                                </div>
                                             </div>
-                                            <p className="font-serif text-sm text-white/90 italic leading-snug">
-                                                "{activeScene.caption}"
-                                            </p>
                                         </div>
-                                    </div>
 
-                                    {/* Right Flanking Panel (Following Action) */}
-                                    <div className="col-span-3 aspect-[16/10] relative rounded-xl overflow-hidden border border-gold-400/20 bg-navy-900/90 shadow-2xl group transition-all duration-500 hover:border-gold-400/60 hover:scale-[1.02]">
-                                        <img
-                                            src={activeScene.subGifs?.[1] || activeScene.gifSrc}
-                                            alt=""
-                                            className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-75 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
-                                        />
-                                        <div className="absolute inset-0 bg-navy-950/40 group-hover:bg-transparent transition duration-500 pointer-events-none" />
-                                        <div className="absolute top-2 right-2 px-2 py-0.5 bg-navy-950/90 border border-gold-400/30 rounded text-[9px] font-mono text-gold-400 uppercase tracking-widest">
-                                            PANEL 03
+                                        {/* PANEL 2: CENTER HEROIC SPLASH (Dominant Widescreen Action Splash) */}
+                                        <div className="col-span-6 relative rounded-2xl p-1.5 bg-navy-950 border-2 border-gold-400/60 ring-2 ring-gold-400/20 shadow-[0_15px_50px_rgba(0,0,0,0.9),0_0_30px_rgba(212,168,39,0.18)] group transition-all duration-300 hover:border-gold-400 hover:scale-[1.01] overflow-hidden flex flex-col">
+                                            <div className="relative w-full aspect-[16/10] overflow-hidden rounded-xl bg-navy-900">
+                                                <img
+                                                    src={activeScene.gifSrc}
+                                                    alt={activeScene.title}
+                                                    className="w-full h-full object-cover object-center transition-all duration-500"
+                                                />
+
+                                                {/* Comic Gutter Lines Inside Panel */}
+                                                <div className="absolute inset-0 pointer-events-none border-t-4 border-b-4 border-navy-950/70" />
+                                                
+                                                {/* Heroic Comic Header Badges */}
+                                                <div className="absolute top-3 left-3 flex items-center gap-1.5">
+                                                    <span className="px-2.5 py-0.5 bg-gold-400 text-navy-950 rounded-sm text-[10px] font-mono font-black uppercase tracking-widest shadow-md">
+                                                        SPLASH FRAME
+                                                    </span>
+                                                    <span className="px-2 py-0.5 bg-navy-950/90 border border-gold-400/40 text-gold-300 rounded-sm text-[10px] font-mono">
+                                                        {activeScene.title}
+                                                    </span>
+                                                </div>
+
+                                                {/* Comic Narrative Caption Box */}
+                                                <div className="absolute bottom-3 left-3 right-3 bg-navy-950/95 backdrop-blur-md border border-gold-400/50 p-3 rounded-lg shadow-2xl">
+                                                    <div className="flex items-center justify-between mb-1">
+                                                        <span className="font-mono text-[10px] text-gold-400 font-bold tracking-widest uppercase">
+                                                            {activeScene.actName} // {activeScene.tag}
+                                                        </span>
+                                                        <span className="font-mono text-[10px] text-white/50">{activeScene.timecode}</span>
+                                                    </div>
+                                                    <p className="font-serif text-sm md:text-base text-white/95 italic leading-snug">
+                                                        "{activeScene.caption}"
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* PANEL 3: RIGHT FLANKING (Vertical Graphic Novel Panel) */}
+                                        <div className="col-span-3 relative rounded-xl p-1 bg-navy-950 border-2 border-gold-400/30 ring-1 ring-black/80 shadow-[0_12px_35px_rgba(0,0,0,0.85)] group transition-all duration-300 hover:border-gold-400/70 hover:scale-[1.02] overflow-hidden flex flex-col">
+                                            <div className="relative w-full aspect-[3/4] overflow-hidden rounded-lg bg-navy-900">
+                                                <img
+                                                    src={activeScene.subGifs?.[1] || activeScene.gifSrc}
+                                                    alt=""
+                                                    className="w-full h-full object-cover object-center filter grayscale contrast-125 brightness-80 group-hover:grayscale-0 group-hover:brightness-100 transition duration-500"
+                                                />
+                                                <div className="absolute inset-0 bg-navy-950/30 group-hover:bg-transparent transition duration-500 pointer-events-none" />
+                                                
+                                                {/* Comic Badge */}
+                                                <div className="absolute top-2 right-2 px-2 py-0.5 bg-gold-400/90 text-navy-950 rounded-sm text-[9px] font-mono font-bold uppercase tracking-widest shadow-md">
+                                                    PANEL 03
+                                                </div>
+
+                                                {/* Mini Comic Caption */}
+                                                <div className="absolute bottom-2 inset-x-2 bg-navy-950/90 border border-gold-400/30 p-1.5 rounded text-[10px] font-serif text-white/80 italic leading-tight text-right pointer-events-none">
+                                                    "...the predator counts down."
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             ) : (
                                 /* --- WIDESCREEN CINEMA THEATER VIEW --- */
-                                <div className="w-full max-w-4xl aspect-[2.35/1] relative rounded-2xl overflow-hidden border-2 border-gold-400/40 shadow-2xl bg-navy-950">
-                                    <img
-                                        src={activeScene.gifSrc}
-                                        alt={activeScene.title}
-                                        className="w-full h-full object-cover object-center transition-all duration-500"
-                                    />
-                                    <div className="absolute top-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-gold-400/70 border-b border-gold-400/20">
-                                        <span>PROD: AJ GHOST</span>
-                                        <span>ANAMORPHIC 2.35:1</span>
-                                        <span>{activeScene.timecode}</span>
-                                    </div>
-                                    <div className="absolute bottom-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-white/60 border-t border-gold-400/20">
-                                        <span>{activeScene.title}</span>
-                                        <span className="text-gold-300 italic font-serif">"{activeScene.caption}"</span>
+                                <div className="w-full max-w-5xl xl:max-w-6xl aspect-[2.35/1] relative rounded-2xl p-1 bg-navy-950 border-2 border-gold-400/50 shadow-2xl overflow-hidden">
+                                    <div className="relative w-full h-full overflow-hidden rounded-xl">
+                                        <img
+                                            src={activeScene.gifSrc}
+                                            alt={activeScene.title}
+                                            className="w-full h-full object-cover object-center transition-all duration-500"
+                                        />
+                                        <div className="absolute top-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-gold-400/70 border-b border-gold-400/20">
+                                            <span>PROD: AJ GHOST</span>
+                                            <span>ANAMORPHIC 2.35:1</span>
+                                            <span>{activeScene.timecode}</span>
+                                        </div>
+                                        <div className="absolute bottom-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-white/60 border-t border-gold-400/20">
+                                            <span>{activeScene.title}</span>
+                                            <span className="text-gold-300 italic font-serif">"{activeScene.caption}"</span>
+                                        </div>
                                     </div>
                                 </div>
                             )}
