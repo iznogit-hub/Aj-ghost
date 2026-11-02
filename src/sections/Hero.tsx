@@ -137,20 +137,59 @@ export default function Hero() {
             />
 
             {/* =========================================================================
-                1. BACKGROUND CINEMA CANVAS (Mobile 9:16 Full Screen & Desktop Ambient Fill)
+                1. BACKGROUND CANVAS: Clean Website Background (Desktop) / 9:16 Cinema (Mobile)
                ========================================================================= */}
             <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-                <AnimatePresence mode="wait">
-                    <motion.div
-                        key={activeScene.id}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
-                        transition={{ duration: 0.8 }}
-                        className="absolute inset-0 w-full h-full"
-                    >
-                        {/* Mobile: 9:16 Full Screen Direct Cover */}
-                        <div className="md:hidden absolute inset-0 w-full h-full overflow-hidden">
+                {/* --- DESKTOP: Clean Website Background (NO GIF in background, only in panels) --- */}
+                <div className="hidden md:block absolute inset-0 w-full h-full">
+                    <img
+                        src="/hero-bg.jpg"
+                        alt=""
+                        className="h-full w-full object-cover opacity-50"
+                    />
+                    {/* Dark navy overlay for deep contrast */}
+                    <div className="absolute inset-0 bg-navy-950/80" />
+                    
+                    {/* Top & bottom vignettes */}
+                    <div className="absolute top-0 inset-x-0 h-40 bg-gradient-to-b from-navy-950 to-transparent" />
+                    <div className="absolute bottom-0 inset-x-0 h-48 bg-gradient-to-t from-navy-950 to-transparent" />
+
+                    {/* Floating subtle gold particles */}
+                    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                        {[...Array(6)].map((_, i) => (
+                            <motion.div
+                                key={i}
+                                className="absolute w-1 h-1 bg-gold-400 rounded-full"
+                                style={{
+                                    left: `${15 + i * 15}%`,
+                                    top: `${20 + (i % 3) * 25}%`,
+                                }}
+                                animate={{
+                                    y: [0, -25, 0],
+                                    opacity: [0.15, 0.6, 0.15],
+                                }}
+                                transition={{
+                                    duration: 3 + i * 0.7,
+                                    repeat: Infinity,
+                                    ease: "easeInOut",
+                                    delay: i * 0.5,
+                                }}
+                            />
+                        ))}
+                    </div>
+                </div>
+
+                {/* --- MOBILE: 9:16 Full Screen Direct GIF Cover --- */}
+                <div className="md:hidden absolute inset-0 w-full h-full">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            key={activeScene.id}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.8 }}
+                            className="absolute inset-0 w-full h-full overflow-hidden"
+                        >
                             <img
                                 src={activeScene.gifSrc}
                                 alt={activeScene.title}
@@ -160,14 +199,11 @@ export default function Hero() {
                                 loading="eager"
                             />
 
-                            {/* Mobile Post-Processing Layers (Smooths low-res pixels & banding) */}
+                            {/* Mobile Post-Processing Layers */}
                             {postProcessEnabled && (
                                 <>
-                                    {/* 35mm Analog Film Grain */}
                                     <div className="absolute inset-0 cinema-grain opacity-40" />
-                                    {/* Comic / CRT Micro-Scanlines */}
                                     <div className="absolute inset-0 cinema-scanlines opacity-35" />
-                                    {/* Graphic Novel Halftone Matrix */}
                                     <div className="absolute inset-0 cinema-halftone opacity-30" />
                                 </>
                             )}
@@ -175,26 +211,9 @@ export default function Hero() {
                             {/* Mobile Comic Texture & Darkness Vignette */}
                             <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/40 to-navy-950/80" />
                             <div className="absolute inset-0 bg-radial-vignette opacity-80" />
-                        </div>
-
-                        {/* Desktop: Ambient Blurred Backdrop */}
-                        <div className="hidden md:block absolute inset-0 w-full h-full overflow-hidden">
-                            <img
-                                src={activeScene.gifSrc}
-                                alt={activeScene.title}
-                                className={`w-full h-full object-cover object-center filter blur-2xl scale-125 opacity-35 brightness-60 transition-all duration-700 ${
-                                    postProcessEnabled ? "cinema-media-grade" : ""
-                                }`}
-                            />
-                            {/* Desktop Ambient Grain */}
-                            {postProcessEnabled && (
-                                <div className="absolute inset-0 cinema-grain opacity-25" />
-                            )}
-                            <div className="absolute inset-0 bg-navy-950/85" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-navy-950 via-transparent to-navy-950" />
-                        </div>
-                    </motion.div>
-                </AnimatePresence>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
 
                 {/* Golden Anamorphic Atmospheric Glow */}
                 <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gold-400/5 rounded-full blur-3xl pointer-events-none" />
