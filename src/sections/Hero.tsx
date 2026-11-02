@@ -232,7 +232,7 @@ export default function Hero() {
                             <img
                                 src={activeScene.gifSrc}
                                 alt={activeScene.title}
-                                className="w-full h-full object-cover object-center scale-[1.03] transition-all duration-700 cinema-media-grade"
+                                className={`w-full h-full object-cover object-center scale-[1.03] transition-all duration-700 cinema-media-grade${activeScene.still ? " brightness-75 saturate-50" : ""}`}
                                 loading="eager"
                             />
 
@@ -416,7 +416,7 @@ export default function Hero() {
 
                                                 {/* Mini Comic Caption */}
                                                 <div className="absolute bottom-2 inset-x-2 bg-navy-950/90 border border-gold-400/30 p-1.5 rounded text-[10px] font-serif text-white/80 italic leading-tight pointer-events-none">
-                                                    "Lost time in the corridor..."
+                                                    {activeScene.flankText?.[0]}
                                                 </div>
                                             </div>
                                         </div>
@@ -427,7 +427,7 @@ export default function Hero() {
                                                 <img
                                                     src={activeScene.gifSrc}
                                                     alt={activeScene.title}
-                                                    className="w-full h-full object-cover object-center transition-all duration-500"
+                                                    className={`w-full h-full object-cover object-center transition-all duration-500${activeScene.still ? " brightness-75 saturate-50" : ""}`}
                                                 />
 
                                                 {/* Comic Gutter Lines Inside Panel */}
@@ -451,6 +451,11 @@ export default function Hero() {
                                                         </span>
                                                         <span className="font-mono text-[10px] text-white/50">{activeScene.timecode}</span>
                                                     </div>
+                                                    {activeScene.bubble ? (
+                                                        <p className="font-serif text-sm md:text-base text-white leading-snug">
+                                                            {activeScene.bubble}
+                                                        </p>
+                                                    ) : null}
                                                     <p className="font-serif text-sm md:text-base text-white/95 italic leading-snug">
                                                         "{activeScene.caption}"
                                                     </p>
@@ -475,7 +480,7 @@ export default function Hero() {
 
                                                 {/* Mini Comic Caption */}
                                                 <div className="absolute bottom-2 inset-x-2 bg-navy-950/90 border border-gold-400/30 p-1.5 rounded text-[10px] font-serif text-white/80 italic leading-tight text-right pointer-events-none">
-                                                    "...the predator counts down."
+                                                    {activeScene.flankText?.[1]}
                                                 </div>
                                             </div>
                                         </div>
@@ -488,7 +493,7 @@ export default function Hero() {
                                         <img
                                             src={activeScene.gifSrc}
                                             alt={activeScene.title}
-                                            className="w-full h-full object-cover object-center transition-all duration-500"
+                                            className={`w-full h-full object-cover object-center transition-all duration-500${activeScene.still ? " brightness-75 saturate-50" : ""}`}
                                         />
                                         <div className="absolute top-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-gold-400/70 border-b border-gold-400/20">
                                             <span>PROD: AJ GHOST</span>
@@ -497,7 +502,7 @@ export default function Hero() {
                                         </div>
                                         <div className="absolute bottom-0 inset-x-0 h-8 bg-black/80 flex items-center justify-between px-4 font-mono text-[10px] text-white/60 border-t border-gold-400/20">
                                             <span>{activeScene.title}</span>
-                                            <span className="text-gold-300 italic font-serif">"{activeScene.caption}"</span>
+                                            <span className="text-gold-300 italic font-serif">{activeScene.bubble ? `${activeScene.bubble} ` : ""}"{activeScene.caption}"</span>
                                         </div>
                                     </div>
                                 </div>
@@ -516,6 +521,11 @@ export default function Hero() {
                             </span>
                             <span className="font-mono text-[9px] text-white/50">{activeScene.timecode}</span>
                         </div>
+                        {activeScene.bubble ? (
+                            <p className="font-serif text-sm text-white leading-snug">
+                                {activeScene.bubble}
+                            </p>
+                        ) : null}
                         <p className="font-serif text-sm text-white/95 leading-snug italic">
                             "{activeScene.caption}"
                         </p>
