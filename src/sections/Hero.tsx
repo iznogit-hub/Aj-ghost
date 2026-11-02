@@ -5,6 +5,7 @@ import Button from "@/components/Button";
 import BrandLogo from "@/components/BrandLogo";
 import { useState } from "react";
 import { CheckCircle2, Loader2 } from "lucide-react";
+import HuntedCinema from "@/components/HuntedCinema";
 
 export default function Hero() {
     const [name, setName] = useState("");
@@ -99,27 +100,8 @@ export default function Hero() {
                     </div>
                 </motion.div>
                 
-                <motion.h1
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-5xl md:text-7xl lg:text-9xl font-serif font-bold text-center mt-8 tracking-tight"
-                >
-                    <span className="text-white">Every mind has a </span>
-                    <br />
-                    <span className="text-gold-gradient">fracture point.</span>
-                </motion.h1>
-                
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.6 }}
-                    className="text-center text-lg md:text-xl text-white/50 mt-8 max-w-2xl mx-auto leading-relaxed"
-                >
-                    AJ Ghost writes the kind of psychological thrillers that crawl under your skin, 
-                    fracture your trust, and leave you questioning everything you thought you knew.
-                </motion.p>
-                
+                <HuntedCinema />
+
                 {status === "success" ? (
                     <motion.div
                         initial={{ opacity: 0, scale: 0.95 }}
