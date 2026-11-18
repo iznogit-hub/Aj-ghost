@@ -148,20 +148,20 @@ const realErrors = validateContent(real);
 check("seed content passes", realErrors.length === 0, realErrors.join(" | "));
 
 const early = publicPaths(real, new Date("2026-11-11T12:00:00Z")).map((item) => item.path);
-check("Nov 11 includes Houston", early.includes("/free-thriller/texas/houston/"));
-check("Nov 11 excludes Dallas", !early.includes("/free-thriller/texas/dallas/"));
-check("Nov 11 excludes Austin", !early.includes("/free-thriller/texas/austin/"));
+check("Nov 11 excludes Houston before its publish time", !early.includes("/free-thriller/texas/houston/"));
+check("Nov 11 excludes drafted Dallas", !early.includes("/free-thriller/texas/dallas/"));
+check("Nov 11 excludes drafted Austin", !early.includes("/free-thriller/texas/austin/"));
 check("Nov 11 includes free read", early.includes("/free-reads/streetlight-math/"));
-check("Nov 11 includes Houston post", early.includes("/blog/example-houston-night-shift/"));
-check("Nov 11 excludes Dallas post", !early.includes("/blog/example-dallas-parked-car/"));
+check("Nov 11 excludes the drafted sample post", !early.includes("/blog/example-houston-night-shift/"));
+check("Nov 11 excludes the ARC post before its publish time", !early.includes("/blog/digital-ascent-arc-booksprout/"));
 
 const live = publicPaths(real, new Date("2026-11-18T18:00:00Z")).map((item) => item.path);
-check("Nov 18 includes all three cities", ["houston", "dallas", "austin"].every((city) => live.includes(`/free-thriller/texas/${city}/`)));
-check("Nov 18 includes all three posts", [
+check("Nov 18 includes only Houston among city pages", live.includes("/free-thriller/texas/houston/") && !live.includes("/free-thriller/texas/dallas/") && !live.includes("/free-thriller/texas/austin/"));
+check("Nov 18 includes the ARC post and hides the sample posts", live.includes("/blog/digital-ascent-arc-booksprout/") && [
     "/blog/example-houston-night-shift/",
     "/blog/example-dallas-parked-car/",
     "/blog/example-austin-weekly-letter/",
-].every((route) => live.includes(route)));
+].every((route) => !live.includes(route)));
 check("sitemap paths are only known routes", live.every((route) => route === "/" || route.startsWith("/free-") || route.startsWith("/blog") || route === "/contact/"));
 
 check("draft_planned stays offline", !isLive({ publishDate: "2020-01-01", publishAt: "2020-01-01T00:00:00Z", status: "draft_planned" }, new Date("2026-11-18T00:00:00Z")));
@@ -206,7 +206,7 @@ const catalog = geoCatalog(real, new Date("2026-11-18T18:00:00Z"));
 const houstonHint = pickGeoHint({ country: "US", region: "TX", city: "Houston", latitude: 29.76, longitude: -95.37 }, catalog.places, catalog.states);
 check("Houston header matches Houston", houstonHint?.href === "/free-thriller/texas/houston/");
 const sanAntonio = pickGeoHint({ country: "US", region: "TX", city: null, latitude: 29.4241, longitude: -98.4936 }, catalog.places, catalog.states);
-check("San Antonio coordinates suggest Austin", sanAntonio?.href === "/free-thriller/texas/austin/");
+check("San Antonio coordinates suggest the only live city, Houston", sanAntonio?.href === "/free-thriller/texas/houston/");
 const chicago = pickGeoHint({ country: "US", region: "IL", city: "Chicago", latitude: 41.8781, longitude: -87.6298 }, catalog.places, catalog.states);
 check("Chicago gets no city page", chicago == null);
 const stateOnly = pickGeoHint({ country: "US", region: "TX", city: "El Paso", latitude: null, longitude: null }, catalog.places, catalog.states);

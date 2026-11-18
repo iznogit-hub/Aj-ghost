@@ -18,7 +18,7 @@ export default function LocalReads() {
                         A page for the city you are actually in
                     </h2>
                     <p className="mt-4 text-base leading-relaxed text-white/50 md:text-lg">
-                        Houston, Dallas, and Austin each embed a free short story. The city introduction is sample copy. HUNTED, the Book 1 prequel, is free on BookFunnel.
+                        One city page is live: a short story you can read here, then HUNTED, the Book 1 prequel, free on BookFunnel.
                     </p>
                 </div>
                 <div className="mx-auto mt-12 grid max-w-5xl gap-4 md:grid-cols-3">
