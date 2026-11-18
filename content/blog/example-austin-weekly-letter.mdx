@@ -1,0 +1,56 @@
+---
+id: BL-EX-03
+type: blog_post
+slug: example-austin-weekly-letter
+url_path: "/blog/example-austin-weekly-letter/"
+title: "Example: how a weekly letter becomes an Austin essay"
+meta_description: "Example of the handoff from a MailerLite note to an Austin journal post, with the social pack stored beside the essay."
+target_keyword: "unreliable narrator thriller free"
+search_intent: "Example: Austin readers who want a thriller with a slipping memory"
+source_promo: "example-weekly-2026-11-16"
+outline_h2:
+  - "What the email already decided"
+  - "What the essay still has to earn"
+  - "The Austin page and the free read"
+category: "Craft"
+tags:
+  - Austin
+  - Newsletter
+  - Example
+hook: "Example hook: the weekly letter already chose Austin. The essay has to deserve the city."
+publish_date: "2026-11-16"
+publish_at: "2026-11-16T16:00:00Z"
+status: scheduled
+example: true
+internal_links:
+  - text: "Austin page"
+    url: "/free-thriller/texas/austin/"
+    kind: internal
+cta:
+  text: "Get HUNTED Free on BookFunnel"
+  url: "https://dl.bookfunnel.com/j4e3jsxfr6"
+social:
+  xThread:
+    - "1/ Example: a weekly email is a hook with a send button. A blog post has to keep the promise."
+    - "2/ Example: for Austin, the promise is a mind that cannot trust its own count."
+    - "3/ Example: read the Austin page, then the free read, then HUNTED on BookFunnel if you want the book."
+  carousel:
+    - "Example slide: subject line from the weekly letter."
+    - "Example slide: Austin rain, and a count that will not sit still."
+    - "Example slide: one story, one canonical URL, many city doors."
+  shortFormHook: "Example: the weekly letter picked Austin. The essay has to earn the rain."
+---
+
+Example: the content agent does not start from a blank document. A MailerLite send already has a subject, a reason, and sometimes a thread someone drafted for social. This sample shows where those pieces go so they are not lost in a chat log.
+
+`source_promo` is the campaign id or the note that names the send. It can be as plain as `example-weekly-2026-11-16`. The social block holds the X posts, the carousel lines, and the short hook used on the share button. None of that replaces the essay. If the body is still an outline, the validator will refuse the file, and it should.
+
+For this example the city is Austin. The letter's idea was simple: some readers want a thriller where the narrator cannot trust the count in his head. Streetlight Math already does that work. Nine lamps become ten, then nine again. The [Austin page](/free-thriller/texas/austin/) is allowed to embed the story because its introduction is its own 150 to 250 words about Austin rain, MoPac, and South Congress. The canonical URL of the fiction stays on the [Streetlight Math free read](/free-reads/streetlight-math/). Embeds do not get to steal that canonical.
+
+I keep the Austin sentences out of the Houston letter and out of the Dallas letter. Ten shared words in a row would fail the build. That is the point of the check. A content mill can change the city name in a headline and call it a new page. The intro field, the shingle check, and the separate story URL are there so we do not publish that kind of page.
+
+When the essay is real, set `example` to false and remove the placeholder warning. Leave `status` as `scheduled` and set `publish_at` to the instant it should appear. The daily rebuild on Vercel reads that timestamp. Draft files marked `draft_planned` stay off the site even after the date, which is how a whole month plan can sit in a folder without going live by accident.
+
+HUNTED remains the free prequel on BookFunnel. This post's button does not go anywhere else.
+
+<BookCta place="Austin" />

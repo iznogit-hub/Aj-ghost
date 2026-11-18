@@ -1,0 +1,53 @@
+{
+  "id": "LP03",
+  "type": "landing_page",
+  "slug": "free-thriller-dallas-tx",
+  "url_path": "/free-thriller/texas/dallas/",
+  "state": "TX",
+  "city": "Dallas",
+  "page_kind": "city",
+  "search_intent": "Commercial: wants a dark thriller to read tonight",
+  "target_keyword": "dark thriller to read tonight Dallas",
+  "title": "Dallas: A Dark Thriller to Read Tonight, Free | AJ Ghost",
+  "meta_description": "A parked car, a city asleep. For Dallas readers: Streetlight Math, a free 4 minute story. Then HUNTED, the Ryan Kane prequel, free on BookFunnel.",
+  "h1": "Dallas Readers: A Night in Ryan Kane's Front Seat",
+  "local_angle": {
+    "label": "A parked car, a city asleep",
+    "description": "For readers who like the city at night from inside a car. Streetlight Math puts you in Ryan Kane's front seat, counting lights and watching one sedan that will not leave."
+  },
+  "hunted_hook": {
+    "manuscript_line": 526,
+    "text": "Across the parking lot, a man in a gray suit leaned against a black sedan.",
+    "source": "HUNTED.txt (verbatim)"
+  },
+  "microbook_id": "MB01",
+  "microbook_title": "Streetlight Math",
+  "microbook_label": "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book.",
+  "cta": {
+    "text": "Get HUNTED Free on BookFunnel",
+    "subtext": "HUNTED, The Ryan Kane Series Prequel. Free on BookFunnel.",
+    "url": "https://dl.bookfunnel.com/j4e3jsxfr6",
+    "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost.com&utm_medium=pseo&utm_campaign=lp_free-thriller-dallas-tx"
+  },
+  "secondary_links": [
+    {
+      "text": "Fractured Ground, Book Two, on Kindle",
+      "url": "https://www.amazon.com/dp/B0H9SXX81F"
+    },
+    {
+      "text": "Digital Ascent, ARC on BookSprout",
+      "url": "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
+    }
+  ],
+  "internal_links": [
+    "/free-thriller/texas/",
+    "/free-reads/streetlight-math/",
+    "/free-thriller/texas/fort-worth/",
+    "/free-thriller/texas/plano/"
+  ],
+  "publish_date": "2026-11-12",
+  "publish_at": "2026-11-12T15:00:00Z",
+  "status": "scheduled",
+  "intro": "Example placeholder for Dallas, Texas. This introduction is sample copy, and it is not the Dallas page with the city name pasted over someone else's paragraph. Dallas after midnight is a grid of glass, toll cameras, and parking garages that stay brighter than the rooms above them. Streetlight Math puts you in Ryan Kane's front seat while he counts lamps and watches one sedan that will not leave. The lot in the story is not a Dallas address. What belongs to Dallas readers is this page: the desire for a dark thriller you can start tonight and finish before the next alarm. HUNTED, the Book 1 prequel, is free on BookFunnel when the short story ends. Fractured Ground is on Kindle. Digital Ascent, book three, is an advance copy on BookSprout. Streetlight Math keeps its own canonical URL under free reads, and this Dallas URL stays about the city you drove into. If the North Central Expressway was still moving when you got off work, or if Reunion Tower was the last bright thing in the mirror, read here first. Then decide whether you want the whole prequel. Houston and Austin have their own pages, with their own introductions, because a template would waste your time.",
+  "example": true
+}

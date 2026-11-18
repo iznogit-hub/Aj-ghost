@@ -20,6 +20,7 @@ const config: Config = {
             sans: ["var(--font-inter)", "sans-serif"],
             serif: ["var(--font-playfair)", "serif"],
             mono: ["var(--font-mono)", "monospace"],
+            reading: ["var(--font-literata)", "Georgia", "serif"],
         },
         screens: {
             sm: "375px",
