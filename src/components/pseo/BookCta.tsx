@@ -29,7 +29,7 @@ export function BookCta({ place, huntedUrl }: { place?: string; huntedUrl?: stri
                     <p className="font-mono text-[11px] uppercase tracking-[0.28em] text-gold-400/80">{SERIES_NAME}</p>
                     <h2 className="mt-2 font-serif text-3xl text-white sm:text-4xl">Keep the light off and keep reading</h2>
                     <p className="mt-3 text-sm leading-relaxed text-white/70 sm:text-base">
-                        The piece above is a free in-page read{place ? ` written for ${place}` : ""}. {HUNTED_TITLE}, the Book 1 prequel, is free on BookFunnel. {FRACTURED_GROUND_TITLE} is on Kindle. {DIGITAL_ASCENT_TITLE}, book three, is an advance review copy on BookSprout.
+                        The piece above is a free in-page read{place ? ` for readers in ${place}` : ""}. {HUNTED_TITLE}, the Book 1 prequel, is free on BookFunnel. {FRACTURED_GROUND_TITLE} is on Kindle. {DIGITAL_ASCENT_TITLE}, book three, is an advance review copy on BookSprout.
                     </p>
                     <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                         <a
