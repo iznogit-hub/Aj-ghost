@@ -1,0 +1,53 @@
+{
+  "id": "LP04",
+  "type": "landing_page",
+  "slug": "free-thriller-austin-tx",
+  "url_path": "/free-thriller/texas/austin/",
+  "state": "TX",
+  "city": "Austin",
+  "page_kind": "city",
+  "search_intent": "Commercial: fans of unreliable narrators and memory gaps",
+  "target_keyword": "unreliable narrator thriller free",
+  "title": "Austin: Free Thriller With an Unreliable Mind | AJ Ghost",
+  "meta_description": "Can you trust your own count? For Austin readers: Streetlight Math, a free 4 minute story. Then HUNTED, the Ryan Kane prequel, free on BookFunnel.",
+  "h1": "Austin Readers: A Thriller Where the Count Keeps Changing",
+  "local_angle": {
+    "label": "Can you trust your own count?",
+    "description": "For readers who love an unreliable memory. The page leads with the HUNTED line about numbers that will not stay still, then Streetlight Math, where nine streetlights become ten."
+  },
+  "hunted_hook": {
+    "manuscript_line": 359,
+    "text": "The numbers wouldn't stay still.",
+    "source": "HUNTED.txt (verbatim)"
+  },
+  "microbook_id": "MB01",
+  "microbook_title": "Streetlight Math",
+  "microbook_label": "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book.",
+  "cta": {
+    "text": "Get HUNTED Free on BookFunnel",
+    "subtext": "HUNTED, The Ryan Kane Series Prequel. Free on BookFunnel.",
+    "url": "https://dl.bookfunnel.com/j4e3jsxfr6",
+    "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost.com&utm_medium=pseo&utm_campaign=lp_free-thriller-austin-tx"
+  },
+  "secondary_links": [
+    {
+      "text": "Fractured Ground, Book Two, on Kindle",
+      "url": "https://www.amazon.com/dp/B0H9SXX81F"
+    },
+    {
+      "text": "Digital Ascent, ARC on BookSprout",
+      "url": "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
+    }
+  ],
+  "internal_links": [
+    "/free-thriller/texas/",
+    "/free-reads/streetlight-math/",
+    "/free-thriller/texas/arlington/",
+    "/free-thriller/texas/laredo/"
+  ],
+  "publish_date": "2026-11-16",
+  "publish_at": "2026-11-16T15:00:00Z",
+  "status": "scheduled",
+  "intro": "Example placeholder for Austin, Texas. This introduction is sample copy for readers who like an unreliable mind more than a chase scene. Austin rain has a way of making MoPac feel longer and South Congress louder, and a story about a count that will not hold still fits that kind of night. Streetlight Math is the free read embedded here: Ryan Kane counts nine streetlights, then ten, then nine again, and he does not know which number to trust. The parking lot is not an Austin lot. This page is the Austin part, written only for this URL, for people searching for a free thriller where memory slips. HUNTED, the Book 1 prequel, is the longer book, and it is free on BookFunnel. Fractured Ground is the Kindle follow-up. Reviewers who want book three early will find Digital Ascent waiting on BookSprout. The short story's canonical home is the free read page, so search engines can tell the story from this city page. Lady Bird Lake does not appear in the fiction. It appears here because Austin readers know what the city feels like when the count in your head will not settle. Houston and Dallas are linked for a different mood, not a rewritten copy of this paragraph.",
+  "example": true
+}

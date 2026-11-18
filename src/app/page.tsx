@@ -10,6 +10,7 @@ import Reviews from "@/sections/Reviews";
 import Navbar from "@/sections/Navbar";
 import Newsletter from "@/sections/Newsletter";
 import SectionDivider from "@/components/SectionDivider";
+import LocalReads from "@/sections/LocalReads";
 
 export default function Home() {
     return (
@@ -31,6 +32,8 @@ export default function Home() {
             <Faqs />
             <SectionDivider />
             <CallToAction />
+            <SectionDivider subtle />
+            <LocalReads />
             <Footer />
         </main>
     );

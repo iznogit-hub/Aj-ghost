@@ -61,6 +61,24 @@ export default function Footer() {
                                 Contact AJ Ghost
                             </a>
                             <a
+                                href="/free-thriller/"
+                                className="text-white/30 text-sm hover:text-gold-400 transition duration-300 font-medium"
+                            >
+                                Read locally
+                            </a>
+                            <a
+                                href="/free-reads/"
+                                className="text-white/30 text-sm hover:text-gold-400 transition duration-300 font-medium"
+                            >
+                                Free reads
+                            </a>
+                            <a
+                                href="/blog/"
+                                className="text-white/30 text-sm hover:text-gold-400 transition duration-300 font-medium"
+                            >
+                                Journal
+                            </a>
+                            <a
                                 href="/#reviews"
                                 className="text-white/30 text-sm hover:text-gold-400 transition duration-300 font-medium"
                             >

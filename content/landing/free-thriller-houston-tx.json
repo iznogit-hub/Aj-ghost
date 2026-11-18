@@ -1,0 +1,53 @@
+{
+  "id": "LP02",
+  "type": "landing_page",
+  "slug": "free-thriller-houston-tx",
+  "url_path": "/free-thriller/texas/houston/",
+  "state": "TX",
+  "city": "Houston",
+  "page_kind": "city",
+  "search_intent": "Commercial: night shift workers looking for something short and dark",
+  "target_keyword": "thriller books for night shift workers",
+  "title": "Night Shift Thriller for Houston Readers, Free | AJ Ghost",
+  "meta_description": "The drive home after dark. For Houston readers: Pump Six, a free 4 minute story. Then HUNTED, the Ryan Kane prequel, free on BookFunnel.",
+  "h1": "A Free Night Shift Thriller for Houston Readers",
+  "local_angle": {
+    "label": "The drive home after dark",
+    "description": "For readers who finish a late shift and get in the car tired. Pump Six is told by an overnight clerk watching a car that parks and never buys gas."
+  },
+  "hunted_hook": {
+    "manuscript_line": 428,
+    "text": "A black sedan pulled out of a space three rows over. Dark windows. I couldn't see the driver.",
+    "source": "HUNTED.txt (verbatim)"
+  },
+  "microbook_id": "MB02",
+  "microbook_title": "Pump Six",
+  "microbook_label": "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book.",
+  "cta": {
+    "text": "Get HUNTED Free on BookFunnel",
+    "subtext": "HUNTED, The Ryan Kane Series Prequel. Free on BookFunnel.",
+    "url": "https://dl.bookfunnel.com/j4e3jsxfr6",
+    "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost.com&utm_medium=pseo&utm_campaign=lp_free-thriller-houston-tx"
+  },
+  "secondary_links": [
+    {
+      "text": "Fractured Ground, Book Two, on Kindle",
+      "url": "https://www.amazon.com/dp/B0H9SXX81F"
+    },
+    {
+      "text": "Digital Ascent, ARC on BookSprout",
+      "url": "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
+    }
+  ],
+  "internal_links": [
+    "/free-thriller/texas/",
+    "/free-reads/pump-six/",
+    "/free-thriller/texas/austin/",
+    "/free-thriller/texas/el-paso/"
+  ],
+  "publish_date": "2026-11-10",
+  "publish_at": "2026-11-10T15:00:00Z",
+  "status": "scheduled",
+  "intro": "Example placeholder for Houston, Texas. This introduction is sample copy for the content system, written so the Houston page is not a swapped template. If you finish a late shift near the Ship Channel or along I-10 and the drive home is the longest quiet part of the day, this page is for that hour. Pump Six is a four minute story about an overnight clerk who watches a clean black sedan park at a pump and never buy gas. The clerk is not stationed in Houston in the book. The story is companion fiction set in the world of The Ryan Kane Series, and the Houston framing is the part that belongs only on this URL. HUNTED, the Book 1 prequel, stays free on BookFunnel after you finish. Fractured Ground is the Kindle novel that follows it. Book three is Digital Ascent, and reviewers ask for it on BookSprout. Read the story on this page, then take HUNTED with you. The canonical home of Pump Six is its own free read, so this Houston URL can talk about night shifts, refinery light, and the feeder roads without pretending the short story names one neighborhood. The Dallas page and the Austin page are linked below, and they do not reuse these sentences. If you searched for a thriller after a late Houston shift, you are in the right place, and the next click is still yours.",
+  "example": true
+}

@@ -11,7 +11,9 @@ import {
     MessageCircle, 
     ShoppingCart,
     Mail,
-    Users
+    Users,
+    MapPin,
+    Newspaper,
 } from "lucide-react";
 
 import BrandLogo from "@/components/BrandLogo";
@@ -21,6 +23,9 @@ const AMAZON_AUTHOR_STORE = "https://www.amazon.com/stores/AJ-Ghost/author/B0HD9
 
 const navLinks = [
     { label: "Books", href: "/#books", icon: BookOpen },
+    { label: "Read", href: "/free-thriller/", icon: MapPin },
+    { label: "Stories", href: "/free-reads/", icon: BookOpen },
+    { label: "Blog", href: "/blog/", icon: Newspaper },
     { label: "Reviews", href: "/#reviews", icon: MessageCircle },
     { label: "The Story", href: "/#introduction", icon: FileText },
     { label: "For Authors", href: "/#author-collab", icon: Users },
@@ -73,7 +78,7 @@ export default function Navbar() {
 
                         {/* --- DESKTOP NAVIGATION --- */}
                         <div className="hidden lg:flex justify-center items-center">
-                            <nav className="flex gap-7 font-medium text-sm">
+                            <nav className="flex gap-4 font-medium text-[13px]">
                                 {navLinks.map((link) => (
                                     <a 
                                         href={link.href} 

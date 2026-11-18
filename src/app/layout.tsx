@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono, Literata } from "next/font/google";
 import "./globals.css";
+import { DEFAULT_SITE_URL } from "@/lib/site";
 
 const inter = Inter({
     variable: "--font-inter",
@@ -21,7 +22,14 @@ const mono = JetBrains_Mono({
     display: "swap",
 });
 
+const literata = Literata({
+    variable: "--font-literata",
+    subsets: ["latin"],
+    display: "swap",
+});
+
 export const metadata: Metadata = {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || DEFAULT_SITE_URL),
     title: "AJ Ghost | Psychological Thriller Author — Dark Fiction That Haunts You",
     description:
         "AJ Ghost writes dark psychological thrillers that explore fractured minds, buried secrets, and the thin line between predator and prey. Discover HUNTED, Fractured Ground, and The Ryan Kane Series.",
@@ -41,7 +49,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${inter.variable} ${playfair.variable} ${mono.variable} font-sans antialiased bg-navy-950 text-white`}
+                className={`${inter.variable} ${playfair.variable} ${mono.variable} ${literata.variable} font-sans antialiased bg-navy-950 text-white`}
             >
                 {children}
             </body>

@@ -120,6 +120,19 @@
   .bg-navy-gradient-down {
     background: linear-gradient(180deg, #030a1a 0%, #0c1f3d 100%);
   }
+
+  .reading-prose .drop-cap::first-letter {
+    float: left;
+    margin-right: 0.55rem;
+    font-family: var(--font-playfair), Georgia, serif;
+    font-size: 3.4rem;
+    line-height: 0.8;
+    color: #d4a827;
+  }
+
+  .chapter-anchor {
+    scroll-margin-top: 7.5rem;
+  }
 }
 
 @layer utilities {

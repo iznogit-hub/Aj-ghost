@@ -6,6 +6,14 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  trailingSlash: true,
+  experimental: {
+    outputFileTracingIncludes: {
+      "/api/geo-hint": ["./content/**/*"],
+      "/api/cron/publish": ["./content/**/*"],
+      "/blog/rss.xml": ["./content/**/*"],
+    },
+  },
 };
 
 export default nextConfig;
