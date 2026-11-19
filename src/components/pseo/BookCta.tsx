@@ -54,7 +54,7 @@ export function BookCta({ place, huntedUrl }: { place?: string; huntedUrl?: stri
                             rel="noopener noreferrer"
                             className="inline-flex h-12 items-center justify-center rounded-full border border-white/15 px-5 text-sm font-semibold text-white/80 hover:border-gold-400/40 hover:text-gold-200"
                         >
-                            {DIGITAL_ASCENT_TITLE} ARC
+                            Get the free ARC
                         </a>
                     </div>
                 </div>

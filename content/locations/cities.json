@@ -15,5 +15,12 @@
       "lat": 30.2672,
       "lng": -97.7431
     }
+  },
+  "wyoming": {
+    "sheridan": {
+      "name": "Sheridan",
+      "lat": 44.7972,
+      "lng": -106.9561
+    }
   }
 }

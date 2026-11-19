@@ -2,7 +2,7 @@
 
 import Tag from "@/components/Tag";
 import { motion } from "framer-motion";
-import { Mail, BookOpen, Heart, Clock, ExternalLink, Gift, CheckCircle2, Loader2 } from "lucide-react";
+import { Mail, BookOpen, Heart, ExternalLink, Gift, CheckCircle2, Loader2 } from "lucide-react";
 import { useState } from "react";
 
 export default function Newsletter() {
@@ -110,28 +110,29 @@ export default function Newsletter() {
                                     about a few things.
                                 </p>
 
-                                {/* ARC Update Block */}
+                                {/* Book three */}
                                 <div className="glass-card rounded-2xl p-5 border-l-4 border-gold-400/50 bg-navy-900/40">
                                     <div className="flex items-start gap-3">
                                         <Heart size={20} className="text-gold-400 mt-1 flex-shrink-0" />
                                         <div>
                                             <h4 className="font-serif font-bold text-white text-lg mb-2">
-                                                Fractured Ground ARC Update
+                                                Digital Ascent, book three
                                             </h4>
                                             <p className="text-white/60 text-sm leading-relaxed">
-                                                We have <span className="text-gold-400 font-bold">22 days left</span> in 
-                                                our ARC campaign for <em className="text-white/80">Fractured Ground</em>... 
-                                                and I am honestly overwhelmed. The reviews are rolling in. 
-                                                The reader emails are filling my inbox. And I am so very happy 
-                                                that you are all <span className="text-gold-300 font-semibold">LOVING</span> this 
-                                                book and are so emotionally connected to the characters.
+                                                The advance copy of Digital Ascent is open. Read it at your own pace.
+                                                An honest review is welcome, and it is never required. Fractured Ground
+                                                stays on Kindle. HUNTED stays free on BookFunnel.
                                             </p>
-                                            <p className="text-white/60 text-sm leading-relaxed mt-3">
-                                                Some of you have told me you cried. Some of you have told me 
-                                                you had to put the book down and walk away for a minute. 
-                                                That is exactly the reaction I was going for — and it means 
-                                                the world to me that this story hit you the way I intended.
-                                            </p>
+                                            <a
+                                                href="https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                                className="inline-flex items-center gap-2 mt-4 px-5 py-2.5 bg-gold-400 text-navy-950 rounded-full font-semibold text-sm hover:bg-gold-300 transition duration-300 shadow-lg shadow-gold-400/20"
+                                            >
+                                                <BookOpen size={16} />
+                                                Get the free ARC
+                                                <ExternalLink size={14} />
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -218,12 +219,6 @@ export default function Newsletter() {
                                     <p className="text-gold-400 font-serif font-bold text-xl mt-1">
                                         — AJ Ghost
                                     </p>
-                                    <div className="flex items-center gap-2 mt-3">
-                                        <Clock size={14} className="text-white/30" />
-                                        <span className="text-xs text-white/30 font-mono">
-                                            22 days remaining in the Fractured Ground ARC campaign
-                                        </span>
-                                    </div>
                                 </div>
                             </div>
                         </div>

@@ -9,7 +9,7 @@ An end-to-end author marketing pipeline coupling **GenSpark AI**, **MailerLite**
 1. **Environment Setup (`.env`)**:
    - GenSpark AI API Key configured: `GENSPARK_API_KEY=gsk-...`
    - Configurable MailerLite API Key placeholder: `MAILERLITE_API_KEY`
-   - ARC Campaign variables: 22 days left for *Fractured Ground*
+   - Book links: HUNTED on BookFunnel, Fractured Ground on Kindle, Digital Ascent free ARC on BookSprout.
    - BookFunnel Tracking Link: `https://books.bookfunnel.com/thrillingfreebies-sep/ipph5qfp15`
 
 2. **Automated Newsletter Creator (`ai_client.py`)**:
@@ -37,7 +37,7 @@ An end-to-end author marketing pipeline coupling **GenSpark AI**, **MailerLite**
 
 7. **Next.js Web App Integration**:
    - Live `/api/subscribe` route synced with the frontend Hero and Newsletter forms.
-   - Both books showcased: *HUNTED* (Book 1) and *FRACTURED GROUND* (Book 2 - ARC 22 days left).
+   - The series showcase: *HUNTED* (Book 1, BookFunnel), *FRACTURED GROUND* (Book 2, Kindle), and *DIGITAL ASCENT* (Book 3, free ARC).
    - Golden vein kintsugi crack image dividers (`/section-divider.jpg`) separating all dark navy sections.
 
 ---

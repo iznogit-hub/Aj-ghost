@@ -3,14 +3,15 @@
 import Tag from "@/components/Tag";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { BookOpen, BookMarked, Star, Smartphone, Clock, Gift, ExternalLink, ShoppingCart } from "lucide-react";
+import { BookOpen, BookMarked, Star, Smartphone, Gift, ExternalLink, ShoppingCart } from "lucide-react";
+import { DIGITAL_ASCENT_ARC_URL, FRACTURED_GROUND_KINDLE_URL, HUNTED_BOOKFUNNEL_URL } from "@/lib/books";
 
 const AMAZON_AUTHOR_STORE = "https://www.amazon.com/stores/AJ-Ghost/author/B0HD9D7DRD?ref=ap_rdr&shoppingPortalEnabled=true&ccs_id=5eb73e49-2101-4a5f-b36a-2acfe6ae4c07";
-const BOOKFUNNEL_FREE_LINK = "https://dl.bookfunnel.com/j4e3jsxfr6";
+const BOOKFUNNEL_FREE_LINK = HUNTED_BOOKFUNNEL_URL;
 
 const platforms = [
     { name: "Amazon Store", icon: ShoppingCart, description: "Official Store", url: AMAZON_AUTHOR_STORE },
-    { name: "Kindle", icon: BookOpen, description: "eBook", url: AMAZON_AUTHOR_STORE },
+    { name: "Kindle", icon: BookOpen, description: "Fractured Ground", url: FRACTURED_GROUND_KINDLE_URL },
     { name: "Paperback", icon: BookMarked, description: "Print Edition", url: AMAZON_AUTHOR_STORE },
     { name: "Goodreads", icon: Star, description: "Reviews", url: "https://www.goodreads.com" },
     { name: "Apple Books", icon: Smartphone, description: "iOS", url: AMAZON_AUTHOR_STORE },
@@ -31,12 +32,12 @@ export default function Integrations() {
                         Enter the <span className="text-gold-gradient">Darkness</span>
                     </h2>
                     <p className="text-white/40 mt-4 text-base md:text-lg">
-                        Two psychological thrillers that will test the limits of your trust and sanity.
+                        Three books in The Ryan Kane Series. HUNTED is free. Fractured Ground is on Kindle. Digital Ascent has a free ARC.
                     </p>
                 </div>
 
                 {/* --- TWO BOOKS SHOWCASE --- */}
-                <div className="grid md:grid-cols-2 gap-10 lg:gap-14 max-w-5xl mx-auto mb-20">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
                     
                     {/* BOOK 1: HUNTED */}
                     <motion.div 
@@ -70,21 +71,12 @@ export default function Integrations() {
 
                         <div className="mt-6 pt-6 border-t border-gold-400/10 flex flex-wrap items-center justify-between gap-3">
                             <a
-                                href={AMAZON_AUTHOR_STORE}
+                                href={BOOKFUNNEL_FREE_LINK}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-gold-400 text-navy-950 rounded-full font-bold text-xs hover:bg-gold-300 transition shadow-lg shadow-gold-400/20"
                             >
-                                <ShoppingCart size={13} />
-                                Buy on Amazon
-                            </a>
-                            <a
-                                href={BOOKFUNNEL_FREE_LINK}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-300 hover:text-gold-200 transition"
-                            >
-                                Free on BookFunnel <ExternalLink size={13} />
+                                Get HUNTED free
                             </a>
                         </div>
                     </motion.div>
@@ -97,12 +89,6 @@ export default function Integrations() {
                         transition={{ duration: 0.7, delay: 0.2 }}
                         className="glass-card rounded-3xl p-6 md:p-8 flex flex-col justify-between border border-gold-400/30 hover:border-gold-400/60 transition duration-500 relative overflow-hidden group shadow-xl shadow-gold-400/5"
                     >
-                        {/* Countdown Badge */}
-                        <div className="absolute top-4 right-4 bg-gold-400 text-navy-950 text-xs font-bold px-3 py-1 rounded-full flex items-center gap-1.5 shadow-md">
-                            <Clock size={12} />
-                            <span>22 Days Left in ARC</span>
-                        </div>
-
                         <div>
                             <div className="relative w-full aspect-[2/3] max-w-[260px] mx-auto mb-6 shadow-2xl rounded-xl overflow-hidden group-hover:scale-105 transition duration-500">
                                 <Image
@@ -116,7 +102,7 @@ export default function Integrations() {
 
                             <div className="flex items-center justify-between mb-2">
                                 <span className="text-xs font-mono uppercase tracking-widest text-gold-400/80">Book 2</span>
-                                <span className="text-xs px-2.5 py-1 rounded-full bg-gold-400/20 text-gold-300 border border-gold-400/30">Active ARC Campaign</span>
+                                <span className="text-xs px-2.5 py-1 rounded-full bg-gold-400/20 text-gold-300 border border-gold-400/30">Kindle</span>
                             </div>
 
                             <h3 className="text-2xl font-serif font-bold text-white group-hover:text-gold-300 transition">FRACTURED GROUND</h3>
@@ -127,20 +113,50 @@ export default function Integrations() {
 
                         <div className="mt-6 pt-6 border-t border-gold-400/10 flex flex-wrap items-center justify-between gap-3">
                             <a
-                                href={AMAZON_AUTHOR_STORE}
+                                href={FRACTURED_GROUND_KINDLE_URL}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-1.5 px-4 py-2 border border-gold-400/40 text-gold-300 rounded-full font-bold text-xs hover:bg-gold-400/10 transition"
-                            >
-                                <ShoppingCart size={13} />
-                                View on Amazon
-                            </a>
-                            <a
-                                href="#newsletter"
                                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-gold-400 text-navy-950 rounded-full font-bold text-xs hover:bg-gold-300 transition shadow-lg shadow-gold-400/20"
                             >
+                                <ShoppingCart size={13} />
+                                Read on Kindle
+                            </a>
+                        </div>
+                    </motion.div>
+
+                    <motion.div
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.3 }}
+                        className="glass-card rounded-3xl p-6 md:p-8 flex flex-col justify-between border border-gold-400/20 hover:border-gold-400/40 transition duration-500 group"
+                    >
+                        <div>
+                            <div className="relative mx-auto mb-6 flex aspect-[2/3] w-full max-w-[260px] items-end overflow-hidden rounded-xl border border-gold-400/30 bg-navy-900 p-6 shadow-2xl">
+                                <div>
+                                    <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-gold-400/80">Book 3</p>
+                                    <p className="mt-3 font-serif text-3xl font-bold leading-tight text-white">Digital Ascent</p>
+                                    <p className="mt-3 text-sm text-white/50">The Ryan Kane Series</p>
+                                </div>
+                            </div>
+                            <div className="mb-2 flex items-center justify-between">
+                                <span className="font-mono text-xs uppercase tracking-widest text-gold-400/80">Book 3</span>
+                                <span className="rounded-full border border-gold-400/30 bg-gold-400/20 px-2.5 py-1 text-xs text-gold-300">Free ARC</span>
+                            </div>
+                            <h3 className="font-serif text-2xl font-bold text-white transition group-hover:text-gold-300">DIGITAL ASCENT</h3>
+                            <p className="mt-2 text-sm leading-relaxed text-white/50">
+                                Book three. Read the advance copy at your own pace. An honest review is welcome, and it is never required.
+                            </p>
+                        </div>
+                        <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-gold-400/10 pt-6">
+                            <a
+                                href={DIGITAL_ASCENT_ARC_URL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 rounded-full bg-gold-400 px-4 py-2 text-xs font-bold text-navy-950 shadow-lg shadow-gold-400/20 transition hover:bg-gold-300"
+                            >
                                 <Gift size={13} />
-                                Claim ARC Spot
+                                Get the free ARC
                             </a>
                         </div>
                     </motion.div>

@@ -1,0 +1,51 @@
+{
+  "id": "LP-SHERIDAN",
+  "type": "landing_page",
+  "slug": "free-thriller-sheridan-wy",
+  "url_path": "/free-thriller/wyoming/sheridan/",
+  "state": "WY",
+  "city": "Sheridan",
+  "page_kind": "city",
+  "search_intent": "Commercial: night shift readers in Sheridan looking for something short and dark",
+  "target_keyword": "thriller books for night shift workers",
+  "title": "Night Shift Thriller for Sheridan Readers, Free | AJ Ghost",
+  "meta_description": "The drive home after dark. For Sheridan readers: Pump Six, a free 4 minute story. Then HUNTED, the Ryan Kane prequel, free on BookFunnel.",
+  "h1": "A Free Night Shift Thriller for Sheridan Readers",
+  "local_angle": {
+    "label": "Ranch dark along the interstate",
+    "description": "For Sheridan readers who finish late and drive I-90 toward the Bighorns. Pump Six is an overnight clerk watching a sedan that never buys gas."
+  },
+  "hunted_hook": {
+    "manuscript_line": 428,
+    "text": "A black sedan pulled out of a space three rows over. Dark windows. I couldn't see the driver.",
+    "source": "HUNTED.txt (verbatim)"
+  },
+  "microbook_id": "MB02",
+  "microbook_title": "Pump Six",
+  "microbook_label": "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book.",
+  "cta": {
+    "text": "Get HUNTED Free on BookFunnel",
+    "subtext": "HUNTED, The Ryan Kane Series Prequel. Free on BookFunnel.",
+    "url": "https://dl.bookfunnel.com/j4e3jsxfr6",
+    "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost.com&utm_medium=pseo&utm_campaign=lp_free-thriller-sheridan-wy"
+  },
+  "secondary_links": [
+    {
+      "text": "Fractured Ground on Kindle",
+      "url": "https://www.amazon.com/dp/B0H9SXX81F"
+    },
+    {
+      "text": "Get the free ARC of Digital Ascent",
+      "url": "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
+    }
+  ],
+  "internal_links": [
+    "/free-thriller/wyoming/",
+    "/free-reads/pump-six/"
+  ],
+  "publish_date": "2026-11-18",
+  "publish_at": "2026-11-18T12:00:00Z",
+  "status": "published",
+  "example": false,
+  "intro": "Sheridan is a small ranch and railroad town at the foot of the Bighorn Mountains, with I-90 running the night traffic along the edge of the valley. After the shops close, the dark here is wide rather than loud. Pump Six fits that hour. An overnight clerk watches a black sedan pull up to a pump and never buy gas. The clerk does not live in Sheridan. The Ryan Kane Series is not set in Wyoming. This page will not dress the fiction up as a local crime report or a guidebook. It is a door for a Sheridan reader who wants a short psychological thriller before sleep, written in the same world as the novels and kept separate from them. When the story ends, HUNTED, the prequel, is free on BookFunnel. Fractured Ground is the next novel, and its only link here is the Kindle edition. Book three, Digital Ascent, has a free advance copy for readers who want to go further. Pump Six also has its own free-read address, so this Sheridan page can stay about the town you already know: rails, ranch country, and the mountains on the horizon. Read the clerk's shift. Take the prequel if you want the longer night."
+}

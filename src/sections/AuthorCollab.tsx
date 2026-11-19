@@ -25,7 +25,7 @@ export default function AuthorCollab() {
     // Form 1: Instant Comp Copy
     const [compName, setCompName] = useState("");
     const [compEmail, setCompEmail] = useState("");
-    const [compBook, setCompBook] = useState("Fractured Ground (ARC)");
+    const [compBook, setCompBook] = useState("Fractured Ground (Book 2)");
     const [compFormat, setCompFormat] = useState("epub");
     const [compStatus, setCompStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
     const [compMsg, setCompMsg] = useState("");
@@ -260,9 +260,10 @@ export default function AuthorCollab() {
                                                     onChange={(e) => setCompBook(e.target.value)}
                                                     className="w-full px-4 py-3 rounded-xl bg-navy-950/70 border border-gold-400/20 text-white text-sm focus:border-gold-400/50 outline-none cursor-pointer"
                                                 >
-                                                    <option value="Fractured Ground (ARC)">Fractured Ground (Upcoming ARC - 22 Days Left)</option>
-                                                    <option value="HUNTED (Book 1)">HUNTED (The Ryan Kane Series Book 1)</option>
-                                                    <option value="Both Books Pack">Both Books (Full Author Bundle)</option>
+                                                    <option value="Fractured Ground (Book 2)">Fractured Ground (Book 2, Kindle)</option>
+                                                    <option value="HUNTED (Book 1)">HUNTED (free on BookFunnel)</option>
+                                                    <option value="Digital Ascent (Book 3)">Digital Ascent (free ARC)</option>
+                                                    <option value="The Ryan Kane Series">The Ryan Kane Series</option>
                                                 </select>
                                             </div>
 

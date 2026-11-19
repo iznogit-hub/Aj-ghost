@@ -148,7 +148,8 @@ const realErrors = validateContent(real);
 check("seed content passes", realErrors.length === 0, realErrors.join(" | "));
 
 const early = publicPaths(real, new Date("2026-11-11T12:00:00Z")).map((item) => item.path);
-check("Nov 11 excludes Houston before its publish time", !early.includes("/free-thriller/texas/houston/"));
+check("Nov 11 excludes Sheridan before its publish time", !early.includes("/free-thriller/wyoming/sheridan/"));
+check("Nov 11 excludes drafted Houston", !early.includes("/free-thriller/texas/houston/"));
 check("Nov 11 excludes drafted Dallas", !early.includes("/free-thriller/texas/dallas/"));
 check("Nov 11 excludes drafted Austin", !early.includes("/free-thriller/texas/austin/"));
 check("Nov 11 includes free read", early.includes("/free-reads/streetlight-math/"));
@@ -156,7 +157,8 @@ check("Nov 11 excludes the drafted sample post", !early.includes("/blog/example-
 check("Nov 11 excludes the ARC post before its publish time", !early.includes("/blog/digital-ascent-arc-booksprout/"));
 
 const live = publicPaths(real, new Date("2026-11-18T18:00:00Z")).map((item) => item.path);
-check("Nov 18 includes only Houston among city pages", live.includes("/free-thriller/texas/houston/") && !live.includes("/free-thriller/texas/dallas/") && !live.includes("/free-thriller/texas/austin/"));
+check("Nov 18 includes Sheridan and hides the Texas city pages", live.includes("/free-thriller/wyoming/sheridan/") && !["houston", "dallas", "austin"].some((city) => live.includes(`/free-thriller/texas/${city}/`)));
+check("Nov 18 includes the Wyoming shelf and not a Texas shelf", live.includes("/free-thriller/wyoming/") && !live.includes("/free-thriller/texas/"));
 check("Nov 18 includes the ARC post and hides the sample posts", live.includes("/blog/digital-ascent-arc-booksprout/") && [
     "/blog/example-houston-night-shift/",
     "/blog/example-dallas-parked-car/",
@@ -203,14 +205,14 @@ check("blog keeps slug", mappedBlog.slug === plan.blogs[0].slug);
 check("blog gains category from intent", typeof mappedBlog.category === "string" && mappedBlog.category.length > 0);
 
 const catalog = geoCatalog(real, new Date("2026-11-18T18:00:00Z"));
-const houstonHint = pickGeoHint({ country: "US", region: "TX", city: "Houston", latitude: 29.76, longitude: -95.37 }, catalog.places, catalog.states);
-check("Houston header matches Houston", houstonHint?.href === "/free-thriller/texas/houston/");
+const sheridanHint = pickGeoHint({ country: "US", region: "WY", city: "Sheridan", latitude: 44.8, longitude: -106.96 }, catalog.places, catalog.states);
+check("Sheridan header matches Sheridan", sheridanHint?.href === "/free-thriller/wyoming/sheridan/");
 const sanAntonio = pickGeoHint({ country: "US", region: "TX", city: null, latitude: 29.4241, longitude: -98.4936 }, catalog.places, catalog.states);
-check("San Antonio coordinates suggest the only live city, Houston", sanAntonio?.href === "/free-thriller/texas/houston/");
+check("San Antonio is too far from Sheridan for a city hint", sanAntonio == null);
 const chicago = pickGeoHint({ country: "US", region: "IL", city: "Chicago", latitude: 41.8781, longitude: -87.6298 }, catalog.places, catalog.states);
 check("Chicago gets no city page", chicago == null);
-const stateOnly = pickGeoHint({ country: "US", region: "TX", city: "El Paso", latitude: null, longitude: null }, catalog.places, catalog.states);
-check("Texas region without a city match suggests the state hub", stateOnly?.href === "/free-thriller/texas/");
+const stateOnly = pickGeoHint({ country: "US", region: "WY", city: "Cheyenne", latitude: null, longitude: null }, catalog.places, catalog.states);
+check("Wyoming region without a city match suggests the state hub", stateOnly?.href === "/free-thriller/wyoming/");
 
 const books = fs.readFileSync(path.join(repo, "src", "lib", "books.ts"), "utf8");
 check("BookFunnel constant", books.includes(HUNTED_BOOKFUNNEL_URL));
