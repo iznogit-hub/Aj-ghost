@@ -22,6 +22,16 @@ export type Cta = {
     urlTracked?: string;
 };
 
+export type BookPick = {
+    title: string;
+    author: string;
+    kicker: string;
+    tagline: string;
+    blurb: string;
+    url: string;
+    cover: string;
+};
+
 export type StoryPart = {
     id: string;
     title: string;
@@ -71,6 +81,8 @@ export type LandingPage = {
     microbookId: string;
     cta: Cta;
     secondaryLinks: LinkItem[];
+    picks: BookPick[];
+    ogImage?: string;
     internalLinks: string[];
     publishDate: string;
     publishAt?: string;
@@ -110,6 +122,7 @@ export type BlogPost = {
     hook: string;
     author: string;
     social: SocialPack;
+    ogImage?: string;
     body: string;
     wordCount: number;
     route: string;

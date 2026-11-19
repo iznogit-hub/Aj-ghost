@@ -27,8 +27,14 @@ export function generateMetadata({ params }: { params: { state: string; city: st
             url: page.route,
             siteName: AUTHOR_NAME,
             publishedTime: page.publishAt || page.publishDate,
+            images: page.ogImage ? [{ url: page.ogImage }] : undefined,
         },
-        twitter: { card: "summary_large_image", title: page.title, description: page.metaDescription },
+        twitter: {
+            card: "summary_large_image",
+            title: page.title,
+            description: page.metaDescription,
+            images: page.ogImage ? [page.ogImage] : undefined,
+        },
         robots: { index: true, follow: true },
     };
 }

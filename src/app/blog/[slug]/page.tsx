@@ -41,11 +41,13 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
             authors: [post.author],
             tags: post.tags,
             section: post.category,
+            images: post.ogImage ? [{ url: post.ogImage }] : undefined,
         },
         twitter: {
             card: "summary_large_image",
             title: post.title,
             description: post.social.shortFormHook || post.metaDescription,
+            images: post.ogImage ? [post.ogImage] : undefined,
         },
         robots: { index: true, follow: true },
     };
