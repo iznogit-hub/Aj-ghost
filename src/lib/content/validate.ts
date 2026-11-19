@@ -3,8 +3,10 @@ import path from "node:path";
 import {
     DIGITAL_ASCENT_ARC_URL,
     FORBIDDEN_ASIN,
-    FRACTURED_GROUND_KINDLE_URL,
     HUNTED_BOOKFUNNEL_URL,
+    SHE_WAS_NEVER_ALONE_URL,
+    THE_DEVOTED_LIE_URL,
+    isAllowedAmazonUrl,
     isHuntedUrl,
 } from "@/lib/books";
 import { parseBlogFile, parseCityCoords, parseLandingFile, parseMicrobookFile, parseStates } from "@/lib/content/parse";
@@ -189,10 +191,18 @@ function validateLandings(landings: LandingPage[], books: MicroBook[], states: S
             errors.push(`${page.file}: cta.url_tracked must stay on the HUNTED BookFunnel link.`);
         }
         for (const link of page.secondaryLinks) {
-            const bare = stripUrl(link.url);
-            if (bare !== FRACTURED_GROUND_KINDLE_URL && bare !== DIGITAL_ASCENT_ARC_URL) {
-                errors.push(`${page.file}: secondary link ${link.url} is not Fractured Ground or the Digital Ascent ARC.`);
+            if (!isAllowedAmazonUrl(link.url) && stripUrl(link.url) !== DIGITAL_ASCENT_ARC_URL) {
+                errors.push(`${page.file}: secondary link ${link.url} is not an allowed book link.`);
             }
+        }
+        const pickUrls = new Set<string>();
+        for (const pick of page.picks) {
+            if (!isAllowedAmazonUrl(pick.url)) {
+                errors.push(`${page.file}: pick "${pick.title}" must use an allowed Amazon link.`);
+            }
+            const key = stripUrl(pick.url);
+            if (pickUrls.has(key)) errors.push(`${page.file}: partner link ${key} is repeated.`);
+            pickUrls.add(key);
         }
         if (state) statesUsed.add(state.slug);
         remember(errors, titles, `${page.file} title`, page.title);
@@ -280,13 +290,16 @@ function scanRawContent(root: string): string[] {
         }
         const amazon = text.match(/https?:\/\/(?:www\.)?amazon\.com\/[^\s)"']+/gi) ?? [];
         for (const url of amazon) {
-            const bare = stripUrl(url);
-            if (bare !== FRACTURED_GROUND_KINDLE_URL) {
-                errors.push(`${relPath}: Amazon URL ${bare} is not allowed. HUNTED uses BookFunnel. The only Kindle URL is Fractured Ground.`);
+            if (!isAllowedAmazonUrl(url)) {
+                errors.push(`${relPath}: Amazon URL ${stripUrl(url)} is not allowed. HUNTED uses BookFunnel. Other Amazon links must be Fractured Ground or a named partner book.`);
             }
         }
         if (text.includes("booksprout.co") && !text.includes(DIGITAL_ASCENT_ARC_URL)) {
             errors.push(`${relPath}: BookSprout links must use the Digital Ascent ARC URL.`);
+        }
+        for (const partner of [SHE_WAS_NEVER_ALONE_URL, THE_DEVOTED_LIE_URL]) {
+            const count = text.split(partner).length - 1;
+            if (count > 1) errors.push(`${relPath}: partner link ${partner} appears ${count} times. Use it once.`);
         }
     }
     return errors;

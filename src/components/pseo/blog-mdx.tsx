@@ -35,4 +35,8 @@ export const blogMdxComponents = {
     strong: (props: HTMLAttributes<HTMLElement>) => (
         <strong {...props} className="font-semibold text-white" />
     ),
+    img: (props: HTMLAttributes<HTMLImageElement>) => (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img {...props} alt={props.alt ?? ""} className="mt-5 w-40 rounded-lg border border-gold-400/20" />
+    ),
 };

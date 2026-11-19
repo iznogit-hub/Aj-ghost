@@ -14,6 +14,11 @@
       "name": "Austin",
       "lat": 30.2672,
       "lng": -97.7431
+    },
+    "fort-worth": {
+      "name": "Fort Worth",
+      "lat": 32.7555,
+      "lng": -97.3308
     }
   },
   "wyoming": {

@@ -67,6 +67,7 @@ export function parseLandingFile(filePath: string, problems: string[]): LandingP
     const microbookId = str(data, "microbook_id", file, problems);
     const cta = parseCta(data.cta, file, problems);
     const secondaryLinks = parseLinks(data.secondary_links, "secondary_links", file, problems);
+    const picks = parsePicks(data.picks, file, problems);
     const internalLinks = parsePathList(data.internal_links, file, problems);
     const publishDate = asDateString(data.publish_date ?? data.publishDate);
     if (!publishDate) problems.push(`${file}: publish_date must be YYYY-MM-DD.`);
@@ -102,6 +103,8 @@ export function parseLandingFile(filePath: string, problems: string[]): LandingP
         microbookId,
         cta,
         secondaryLinks,
+        picks,
+        ogImage: optionalString(data.og_image) || undefined,
         internalLinks,
         publishDate,
         publishAt,
@@ -209,6 +212,7 @@ export function parseBlogFile(filePath: string, problems: string[]): BlogPost | 
             carousel: stringList(socialRaw.carousel, "social.carousel", file, problems),
             shortFormHook: optionalString(socialRaw.shortFormHook),
         },
+        ogImage: optionalString(data.og_image) || undefined,
         body,
         wordCount: wordCount(body),
         route: urlPath,
@@ -271,6 +275,29 @@ function parseCta(value: unknown, file: string, problems: string[], optional = f
         subtext: optionalString(data.subtext),
         urlTracked: optionalString(data.url_tracked),
     };
+}
+
+function parsePicks(value: unknown, file: string, problems: string[]) {
+    if (value == null) return [];
+    if (!Array.isArray(value)) {
+        problems.push(`${file}: picks must be an array.`);
+        return [];
+    }
+    return value.map((item, index) => {
+        const data = (item ?? {}) as Record<string, unknown>;
+        const title = typeof data.title === "string" ? data.title.trim() : "";
+        const url = typeof data.url === "string" ? data.url.trim() : "";
+        if (!title || !url) problems.push(`${file}: picks[${index}] needs a title and a url.`);
+        return {
+            title,
+            author: typeof data.author === "string" ? data.author.trim() : "",
+            kicker: typeof data.kicker === "string" ? data.kicker.trim() : "",
+            tagline: typeof data.tagline === "string" ? data.tagline.trim() : "",
+            blurb: typeof data.blurb === "string" ? data.blurb.trim() : "",
+            url,
+            cover: typeof data.cover === "string" ? data.cover.trim() : "",
+        };
+    });
 }
 
 function parseLinks(value: unknown, field: string, file: string, problems: string[], optional = false): LinkItem[] {

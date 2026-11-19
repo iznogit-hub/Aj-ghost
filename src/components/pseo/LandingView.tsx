@@ -63,6 +63,31 @@ export function LandingView({ page }: { page: LandingPage }) {
                 </blockquote>
             ) : null}
 
+            {page.picks.length ? (
+                <section className="mt-12" aria-labelledby="picks-title">
+                    <h2 id="picks-title" className="font-serif text-3xl text-white">Two picks from fellow thriller authors</h2>
+                    <ul className="mt-6 space-y-6">
+                        {page.picks.map((pick) => (
+                            <li key={pick.url} className="rounded-3xl border border-white/10 p-5 sm:flex sm:gap-5">
+                                {pick.cover ? (
+                                    // eslint-disable-next-line @next/next/no-img-element
+                                    <img src={pick.cover} alt={`Cover of ${pick.title} by ${pick.author}`} className="mx-auto mb-4 aspect-[2/3] w-36 rounded-lg object-cover sm:mx-0 sm:mb-0" />
+                                ) : null}
+                                <div>
+                                    <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-400/80">{pick.author}{pick.kicker ? ` · ${pick.kicker}` : ""}</p>
+                                    <h3 className="mt-2 font-serif text-2xl text-white">{pick.title}</h3>
+                                    {pick.tagline ? <p className="mt-2 text-gold-100/90 italic">{pick.tagline}</p> : null}
+                                    <p className="mt-3 text-sm leading-relaxed text-white/70">{pick.blurb}</p>
+                                    <a href={pick.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex text-sm font-semibold text-gold-300 underline decoration-gold-400/40 underline-offset-4">
+                                        Get {pick.title} on Amazon
+                                    </a>
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            ) : null}
+
             {storyLive ? <MicroBookView book={storyLive} embeddedOn={page.route} /> : null}
             <BookCta place={place} huntedUrl={page.cta.urlTracked || page.cta.url} />
 
