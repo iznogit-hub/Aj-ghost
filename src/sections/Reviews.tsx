@@ -1,20 +1,28 @@
 import Tag from "@/components/Tag";
 import { ExternalLink } from "lucide-react";
 
-const HUNTED_AMAZON = "https://www.amazon.com/dp/B0H9V75G1M";
-const FRACTURED_GROUND_AMAZON = "https://www.amazon.com/dp/B0H9SXX81F";
+import { DIGITAL_ASCENT_ARC_URL, FRACTURED_GROUND_KINDLE_URL, HUNTED_BOOKFUNNEL_URL } from "@/lib/books";
+
 const AMAZON_AUTHOR_STORE = "https://www.amazon.com/stores/author/B0HD9D7DRD";
 
 const books = [
     {
         title: "HUNTED",
         detail: "The Ryan Kane Series, Book One",
-        href: HUNTED_AMAZON,
+        href: HUNTED_BOOKFUNNEL_URL,
+        label: "Get HUNTED free",
     },
     {
         title: "Fractured Ground",
         detail: "The Ryan Kane Series, Book Two",
-        href: FRACTURED_GROUND_AMAZON,
+        href: FRACTURED_GROUND_KINDLE_URL,
+        label: "Read on Kindle",
+    },
+    {
+        title: "Digital Ascent",
+        detail: "The Ryan Kane Series, Book Three",
+        href: DIGITAL_ASCENT_ARC_URL,
+        label: "Get the free ARC",
     },
 ];
 
@@ -32,11 +40,11 @@ export default function Reviews() {
                         Readers on <span className="text-gold-gradient">The Ryan Kane Series</span>
                     </h2>
                     <p className="text-white/45 mt-4 text-base md:text-lg">
-                        Reader reviews for HUNTED and Fractured Ground are on Amazon. Read them there, in the reviewer&apos;s own words.
+                        HUNTED is free on BookFunnel. Fractured Ground is on Kindle. Digital Ascent has a free ARC.
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid md:grid-cols-3 gap-6">
                     {books.map((book) => (
                         <a
                             key={book.title}
@@ -52,7 +60,7 @@ export default function Reviews() {
                                 {book.title}
                             </h3>
                             <span className="inline-flex items-center gap-2 mt-8 text-sm font-semibold text-gold-300 group-hover:text-gold-200 transition">
-                                Read reviews on Amazon
+                                {book.label}
                                 <ExternalLink size={15} />
                             </span>
                         </a>

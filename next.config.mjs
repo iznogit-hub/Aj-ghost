@@ -7,6 +7,20 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   trailingSlash: true,
+  async redirects() {
+    return [
+      {
+        source: "/free-thriller/texas/houston",
+        destination: "/free-thriller/wyoming/sheridan/",
+        permanent: true,
+      },
+      {
+        source: "/free-thriller/texas/houston/",
+        destination: "/free-thriller/wyoming/sheridan/",
+        permanent: true,
+      },
+    ];
+  },
   experimental: {
     outputFileTracingIncludes: {
       "/api/geo-hint": ["./content/**/*"],

@@ -32,11 +32,9 @@ const faqs: FAQ[] = [
     },
     {
         question: "How does the Ryan Kane Series ARC team work?",
-        answer: `Readers join the ARC (Advanced Reader Copy) team by committing to leave honest Amazon reviews for each book in the Ryan Kane Series as they read. In exchange, they receive free access to the entire series—unlocking the next book only after they've posted their review for the current one. This creates a direct incentive structure: one review per book = one free book unlock. The campaign operates on urgent, rolling deadlines (typically 14-30 days per book) to maintain momentum and ensure timely review generation before official launch dates.
-
-JOIN HERE: https://booksprout.co/reviewer/review-copy/view/313716/fractured-ground-book-two-in-the-ryan-kane-series`,
-        linkUrl: "https://booksprout.co/reviewer/review-copy/view/313716/fractured-ground-book-two-in-the-ryan-kane-series",
-        linkLabel: "Join the ARC Team on BookSprout",
+        answer: `The current advance copy is Digital Ascent, book three. Read it at your own pace. An honest review is welcome, and it is never required. Fractured Ground is the Kindle edition, not an advance-copy link.`,
+        linkUrl: "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series",
+        linkLabel: "Get the free ARC",
     },
 ];
 
