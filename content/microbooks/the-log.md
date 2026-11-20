@@ -12,7 +12,7 @@ canon_notes: |
 label: "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book."
 publish_date: "2026-11-01"
 publish_at: "2026-11-01T12:00:00Z"
-status: scheduled
+status: published
 example: false
 ---
 These pages were never meant to be read by the man they describe.

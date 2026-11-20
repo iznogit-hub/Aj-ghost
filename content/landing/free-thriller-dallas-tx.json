@@ -6,48 +6,73 @@
   "state": "TX",
   "city": "Dallas",
   "page_kind": "city",
-  "search_intent": "Commercial: wants a dark thriller to read tonight",
+  "search_intent": "Commercial: wants a dark thriller to read tonight in Dallas",
   "target_keyword": "dark thriller to read tonight Dallas",
-  "title": "Dallas: A Dark Thriller to Read Tonight, Free | AJ Ghost",
-  "meta_description": "A parked car, a city asleep. For Dallas readers: Streetlight Math, a free 4 minute story. Then HUNTED, the Ryan Kane prequel, free on BookFunnel.",
-  "h1": "Dallas Readers: A Night in Ryan Kane's Front Seat",
+  "title": "Dallas: The Case Files, Thrillers About Reopened Cases | AJ Ghost",
+  "meta_description": "Dallas readers: thrillers about reopened cases, the free story The Log, then HUNTED free on BookFunnel.",
+  "h1": "The Case Files: Thrillers About Reopened Cases in Dallas",
   "local_angle": {
-    "label": "A parked car, a city asleep",
-    "description": "For readers who like the city at night from inside a car. Streetlight Math puts you in Ryan Kane's front seat, counting lights and watching one sedan that will not leave."
+    "label": "A file left open",
+    "description": "For Dallas readers who want a dark thriller tonight about a case that only looked closed."
   },
   "hunted_hook": {
-    "manuscript_line": 526,
-    "text": "Across the parking lot, a man in a gray suit leaned against a black sedan.",
-    "source": "HUNTED.txt (verbatim)"
+    "manuscript_line": 3,
+    "text": "Like someone had just put it there.",
+    "source": "HUNTED · Chapter 3"
   },
-  "microbook_id": "MB01",
-  "microbook_title": "Streetlight Math",
+  "microbook_id": "MB04",
+  "microbook_title": "The Log",
   "microbook_label": "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book.",
   "cta": {
     "text": "Get HUNTED Free on BookFunnel",
     "subtext": "HUNTED, The Ryan Kane Series Prequel. Free on BookFunnel.",
     "url": "https://dl.bookfunnel.com/j4e3jsxfr6",
-    "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost.com&utm_medium=pseo&utm_campaign=lp_free-thriller-dallas-tx"
+    "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost_site&utm_medium=landing&utm_campaign=case_files"
   },
   "secondary_links": [
     {
-      "text": "Fractured Ground, Book Two, on Kindle",
+      "text": "Get Fractured Ground on Kindle",
       "url": "https://www.amazon.com/dp/B0H9SXX81F"
     },
     {
-      "text": "Digital Ascent, ARC on BookSprout",
+      "text": "Get the Digital Ascent ARC",
       "url": "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
     }
   ],
+  "picks": [
+    {
+      "title": "The Ones Worth Keeping",
+      "author": "Cara Toner",
+      "kicker": "A Psychological Thriller",
+      "tagline": "Someone is watching them. Playing with them.",
+      "blurb": "Nicole Smith expected four days with her closest friends at a secluded country getaway. Then an entry in the guest book links their cabin to the unsolved disappearance of Emily Carter. Threatening notes start appearing, phones go missing, and it becomes clear the nightmare didn't begin when they arrived. It began years ago.",
+      "url": "https://www.amazon.com/dp/B0HCH1QPV1",
+      "cover": "/covers/the-ones-worth-keeping.jpg"
+    },
+    {
+      "title": "Cold Hard Murder",
+      "author": "Jemma Stark",
+      "kicker": "A Briana Song Crime Thriller, Book 4",
+      "tagline": "She didn't realize the case would chase her back.",
+      "blurb": "Briana Song and her partner, Buck, take on the reopened death of Terry Russo, a case once closed under suspicious circumstances. A pizza delivery boy confessed, then disappeared, and anonymous tips lead to secret recordings, each one more damning than the last. Book 4 of the Briana Song Crime Thrillers.",
+      "url": "https://www.amazon.com/dp/B0DHV4463Q",
+      "cover": "/covers/cold-hard-murder.jpg"
+    }
+  ],
+  "og_image": "/covers/the-ones-worth-keeping.jpg",
   "internal_links": [
     "/free-thriller/texas/",
-    "/free-reads/streetlight-math/",
+    "/free-reads/the-log/",
+    "/blog/two-thrillers-about-cold-cases/",
     "/free-thriller/texas/fort-worth/",
-    "/free-thriller/texas/plano/"
+    "/blog/two-psychological-thrillers-people-closest-to-you/",
+    "/blog/digital-ascent-arc-booksprout/",
+    "/free-thriller/wyoming/sheridan/",
+    "/blog/"
   ],
-  "publish_date": "2026-11-12",
-  "publish_at": "2026-11-12T15:00:00Z",
-  "status": "draft",
-  "intro": "Example placeholder for Dallas, Texas. This introduction is sample copy, and it is not the Dallas page with the city name pasted over someone else's paragraph. Dallas after midnight is a grid of glass, toll cameras, and parking garages that stay brighter than the rooms above them. Streetlight Math puts you in Ryan Kane's front seat while he counts lamps and watches one sedan that will not leave. The lot in the story is not a Dallas address. What belongs to Dallas readers is this page: the desire for a dark thriller you can start tonight and finish before the next alarm. HUNTED, the Book 1 prequel, is free on BookFunnel when the short story ends. Fractured Ground is on Kindle. Digital Ascent, book three, is an advance copy on BookSprout. Streetlight Math keeps its own canonical URL under free reads, and this Dallas URL stays about the city you drove into. If the North Central Expressway was still moving when you got off work, or if Reunion Tower was the last bright thing in the mirror, read here first. Then decide whether you want the whole prequel. Houston and Austin have their own pages, with their own introductions, because a template would waste your time.",
-  "example": true
+  "publish_date": "2026-11-20",
+  "publish_at": "2026-11-20T12:00:00Z",
+  "status": "published",
+  "example": false,
+  "intro": "Dallas keeps its lights on late, a downtown of glass towers and parking garages that outlast the people who work inside them. This page is for that drive home, and for cases that only pretend to be finished. A guest book line nobody can explain. A confession that closed a death without settling it. Notes someone refused to file away. I assembled this lineup for the Case Files letter, then set the door in Dallas, Texas, so readers here have a page of their own. The Ryan Kane Series is not set in Texas, and these picks are not a report from a local precinct. Cara Toner's The Ones Worth Keeping and Jemma Stark's Cold Hard Murder are linked once each below. After them, The Log runs on this page for about three minutes: seven days of notes kept by someone watching a man who lives in his car. That story is original companion fiction, not a chapter of HUNTED. Ryan has been sleeping in his car in Phoenix, and somebody is keeping a log on him. If you want the longer file, the prequel waits as a BookFunnel download. Fractured Ground is the Kindle novel after that prequel. Digital Ascent, book three, is a free advance copy. Dallas is the doorway. The open file is what you take with you."
 }

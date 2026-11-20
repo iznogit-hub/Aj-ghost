@@ -6,6 +6,8 @@ import {
     HUNTED_BOOKFUNNEL_URL,
     SHE_WAS_NEVER_ALONE_URL,
     THE_DEVOTED_LIE_URL,
+    THE_ONES_WORTH_KEEPING_URL,
+    COLD_HARD_MURDER_URL,
     isAllowedAmazonUrl,
     isHuntedUrl,
 } from "@/lib/books";
@@ -297,7 +299,7 @@ function scanRawContent(root: string): string[] {
         if (text.includes("booksprout.co") && !text.includes(DIGITAL_ASCENT_ARC_URL)) {
             errors.push(`${relPath}: BookSprout links must use the Digital Ascent ARC URL.`);
         }
-        for (const partner of [SHE_WAS_NEVER_ALONE_URL, THE_DEVOTED_LIE_URL]) {
+        for (const partner of [SHE_WAS_NEVER_ALONE_URL, THE_DEVOTED_LIE_URL, THE_ONES_WORTH_KEEPING_URL, COLD_HARD_MURDER_URL]) {
             const count = text.split(partner).length - 1;
             if (count > 1) errors.push(`${relPath}: partner link ${partner} appears ${count} times. Use it once.`);
         }
