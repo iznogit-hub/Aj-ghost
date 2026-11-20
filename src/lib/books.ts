@@ -3,6 +3,8 @@ export const HUNTED_BOOKFUNNEL_URL = "https://dl.bookfunnel.com/j4e3jsxfr6";
 export const FRACTURED_GROUND_KINDLE_URL = "https://www.amazon.com/dp/B0H9SXX81F";
 export const SHE_WAS_NEVER_ALONE_URL = "https://www.amazon.com/dp/B0HP5BB2Q5";
 export const THE_DEVOTED_LIE_URL = "https://www.amazon.com/dp/B0HRYLLZFG";
+export const THE_ONES_WORTH_KEEPING_URL = "https://www.amazon.com/dp/B0HCH1QPV1";
+export const COLD_HARD_MURDER_URL = "https://www.amazon.com/dp/B0DHV4463Q";
 export const DIGITAL_ASCENT_ARC_URL =
     "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series";
 
@@ -13,6 +15,8 @@ const ALLOWED_AMAZON_URLS = new Set([
     FRACTURED_GROUND_KINDLE_URL,
     SHE_WAS_NEVER_ALONE_URL,
     THE_DEVOTED_LIE_URL,
+    THE_ONES_WORTH_KEEPING_URL,
+    COLD_HARD_MURDER_URL,
 ]);
 
 export function bareUrl(url: string): string {

@@ -165,11 +165,14 @@ check("Nov 18 includes the ARC post and hides the sample posts", live.includes("
     "/blog/example-austin-weekly-letter/",
 ].every((route) => !live.includes(route)));
 const nov20 = publicPaths(real, new Date("2026-11-20T12:00:00Z")).map((item) => item.path);
-check("Nov 20 includes Fort Worth, its story, and the trust essay", [
+check("Nov 20 includes Fort Worth, Dallas, their stories, and both essays", [
     "/free-thriller/texas/fort-worth/",
+    "/free-thriller/texas/dallas/",
     "/free-thriller/texas/",
     "/free-reads/vacancy/",
+    "/free-reads/the-log/",
     "/blog/two-psychological-thrillers-people-closest-to-you/",
+    "/blog/two-thrillers-about-cold-cases/",
 ].every((route) => nov20.includes(route)));
 check("Nov 20 still hides drafted Houston", !nov20.includes("/free-thriller/texas/houston/"));
 check("sitemap paths are only known routes", live.every((route) => route === "/" || route.startsWith("/free-") || route.startsWith("/blog") || route === "/contact/"));
