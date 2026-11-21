@@ -175,6 +175,13 @@ check("Nov 20 includes Fort Worth, Dallas, their stories, and both essays", [
     "/blog/two-thrillers-about-cold-cases/",
 ].every((route) => nov20.includes(route)));
 check("Nov 20 still hides drafted Houston", !nov20.includes("/free-thriller/texas/houston/"));
+const nov21 = publicPaths(real, new Date("2026-11-21T00:00:00Z")).map((item) => item.path);
+check("Nov 21 includes San Antonio, the fellow-authors essay, Last Run, and the Texas hub", [
+    "/free-thriller/texas/san-antonio/",
+    "/blog/five-thrillers-from-fellow-authors/",
+    "/free-reads/last-run/",
+    "/free-thriller/texas/",
+].every((route) => nov21.includes(route)));
 check("sitemap paths are only known routes", live.every((route) => route === "/" || route.startsWith("/free-") || route.startsWith("/blog") || route === "/contact/"));
 
 check("draft_planned stays offline", !isLive({ publishDate: "2020-01-01", publishAt: "2020-01-01T00:00:00Z", status: "draft_planned" }, new Date("2026-11-18T00:00:00Z")));

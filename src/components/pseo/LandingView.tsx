@@ -11,7 +11,18 @@ import { getNow } from "@/lib/site";
 import { landingsForState, microbookById, publishedLandings, publishedMicrobooks, publishedPosts } from "@/lib/content/load";
 import { livePathSet } from "@/lib/content/paths";
 import { landingJsonLd } from "@/lib/content/schema";
-import type { LandingPage } from "@/lib/content/types";
+import type { BookPick, LandingPage } from "@/lib/content/types";
+
+function pickCtaLabel(pick: BookPick): string {
+    try {
+        const host = new URL(pick.url).hostname.replace(/^www\./, "").toLowerCase();
+        if (host === "dl.bookfunnel.com") return `Get ${pick.title} free on BookFunnel`;
+        if (host === "bookhip.com") return `Get ${pick.title}`;
+    } catch {
+        return `Get ${pick.title} on Amazon`;
+    }
+    return `Get ${pick.title} on Amazon`;
+}
 
 export function LandingView({ page }: { page: LandingPage }) {
     const now = getNow();
@@ -65,7 +76,9 @@ export function LandingView({ page }: { page: LandingPage }) {
 
             {page.picks.length ? (
                 <section className="mt-12" aria-labelledby="picks-title">
-                    <h2 id="picks-title" className="font-serif text-3xl text-white">Two picks from fellow thriller authors</h2>
+                    <h2 id="picks-title" className="font-serif text-3xl text-white">
+                        {page.picks.length === 2 ? "Two picks from fellow thriller authors" : "Thriller picks from fellow authors"}
+                    </h2>
                     <ul className="mt-6 space-y-6">
                         {page.picks.map((pick) => (
                             <li key={pick.url} className="rounded-3xl border border-white/10 p-5 sm:flex sm:gap-5">
@@ -79,7 +92,7 @@ export function LandingView({ page }: { page: LandingPage }) {
                                     {pick.tagline ? <p className="mt-2 text-gold-100/90 italic">{pick.tagline}</p> : null}
                                     <p className="mt-3 text-sm leading-relaxed text-white/70">{pick.blurb}</p>
                                     <a href={pick.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex text-sm font-semibold text-gold-300 underline decoration-gold-400/40 underline-offset-4">
-                                        Get {pick.title} on Amazon
+                                        {pickCtaLabel(pick)}
                                     </a>
                                 </div>
                             </li>

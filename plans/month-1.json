@@ -454,55 +454,110 @@
       "status": "draft_planned"
     },
     {
-      "id": "LP05",
+      "id": "LP-P03",
       "type": "landing_page",
       "slug": "free-thriller-san-antonio-tx",
       "url_path": "/free-thriller/texas/san-antonio/",
       "state": "TX",
       "city": "San Antonio",
       "page_kind": "city",
-      "search_intent": "Informational: wants a motel noir short story",
-      "target_keyword": "motel noir short story free",
-      "title": "San Antonio: A Free Motel Noir Short Story | AJ Ghost",
-      "meta_description": "The motel at the edge of town. For San Antonio readers: Vacancy, a free 4 minute story. Then HUNTED, the Ryan Kane prequel, free on BookFunnel.",
-      "h1": "San Antonio Readers: A Free Motel Noir Story",
+      "search_intent": "Commercial: reader wants new thriller picks and a free way to try AJ Ghost",
+      "target_keyword": "thriller picks San Antonio",
+      "title": "Thriller Picks for San Antonio Readers | AJ Ghost",
+      "meta_description": "Five thriller picks for San Antonio readers, Last Run as a free short story, and HUNTED, the Ryan Kane prequel, free on BookFunnel.",
+      "h1": "Five Thriller Picks for San Antonio Readers",
       "local_angle": {
-        "label": "The motel at the edge of town",
-        "description": "For motel noir readers. Vacancy follows a night clerk, a guest who asks if anyone has asked about him, and a car that parks across from room fourteen."
+        "label": "Thriller picks for a late drive",
+        "description": "For San Antonio readers who want five thriller picks, a short free story, and HUNTED on BookFunnel, without the novels being set here."
       },
       "hunted_hook": {
-        "manuscript_line": 1066,
-        "text": "Because whoever left this had been watching me.",
-        "source": "HUNTED.txt (verbatim)"
+        "manuscript_line": 2,
+        "text": "Two missed calls from a number I didn't recognize.",
+        "source": "HUNTED · Chapter 2"
       },
-      "microbook_id": "MB05",
-      "microbook_title": "Vacancy",
+      "microbook_id": "MB03",
+      "microbook_title": "Last Run",
       "microbook_label": "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book.",
       "cta": {
         "text": "Get HUNTED Free on BookFunnel",
         "subtext": "HUNTED, The Ryan Kane Series Prequel. Free on BookFunnel.",
         "url": "https://dl.bookfunnel.com/j4e3jsxfr6",
-        "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost.com&utm_medium=pseo&utm_campaign=lp_free-thriller-san-antonio-tx"
+        "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost_site&utm_medium=landing&utm_campaign=nov17_redo"
       },
       "secondary_links": [
         {
-          "text": "Fractured Ground, Book Two, on Kindle",
+          "text": "Get Fractured Ground on Kindle",
           "url": "https://www.amazon.com/dp/B0H9SXX81F"
         },
         {
-          "text": "Digital Ascent, ARC on BookSprout",
+          "text": "Get the Digital Ascent ARC",
           "url": "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
         }
       ],
+      "picks": [
+        {
+          "title": "BROKEN CITY",
+          "author": "Damon Harper",
+          "kicker": "A Corrupt Authority Psychological Thriller",
+          "tagline": "Some cities die from neglect. Others are murdered on purpose.",
+          "blurb": "Some cities die from neglect. Others are murdered on purpose. Detective Malloy has spent her career holding East Baltimore together with sheer will. Now the deaths are coming faster, overdoses, stabbings, and disappearances with too many questions and not enough answers. Beside her stand Officers Nia Wallace and Ryan Mitchell, two allies she can still trust when every other badge feels compromised. Together they follow a trail of falsified reports, silent witnesses, and redevelopment plans built on blood. Across the block, Hattie Carter searches for her missing grandson, and Darius, a boy desperate to be the hero, dives headfirst into a rescue that may cost him everything. As their worlds collide, Malloy discovers that the city's rebirth is a performance staged for power. The real story hides in the shadows, where truth is rewritten, loyalty is a weapon, and hope is the hardest thing to save.",
+          "url": "https://www.amazon.com/dp/B0G1X5MYV9",
+          "cover": "/covers/broken-city.jpg"
+        },
+        {
+          "title": "Stalker",
+          "author": "Tom Claren",
+          "kicker": "A Psychological Thriller",
+          "tagline": "Someone tries to kill my best friend. I vow to track them down.",
+          "blurb": "Someone tries to kill my best friend. I vow to track them down. When a truck rams our car on a dark country road, everyone calls it a terrible accident. I know better, because my best friend Mia has been hiding the fact that she has a stalker. I'm a medical student. I trust evidence over excuses, and every clue I uncover points to a predator willing to destroy anyone who stands in his way. The deeper I dig, the more the local police dismiss my fears. Powerful people close ranks, and I realize the cover-up may be as dangerous as the crime itself. Then the stalker turns his attention to me. Now I'm being hunted by someone who believes fear will keep me silent. To save my best friend and expose the truth, I must outthink a ruthless killer before his obsession becomes my death sentence.",
+          "url": "https://dl.bookfunnel.com/dt9msoegf9",
+          "cover": "/covers/stalker.jpg"
+        },
+        {
+          "title": "Garden Of Lies",
+          "author": "Jemma Stark",
+          "kicker": "A mention",
+          "tagline": "A high-profile death. A city full of secrets.",
+          "blurb": "A billionaire is found dead in New Orleans, and the case is ruled a suicide. The governor isn't buying it. Special Agents Briana Song and James Buckley dig into the tycoon's high-society world and find enemies everywhere, and lies at every turn. To uncover the truth, Briana starts bending the rules, and puts herself directly in the killer's sights. Accident or murder? Truth or lies? In the Garden District, nothing is what it seems.",
+          "url": "https://BookHip.com/LMKTHQV",
+          "cover": "/covers/garden-of-lies.jpg"
+        },
+        {
+          "title": "The Empty Boat",
+          "author": "Natasha Stone",
+          "kicker": "A Haunting Domestic Suspense Psychological Thriller · The \"Empty\" Thriller Series, Book 9",
+          "tagline": "Some secrets can destroy a marriage. Others can destroy everything.",
+          "blurb": "Some secrets can destroy a marriage. Others can destroy everything. Alyssa is looking forward to a relaxing Fourth of July weekend with her husband Keith, her younger sister Mandi, and Mandi's husband Greg. Their beautiful vacation home on a secluded South Carolina island seems like the perfect escape from everyday life. But as soon as they arrive, Alyssa learns something that changes everything. Mandi has been having an affair with a local charter boat captain. Worse, she has no intention of leaving her husband. She expects Alyssa to keep her secret, even as the four of them spend the weekend together. Now Alyssa is caught between loyalty to her sister and the burden of keeping a secret that could tear their families apart. Every conversation feels uncomfortable, and every smile hides another lie. Then, after a tense Saturday night, Mandi disappears. And the longer Mandi is missing, the more Alyssa wonders what else her sister has been hiding. THE EMPTY BOAT is Book 9 of The \"Empty\" Thriller Series. It can be read as a standalone.",
+          "url": "https://www.amazon.com/dp/B0HPMMMFNR",
+          "cover": "/covers/the-empty-boat.jpg"
+        },
+        {
+          "title": "THEIRS",
+          "author": "Liz Sinclair",
+          "kicker": "The Adler Family Series, Book 3",
+          "tagline": "Eleanor Adler is dead. And her daughter-in-law is relieved.",
+          "blurb": "Eleanor Adler is dead. And her daughter-in-law is relieved. For thirteen years, Eleanor has interfered in Hannah's marriage and parenting. No matter how often Hannah said no, Eleanor never listened. Now Eleanor lies dead at the foot of her staircase. Hannah should finally be free of her. Instead, the police suspect foul play. The front door was unlocked. Eleanor may have survived her fall for over an hour. And someone is lying about the night she died. The investigation begins to expose secrets Hannah never imagined. Her sister-in-law threatened to keep Eleanor from her own grandchild. A man with a restraining order in his past lied about visiting her. Even Eleanor's devoted husband is hiding something. The more Hannah learns about Eleanor's final days, the less she can walk away. She wanted Eleanor out of her life. Now, buried in her family's secrets, she may never escape what Eleanor left behind.",
+          "url": "https://www.amazon.com/dp/B0HNN4MJ6D",
+          "cover": "/covers/theirs.jpg"
+        }
+      ],
+      "og_image": "/covers/broken-city.jpg",
       "internal_links": [
         "/free-thriller/texas/",
-        "/free-reads/vacancy/",
-        "/free-thriller/texas/el-paso/",
-        "/free-thriller/texas/plano/"
+        "/free-reads/last-run/",
+        "/blog/five-thrillers-from-fellow-authors/",
+        "/blog/two-thrillers-about-cold-cases/",
+        "/blog/two-psychological-thrillers-people-closest-to-you/",
+        "/blog/digital-ascent-arc-booksprout/",
+        "/free-thriller/texas/dallas/",
+        "/free-thriller/texas/fort-worth/",
+        "/free-thriller/wyoming/sheridan/"
       ],
-      "publish_date": "2026-11-22",
-      "publish_at": "2026-11-22T10:00:00+05:30",
-      "status": "draft_planned"
+      "publish_date": "2026-11-21",
+      "publish_at": "2026-11-21T00:00:00Z",
+      "status": "published",
+      "example": false,
+      "intro": "This page collects five thriller picks for San Antonio readers, a short story you can read free, and HUNTED, the Ryan Kane Series Prequel, free on BookFunnel. The novels below are not set in San Antonio, and the Ryan Kane Series is not set in Texas. They are books I am sharing from fellow authors, gathered here so you can start with a cover, a hook, and a link. Two of them get a longer look. Damon Harper's BROKEN CITY follows Detective Malloy in East Baltimore, where the deaths are coming faster and every other badge starts to feel compromised. Tom Claren's Stalker follows a medical student who will not call a crash on a dark country road an accident. Three shorter mentions sit under those: Jemma Stark's Garden Of Lies, Natasha Stone's The Empty Boat (Book 9 of The \"Empty\" Thriller Series), and Liz Sinclair's THEIRS (Book 3 of the Adler Family Series). After the picks you will find Last Run, a short story you can read free on this page in about 4 minutes. It is original companion fiction set in the world of the Ryan Kane Series: a bus driver on the last run of the night, rain, and a black sedan that stops every time she does. If it works for you, HUNTED is free on BookFunnel."
     },
     {
       "id": "LP06",
