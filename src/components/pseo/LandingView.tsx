@@ -13,9 +13,16 @@ import { livePathSet } from "@/lib/content/paths";
 import { landingJsonLd } from "@/lib/content/schema";
 import type { BookPick, LandingPage } from "@/lib/content/types";
 
+function pickHeading(count: number): string {
+    if (count === 1) return "Featured psychological thriller";
+    if (count === 2) return "Two picks from fellow thriller authors";
+    return "Thriller picks from fellow authors";
+}
+
 function pickCtaLabel(pick: BookPick): string {
     try {
         const host = new URL(pick.url).hostname.replace(/^www\./, "").toLowerCase();
+        if (host === "buy.bookfunnel.com") return `Get ${pick.title}`;
         if (host === "dl.bookfunnel.com") return `Get ${pick.title} free on BookFunnel`;
         if (host === "bookhip.com") return `Get ${pick.title}`;
     } catch {
@@ -77,7 +84,7 @@ export function LandingView({ page }: { page: LandingPage }) {
             {page.picks.length ? (
                 <section className="mt-12" aria-labelledby="picks-title">
                     <h2 id="picks-title" className="font-serif text-3xl text-white">
-                        {page.picks.length === 2 ? "Two picks from fellow thriller authors" : "Thriller picks from fellow authors"}
+                        {pickHeading(page.picks.length)}
                     </h2>
                     <ul className="mt-6 space-y-6">
                         {page.picks.map((pick) => (
