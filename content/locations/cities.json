@@ -19,6 +19,11 @@
       "name": "Fort Worth",
       "lat": 32.7555,
       "lng": -97.3308
+    },
+    "san-antonio": {
+      "name": "San Antonio",
+      "lat": 29.4241,
+      "lng": -98.4936
     }
   },
   "wyoming": {

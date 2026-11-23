@@ -8,7 +8,13 @@ import {
     THE_DEVOTED_LIE_URL,
     THE_ONES_WORTH_KEEPING_URL,
     COLD_HARD_MURDER_URL,
+    BROKEN_CITY_URL,
+    THE_EMPTY_BOAT_URL,
+    THEIRS_URL,
+    STALKER_BOOKFUNNEL_URL,
+    GARDEN_OF_LIES_URL,
     isAllowedAmazonUrl,
+    isAllowedPartnerPickUrl,
     isHuntedUrl,
 } from "@/lib/books";
 import { parseBlogFile, parseCityCoords, parseLandingFile, parseMicrobookFile, parseStates } from "@/lib/content/parse";
@@ -199,8 +205,8 @@ function validateLandings(landings: LandingPage[], books: MicroBook[], states: S
         }
         const pickUrls = new Set<string>();
         for (const pick of page.picks) {
-            if (!isAllowedAmazonUrl(pick.url)) {
-                errors.push(`${page.file}: pick "${pick.title}" must use an allowed Amazon link.`);
+            if (!isAllowedPartnerPickUrl(pick.url)) {
+                errors.push(`${page.file}: pick "${pick.title}" must use an allowed partner link.`);
             }
             const key = stripUrl(pick.url);
             if (pickUrls.has(key)) errors.push(`${page.file}: partner link ${key} is repeated.`);
@@ -299,12 +305,39 @@ function scanRawContent(root: string): string[] {
         if (text.includes("booksprout.co") && !text.includes(DIGITAL_ASCENT_ARC_URL)) {
             errors.push(`${relPath}: BookSprout links must use the Digital Ascent ARC URL.`);
         }
-        for (const partner of [SHE_WAS_NEVER_ALONE_URL, THE_DEVOTED_LIE_URL, THE_ONES_WORTH_KEEPING_URL, COLD_HARD_MURDER_URL]) {
-            const count = text.split(partner).length - 1;
+        for (const partner of [
+            SHE_WAS_NEVER_ALONE_URL,
+            THE_DEVOTED_LIE_URL,
+            THE_ONES_WORTH_KEEPING_URL,
+            COLD_HARD_MURDER_URL,
+            BROKEN_CITY_URL,
+            THE_EMPTY_BOAT_URL,
+            THEIRS_URL,
+            STALKER_BOOKFUNNEL_URL,
+            GARDEN_OF_LIES_URL,
+        ]) {
+            const count = partnerCount(text, partner);
             if (count > 1) errors.push(`${relPath}: partner link ${partner} appears ${count} times. Use it once.`);
         }
     }
     return errors;
+}
+
+function partnerCount(text: string, partner: string): number {
+    if (partner.toLowerCase().includes("bookhip.com")) {
+        const needle = partner.toLowerCase();
+        const haystack = text.toLowerCase();
+        let count = 0;
+        let from = 0;
+        while (from <= haystack.length) {
+            const index = haystack.indexOf(needle, from);
+            if (index === -1) break;
+            count += 1;
+            from = index + needle.length;
+        }
+        return count;
+    }
+    return text.split(partner).length - 1;
 }
 
 function stripUrl(url: string): string {
