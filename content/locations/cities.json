@@ -24,6 +24,11 @@
       "name": "San Antonio",
       "lat": 29.4241,
       "lng": -98.4936
+    },
+    "san-angelo": {
+      "name": "San Angelo",
+      "lat": 31.4638,
+      "lng": -100.437
     }
   },
   "wyoming": {

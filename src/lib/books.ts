@@ -10,6 +10,7 @@ export const THE_EMPTY_BOAT_URL = "https://www.amazon.com/dp/B0HPMMMFNR";
 export const THEIRS_URL = "https://www.amazon.com/dp/B0HNN4MJ6D";
 export const STALKER_BOOKFUNNEL_URL = "https://dl.bookfunnel.com/dt9msoegf9";
 export const GARDEN_OF_LIES_URL = "https://BookHip.com/LMKTHQV";
+export const HOLLOW_TRUST_URL = "https://buy.bookfunnel.com/pml3zyz22h";
 export const DIGITAL_ASCENT_ARC_URL =
     "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series";
 
@@ -41,6 +42,7 @@ export function isAllowedPartnerPickUrl(url: string): boolean {
     if (isAllowedAmazonUrl(url)) return true;
     const bare = bareUrl(url);
     if (bare === bareUrl(STALKER_BOOKFUNNEL_URL)) return true;
+    if (bare === bareUrl(HOLLOW_TRUST_URL)) return true;
     try {
         const parsed = new URL(url);
         const host = parsed.hostname.replace(/^www\./, "").toLowerCase();

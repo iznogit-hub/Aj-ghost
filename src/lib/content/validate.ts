@@ -13,6 +13,7 @@ import {
     THEIRS_URL,
     STALKER_BOOKFUNNEL_URL,
     GARDEN_OF_LIES_URL,
+    HOLLOW_TRUST_URL,
     isAllowedAmazonUrl,
     isAllowedPartnerPickUrl,
     isHuntedUrl,
@@ -315,6 +316,7 @@ function scanRawContent(root: string): string[] {
             THEIRS_URL,
             STALKER_BOOKFUNNEL_URL,
             GARDEN_OF_LIES_URL,
+            HOLLOW_TRUST_URL,
         ]) {
             const count = partnerCount(text, partner);
             if (count > 1) errors.push(`${relPath}: partner link ${partner} appears ${count} times. Use it once.`);
