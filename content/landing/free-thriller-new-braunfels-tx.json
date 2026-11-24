@@ -1,0 +1,145 @@
+{
+  "id": "LP-P05",
+  "type": "landing_page",
+  "slug": "free-thriller-new-braunfels-tx",
+  "url_path": "/free-thriller/texas/new-braunfels/",
+  "state": "TX",
+  "city": "New Braunfels",
+  "page_kind": "city",
+  "search_intent": "Commercial: reader wants this week's fellow-author thriller picks and a free way to try AJ Ghost",
+  "target_keyword": "thriller picks New Braunfels",
+  "title": "New Braunfels Thrillers: Nine Picks From Fellow Authors | AJ Ghost",
+  "meta_description": "Nine thriller picks for New Braunfels readers, Pump Six as a free short story, and HUNTED, the Ryan Kane prequel, free on BookFunnel.",
+  "h1": "Nine Thriller Picks for New Braunfels Readers",
+  "local_angle": {
+    "label": "Nine thrillers on the monitors",
+    "description": "For New Braunfels readers who want nine fellow-author picks, Pump Six as a short free story, and HUNTED on BookFunnel, with none of the novels set in this town."
+  },
+  "hunted_hook": {
+    "manuscript_line": 1610,
+    "text": "I'd left myself a warning.",
+    "source": "HUNTED \u00b7 Chapter 3"
+  },
+  "microbook_id": "MB02",
+  "microbook_title": "Pump Six",
+  "microbook_label": "Original companion fiction set in the world of the Ryan Kane Series. Not an excerpt from any book.",
+  "cta": {
+    "text": "Get HUNTED Free on BookFunnel",
+    "subtext": "HUNTED, The Ryan Kane Series Prequel. Free on BookFunnel.",
+    "url": "https://dl.bookfunnel.com/j4e3jsxfr6",
+    "url_tracked": "https://dl.bookfunnel.com/j4e3jsxfr6?utm_source=ajghost_site&utm_medium=landing&utm_campaign=roundup_nov23_dec1"
+  },
+  "secondary_links": [
+    {
+      "text": "Get Fractured Ground on Kindle",
+      "url": "https://www.amazon.com/dp/B0H9SXX81F?utm_source=ajghost_site&utm_medium=landing&utm_campaign=roundup_nov23_dec1"
+    },
+    {
+      "text": "Get the Digital Ascent ARC",
+      "url": "https://booksprout.co/reviewer/review-copy/view/333083/digital-ascent-book-three-in-the-ryan-kane-series"
+    }
+  ],
+  "picks": [
+    {
+      "title": "She Was Never Alone",
+      "author": "Skye Arden",
+      "kicker": "A Psychological Thriller \u00b7 On Kindle",
+      "tagline": "Her office was supposed to be the safest room in the building.",
+      "blurb": "Nina Calloway has spent eighteen years teaching people to trust their instincts. Then her own instincts start sounding like symptoms. A new client in 5C swears the man upstairs is watching her. Her notepad moves while she's gone, then moves back. In a building where every wall carries sound, every blind spot has an owner.",
+      "url": "https://www.amazon.com/She-Was-Never-Alone-psychological-ebook/dp/B0HP5BB2Q5",
+      "cover": "https://m.media-amazon.com/images/I/81KX4h-GsBL._SL1500_.jpg"
+    },
+    {
+      "title": "Silent Night Protocol",
+      "author": "Christie Winter",
+      "kicker": "A Psychological Thriller \u00b7 Free on BookFunnel with a newsletter sign-up",
+      "tagline": "What if the most dangerous voice in your head isn't yours?",
+      "blurb": "Ryan was recruited because he never breaks. Then the classified Silent Night Protocol starts to cost him: lost time, notes he doesn't remember writing, surveillance footage of himself carrying out missions he never chose. Commands appear without transmitters. Triggers fire with no source. Someone is controlling him. Or something is.",
+      "url": "https://dl.bookfunnel.com/6p02u18nuf",
+      "cover": "https://bookfunnelimages.com/images/covers/zjn2rlaik5/cover_lg.jpg"
+    },
+    {
+      "title": "The Director's Cut",
+      "author": "Janet Walker",
+      "kicker": "A Nick Waters Detective Series \u00b7 On Kindle",
+      "tagline": "The killer isn't leaving clues. He's leaving edits.",
+      "blurb": "When a powerful entertainment lawyer is found dead, posed like a scene from a movie, detective Nick Waters recognizes a signature he saw five years ago, before the evidence was erased and he was forced to bury the case. Now the victim is connected to Zoe Valentine, Hollywood's untouchable golden girl, and reporter Maisie Kline realizes the story she once helped hide may be the reason people are dying.",
+      "url": "https://www.amazon.com/dp/B0HCM5WDSY",
+      "cover": "https://m.media-amazon.com/images/I/81CboyITZ1L._SL1500_.jpg"
+    },
+    {
+      "title": "The Deadly Partner",
+      "author": "Parker Vale",
+      "kicker": "A Claire Beckett Psychological Thriller \u00b7 Pre-order on Kindle, out November 27",
+      "tagline": "She knows a charming smile can hide a monster.",
+      "blurb": "Ben Carter is the man police questioned seven years ago when his girlfriend was found murdered. Another woman later accused him in public, and within days, she was dead too. Neither case was ever solved. Now he is with Lucy, and her friend Claire, who has been hunted before, is afraid Lucy won't survive it. With a blizzard closing in, Claire needs answers. A killer is still out there.",
+      "url": "https://www.amazon.com/dp/B0HQ52Q2T9",
+      "cover": "https://m.media-amazon.com/images/I/71pHF7JM-5L._SL1500_.jpg"
+    },
+    {
+      "title": "One Cadet's Remorse",
+      "author": "Evelyn Vale",
+      "kicker": "A One Lie Too Many Psychological Thriller \u00b7 On Kindle",
+      "tagline": "False accusations and corrupt authority threaten an unlikely heroine.",
+      "blurb": "Olivia Gray's visit with her brother turns into a nightmare when Eric, a respected professor at the Air Force Academy, is accused of misconduct with a cadet. Olivia knows it is a lie. The closed culture of the Academy blocks her every attempt to clear his name. Then the anonymous threats start.",
+      "url": "https://www.amazon.com/dp/B0DZY7BCFJ",
+      "cover": "https://m.media-amazon.com/images/I/719I4Jz9jcL._SL1500_.jpg"
+    },
+    {
+      "title": "The Phantom Orchestra",
+      "author": "Abilene Rose",
+      "kicker": "via TrendSetters Press \u00b7 Liminal Academy Chronicles \u00b7 On Amazon",
+      "tagline": "The music stopped in 1873. No one thought to wonder why it started again.",
+      "blurb": "The West Wing music hall has been sealed since 1873, when a fire silenced twelve gifted young musicians. Now, four months into her role as Assistant Headmistress, Clara Burton can hear the symphony playing at midnight. A Victorian supernatural mystery, the fourth book in the Liminal Academy Chronicles.",
+      "url": "https://buy.bookfunnel.com/2rlreacidw",
+      "cover": "https://bookfunnelimages.com/images/covers/8gn4wxk7gw/cover_lg.jpg"
+    },
+    {
+      "title": "The Psychological Thriller Collection",
+      "author": "Nina Kross",
+      "kicker": "Three Complete Novels \u00b7 On Kindle",
+      "tagline": "Three novels. Three deadly secrets. Nothing is what it seems.",
+      "blurb": "Dead Signal, The Last Wife and What Ava Knew, three complete psychological thrillers in one collection. A phone call from a number that shouldn't exist. A perfect marriage and a disturbing discovery. A woman who saw everything and told no one. Until now.",
+      "url": "https://www.amazon.com/Psychological-Thriller-Collection-Nina-Kross-ebook/dp/B0HS6Y57G4?ref_=ast_author_dp_rw&th=1&psc=1&dib=eyJ2IjoiMSJ9.DMyvAb_h_C8TVO4tVyT07q5nlya-rehXRX-ONZU7IiRva7JwgQb8dmc-g2W6tFYG.21PJg-Kuxcku8XBjKCKhvlZe6pjvaCmjm-q3RIH70W8&dib_tag=AUTHOR",
+      "cover": "https://m.media-amazon.com/images/I/81l5XUIKXIL._SL1500_.jpg"
+    },
+    {
+      "title": "Woman Behind the Walls",
+      "author": "Ellis Bale",
+      "kicker": "A Gripping Psychological Thriller \u00b7 Free on BookFunnel with a newsletter sign-up",
+      "tagline": "A perfect life. A fractured mind. A woman who buried herself.",
+      "blurb": "Lucy Crawford lives in a luxury Manhattan penthouse where everything is flawless. Then the penthouse begins to betray her: drafts that shouldn't exist, shifting curtains, a seam in the wall she has walked past a hundred times. Behind it, a hidden room. Inside it, a life she doesn't remember living.",
+      "url": "https://dl.bookfunnel.com/amneue6hks",
+      "cover": "https://bookfunnelimages.com/images/covers/yokxr7a76o/cover_lg.jpg"
+    },
+    {
+      "title": "Framed by the Dead",
+      "author": "Damon Harper",
+      "kicker": "On Kindle",
+      "tagline": "Everyone knows who the killer is. Everyone is wrong.",
+      "blurb": "Two writers are dead. A third is missing. And every clue points to bestselling author Mimi Elder: a rare poison, a bloody knife, a trail of evidence that leaves little room for doubt. This story was written long before it began.",
+      "url": "https://www.amazon.com/dp/B0H7K71FVS",
+      "cover": "https://m.media-amazon.com/images/I/71eU6UFNTjL._SL1500_.jpg"
+    }
+  ],
+  "og_image": "https://m.media-amazon.com/images/I/81KX4h-GsBL._SL1500_.jpg",
+  "internal_links": [
+    "/free-thriller/texas/",
+    "/free-reads/pump-six/",
+    "/blog/nine-thrillers-from-fellow-authors/",
+    "/free-thriller/texas/san-antonio/",
+    "/blog/five-thrillers-from-fellow-authors/",
+    "/free-thriller/texas/san-angelo/",
+    "/blog/hollow-trust-stump-lewis-and-ryan-kane/",
+    "/free-thriller/texas/dallas/",
+    "/free-thriller/texas/fort-worth/",
+    "/blog/two-thrillers-about-cold-cases/",
+    "/blog/two-psychological-thrillers-people-closest-to-you/",
+    "/blog/digital-ascent-arc-booksprout/"
+  ],
+  "publish_date": "2026-11-25",
+  "publish_at": "2026-11-25T12:00:00Z",
+  "status": "scheduled",
+  "example": false,
+  "intro": "New Braunfels sits on the Comal and the Guadalupe, a Texas town people pass on I-35 and others stay in when the water is high. This page is for readers there who want a fresh stack of thrillers, not a claim that any novel below happens on the Comal or in Gruene. None of the nine books is set in New Braunfels. The Ryan Kane Series is not set in Texas either. I am sharing four features and five shorter mentions from fellow authors, each linked once, then a complete short story you can finish on the page, then HUNTED, the series prequel, free on BookFunnel. The four features are Skye Arden's She Was Never Alone, Christie Winter's Silent Night Protocol, Janet Walker's The Director's Cut, and Parker Vale's The Deadly Partner, a Kindle pre-order out November 27. Under them come Evelyn Vale's One Cadet's Remorse, The Phantom Orchestra by Abilene Rose via TrendSetters Press, Nina Kross's The Psychological Thriller Collection, Ellis Bale's Woman Behind the Walls, and Damon Harper's Framed by the Dead. Pump Six comes after the picks: an overnight clerk watches a sedan stop at a pump and never buy gas. That story is original companion fiction written beside the Ryan Kane Series, and it is not a chapter taken out of a published book. After it, FRACTURED GROUND is the Kindle edition, and Digital Ascent, book three, is the advance copy on BookSprout."
+}
