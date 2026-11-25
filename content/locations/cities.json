@@ -25,6 +25,11 @@
       "lat": 29.4241,
       "lng": -98.4936
     },
+    "longview": {
+      "name": "Longview",
+      "lat": 32.5007,
+      "lng": -94.7405
+    },
     "san-angelo": {
       "name": "San Angelo",
       "lat": 31.4638,
