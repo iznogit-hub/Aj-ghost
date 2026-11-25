@@ -29,6 +29,11 @@
       "name": "San Angelo",
       "lat": 31.4638,
       "lng": -100.437
+    },
+    "new-braunfels": {
+      "name": "New Braunfels",
+      "lat": 29.7029,
+      "lng": -98.1245
     }
   },
   "wyoming": {
